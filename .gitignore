@@ -1,0 +1,35 @@
+# --- internal / agent context (not for attendees) ---
+CLAUDE.md
+.claude/
+ORGANIZER_PREP.md
+
+# --- secrets & real per-team configs (keep only *.example tracked) ---
+.env
+.env.*
+!.env.example
+*.config
+!*.config.example
+secrets.yaml
+secrets.*.yaml
+config.yaml
+*-config.yaml
+!config.example
+!*.example.yaml
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- os / editor junk ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- misc local ---
+*.log
+tmp/
