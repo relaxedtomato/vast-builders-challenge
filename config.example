@@ -1,0 +1,28 @@
+# Per-team configuration for the VAST Builders Challenge.
+#
+# You do NOT need to fill this in or source it. These values are already set as
+# environment variables in your VM. This file documents what exists, so you know what
+# the skills are reading and what to reference in your own code.
+#
+# Placeholders only. Never commit real credentials.
+
+# ---- identity ----
+USERNAME=team-x
+PASSWORD=<password>
+
+# ---- S3 ----
+S3_ENDPOINT=<https://s3-endpoint>
+ACCESS_KEY=<access-key>
+SECRET_KEY=<secret-key>
+S3_CHUNKS_BUCKET=team-x-vss-chunks
+S3_SEGMENTS_BUCKET=team-x-vss-chunks-segments
+
+# ---- VastDB (database = bucket; schema + tables below) ----
+VASTDB_BUCKET=team-x-vss-db
+VDB_SCHEMA=vss-schema
+VDB_COLLECTION=vss-collection
+VDB_PROMPTS_COLLECTION=vss-prompts-events
+
+# ---- DataEngine / UI ----
+PIPELINE=team-x-vss
+INGRESS_URL=<https://ingress-url>
