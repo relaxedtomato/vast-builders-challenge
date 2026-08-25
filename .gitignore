@@ -33,3 +33,6 @@ Thumbs.db
 # --- misc local ---
 *.log
 tmp/
+
+# --- internal decision log (not for attendees) ---
+DECISIONS.md
