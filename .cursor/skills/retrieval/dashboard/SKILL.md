@@ -1,7 +1,7 @@
 ---
 name: retrieval-dashboard
 description: >-
-  Get aggregate VSS stats via GET /api/v1/dashboard/stats — overview counts, ingest
+  Get aggregate VSS stats via GET /api/v1/dashboard/stats, overview counts, ingest
   quality, detected objects, uploads-by-day, S3-vs-VastDB inventory/pipeline alignment,
   and recent videos. Use to check ingest health, how many videos are indexed, or spot
   chunks that failed to index.
@@ -11,7 +11,7 @@ description: >-
 
 One bundled aggregate over the VastDB collection (ACL-filtered), plus live S3 inventory. Requires a JWT (`retrieval/login`).
 
-## Request — `GET /api/v1/dashboard/stats`
+## Request: `GET /api/v1/dashboard/stats`
 
 `scope` query param: `all` (default) | `mine` | `public`.
 

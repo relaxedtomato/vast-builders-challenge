@@ -21,10 +21,10 @@ credentials or endpoints.
 
 | Priority | Path | Notes |
 |----------|------|-------|
-| **1 — Preferred** | `POST /api/v1/videos/upload` via `$INGRESS_URL` | Backend holds the S3 credentials and writes the object with ingest metadata |
-| **2 — Fallback** | `aws s3 cp` to `$S3_ENDPOINT` | Direct write. Needed only if you want to set `capture-interval`, or the API path is failing |
+| **1: Preferred** | `POST /api/v1/videos/upload` via `$INGRESS_URL` | Backend holds the S3 credentials and writes the object with ingest metadata |
+| **2: Fallback** | `aws s3 cp` to `$S3_ENDPOINT` | Direct write. Needed only if you want to set `capture-interval`, or the API path is failing |
 
-Do **not** use `/batch-sync/*` for simple file upload — that copies from another S3
+Do **not** use `/batch-sync/*` for simple file upload. That copies from another S3
 bucket/prefix.
 
 ## Fixed length (important)
@@ -47,7 +47,7 @@ fine; use the direct S3 path if you need to set it explicitly.
 - Handed a YouTube link? Download it locally first, then use this skill. YouTube
   capture is not supported (see `ingest-stream-capture`).
 
-Optional metadata options: `GET /api/v1/metadata/ingest-config` (public) — see
+Optional metadata options: `GET /api/v1/metadata/ingest-config` (public). See
 `retrieval/list-metadata`.
 
 ## Split a long file into fixed-length chunks
@@ -59,7 +59,7 @@ ffmpeg -i warehouse_full.mp4 -c copy -f segment -segment_time 30 -reset_timestam
 
 ---
 
-## Path 1 — Backend API upload (preferred)
+## Path 1: Backend API upload (preferred)
 
 The backend runs inside the cluster, holds the S3 credentials, and writes the object with
 ingest metadata attached.
@@ -73,7 +73,7 @@ TOKEN=$(curl -s -X POST "$INGRESS_URL/api/v1/auth/login" \
   -H "Content-Type: application/json" \
   -d "{\"username\":\"$USERNAME\",\"password\":\"$PASSWORD\"}" \
   | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('access_token') or '')")
-test -n "$TOKEN" || echo "Login failed — see troubleshooting below"
+test -n "$TOKEN" || echo "Login failed: see troubleshooting below"
 ```
 
 ### Single file
@@ -103,8 +103,8 @@ for f in chunks/chunk_*.mp4; do
     -F "is_public=true" \
     -F "capture_type=warehouse" \
     -F "location=Warehouse-A")
-  echo "  HTTP $code — $(cat /tmp/upload_resp.json)"
-  test "$code" = "200" || echo "  FAILED — see troubleshooting"
+  echo "  HTTP $code, $(cat /tmp/upload_resp.json)"
+  test "$code" = "200" || echo "  FAILED: see troubleshooting"
 done
 ```
 
@@ -112,11 +112,11 @@ done
 
 | Field | Notes |
 |-------|--------|
-| `file` | Required — `.mp4`, `.mov`, `.webm`, `.avi`, `.mkv` |
+| `file` | Required: `.mp4`, `.mov`, `.webm`, `.avi`, `.mkv` |
 | `is_public` | `true` / `false` (form boolean) |
 | `tags` | Comma-separated |
 | `allowed_users` | Comma-separated extra viewers |
-| `scenario` | e.g. `general`, `warehouse` — ignored if `custom_prompt` set |
+| `scenario` | e.g. `general`, `warehouse`: ignored if `custom_prompt` set |
 | `custom_prompt` | Max 800 chars |
 | `camera_id`, `capture_type`, `location` | Search / dashboard filters |
 
@@ -125,7 +125,7 @@ rejected).
 
 ---
 
-## Path 2 — Direct S3 (fallback)
+## Path 2: Direct S3 (fallback)
 
 ```bash
 export AWS_ACCESS_KEY_ID="$ACCESS_KEY"
@@ -149,7 +149,7 @@ capture-interval=30,is-public=true,owner=$USERNAME,original-filename=chunk_000.m
 | `scenario`, `custom-prompt` | reasoning preset |
 | `tags`, `allowed-users` | comma-separated |
 | `is-public`, `owner` | ACL |
-| `capture-interval` | nominal chunk length (seconds) — **S3 path only** today |
+| `capture-interval` | nominal chunk length (seconds): **S3 path only** today |
 
 ---
 
@@ -168,7 +168,7 @@ capture-interval=30,is-public=true,owner=$USERNAME,original-filename=chunk_000.m
 | HTTP **200** but search empty for a few minutes | Pipeline lag | Normal. Watch `pipeline_alignment` in `retrieval/dashboard`. |
 | HTTP **400** `Invalid file extension` | Non-video extension | Use `.mp4` (or an allowed extension from `GET /api/v1/config`). |
 | HTTP **413** `File too large` | Chunk over the 25 MB default | Shorten the chunk (e.g. 30s → 15s) or re-encode smaller. |
-| HTTP **401** | Token expired mid-session | Re-login. If a fresh login also 401s, the environment is misconfigured — tell an organizer. |
+| HTTP **401** | Token expired mid-session | Re-login. If a fresh login also 401s, the environment is misconfigured. Tell an organizer. |
 | HTTP **500** | Backend or S3 problem on the cluster | Not something you can fix. Tell an organizer; the S3 fallback will likely fail too. |
 | `curl` connection failure to `$INGRESS_URL` | Your stack may be restarting | Retry once, then tell an organizer. The VM is pre-wired, so this is not a local config problem. |
 | `aws s3 cp` **403 / AccessDenied** | Wrong bucket or key in the command | Confirm you used `$S3_CHUNKS_BUCKET`, `$ACCESS_KEY`, `$SECRET_KEY` from the environment rather than typing values. |

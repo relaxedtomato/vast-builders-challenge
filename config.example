@@ -27,7 +27,7 @@ VDB_PROMPTS_COLLECTION=vss-prompts-events
 
 # ---- Stream capture ----
 # Default RTSP feed for ingest/stream-capture. Varies by city and team.
-# A default, not a lock — attendees may point capture at their own source.
+# A default, not a lock: attendees may point capture at their own source.
 RTSP_URL=rtsp://<lab-host>:8554/<path>
 
 # ---- DataEngine / UI ----

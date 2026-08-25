@@ -1,7 +1,7 @@
 # Ingest
 
 Get video into the pipeline by landing **fixed-length MP4 chunks** in your team's
-`$S3_CHUNKS_BUCKET`. The ingest pipeline reacts to S3 events only — it does not call the
+`$S3_CHUNKS_BUCKET`. The ingest pipeline reacts to S3 events only. It does not call the
 streaming or batch-sync services.
 
 ## Skills

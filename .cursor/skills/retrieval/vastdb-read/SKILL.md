@@ -1,7 +1,7 @@
 ---
 name: retrieval-vastdb-read
 description: >-
-  Read the VSS VastDB store directly with the vastdb Python SDK — list catalog
+  Read the VSS VastDB store directly with the vastdb Python SDK, list catalog
   (databases/schemas/tables) and inspect rows in your team's collection and prompts table.
   Use for raw DB inspection/debugging that bypasses the backend API (no JWT), e.g.
   verifying what actually got written.

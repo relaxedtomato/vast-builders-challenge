@@ -10,7 +10,7 @@ description: >-
 
 Returns the latest batch of **search prompt suggestions** + **key events** the enrichment `prompt-suggester` computed from recent segments and wrote to VastDB (`$VDB_PROMPTS_COLLECTION`). Requires a JWT (`retrieval/login`).
 
-## Request — `GET /api/v1/suggestions`
+## Request: `GET /api/v1/suggestions`
 
 ```bash
 curl -s "$INGRESS_URL/api/v1/suggestions" -H "Authorization: Bearer $TOKEN"
@@ -32,5 +32,5 @@ indexed, mention it to an organizer.
 ## Agent instructions
 
 1. Ensure a JWT.
-2. Treat items as suggestions, not guarantees — feed prompts into `retrieval/search`.
+2. Treat items as suggestions, not guarantees. Feed prompts into `retrieval/search`.
 3. If empty, check the enrichment pipeline/trigger and recent ingest before assuming a bug.

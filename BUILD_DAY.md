@@ -4,8 +4,6 @@ Spend the day building with video. The infrastructure is already running, so you
 skip straight to the interesting part: turning hours of video into something that
 searches, reasons, and acts.
 
-<!-- TODO: restore cross-section links (§3 x2, §4, §6) once section titles are final.
-     Anchors break while headings carry "_(draft)_". -->
 
 ---
 
@@ -165,7 +163,7 @@ searchable. Ask the agent to confirm before you go looking for it.
 <!-- TODO: net-new `reingest` skill. Re-run captioning/embedding with a different prompt,
      without re-uploading. Open: granularity (segment / filtered set / whole video); the
      writer skips duplicate `source`, so overwrite or version? (`dashboard` already reports
-     `re_ingest_rows` — find out what that does first); cost cap on shared Cosmos endpoints.
+     `re_ingest_rows`, find out what that does first); cost cap on shared Cosmos endpoints.
      Covers the §1 re-ingestion note too. -->
 <!-- TODO: can a team change the pipeline DEFAULT prompt, or only override per upload? If
      editable, that's a missing skill and the advice above changes. -->
@@ -188,11 +186,11 @@ believe what the API is telling you.
 <!-- TODO: add `cosmos` and `vast-builder-submission` to the tables once written. -->
 
 
-## 4. Ingest and search _(draft)_
+## 4. Ingest and search
 
 
 
-## 5. Build _(draft)_
+## 5. Build
 
 <!-- TODO: 4-6 use-case sparks (search hours of footage, ask-your-video Q&A, incident
      board, alert-on-event agent, highlight reel) + link the Request for Builds doc. Teams
@@ -202,7 +200,7 @@ believe what the API is telling you.
      use case, ingest for it, query, wrap it) kept short; where agent logic runs (W&B) with
      a minimal example. -->
 
-## 6. Reference _(draft)_
+## 6. Reference
 
 <!-- TODO: lookup material, absorbs old §8 + §9. Needs: health check (one command per
      piece, what healthy looks like, what to do when it isn't); getting help (organizers,
@@ -210,7 +208,7 @@ believe what the API is telling you.
      ingress, W&B endpoint) pointing at config.example; and $PIPELINE and $RTSP_URL,
      which no skill provides. -->
 
-## 7. Submit and demo _(draft)_
+## 7. Submit and demo
 
 <!-- TODO: absorbs old §10 + §11. Needs: how to submit (`vast-builder-submission` skill),
      the judging rubric (see §1 TODO), and demo logistics (length, order, what's on screen). -->

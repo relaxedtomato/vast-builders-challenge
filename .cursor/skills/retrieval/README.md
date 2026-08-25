@@ -1,7 +1,7 @@
 # Retrieval
 
 Query the indexed archive through the backend API at `$INGRESS_URL`, prefix `/api/v1`.
-Every route except `/metadata/ingest-config` needs a JWT — start with `login`.
+Every route except `/metadata/ingest-config` needs a JWT, start with `login`.
 
 ## Skills → routes
 
