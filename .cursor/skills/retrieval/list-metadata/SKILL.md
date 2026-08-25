@@ -17,7 +17,7 @@ Returns the filterable columns of `$VDB_COLLECTION` with type, label, `ui_type` 
 
 ```bash
 curl -s "$INGRESS_URL/api/v1/metadata/schema" -H "Authorization: Bearer $TOKEN"
-# { "schema": [ {"name":"location","type":"string","ui_type":"select","label":"Location","options":[...]}, ... ], "table":"$VDB_COLLECTION" }
+# { "schema": [ {"name":"location","type":"string","ui_type":"select","label":"Location","options":[...]}, ... ], "table":"<value of $VDB_COLLECTION>" }
 ```
 
 Internal columns (`pk`, `vectors`, `vectors_visual`, `source`, `reasoning_content`, `perception_json`, timing, `tags`, `is_public`, …) are **excluded** and can't be filtered here.

@@ -47,12 +47,15 @@ LLM summary over **all** segments of one parent video (no VastDB write). This is
 ```bash
 curl -s -X POST "$INGRESS_URL/api/v1/videos/synthesize" \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-  -d '{
-    "original_video": "s3://$S3_CHUNKS_BUCKET/user/20260101_120000_ab12cd34.mp4",
-    "question": "Summarize what happens in this video",
-    "max_segments": 40
-  }'
+  -d "{
+    \"original_video\": \"s3://$S3_CHUNKS_BUCKET/user/20260101_120000_ab12cd34.mp4\",
+    \"question\": \"Summarize what happens in this video\",
+    \"max_segments\": 40
+  }"
 ```
+
+In practice you don't build `original_video` by hand — copy it from an `explore` or
+`search` result. Double quotes on the body so `$S3_CHUNKS_BUCKET` expands.
 
 Optional `system_prompt` overrides the default (chronological Overview + Timeline markdown). Response: `answer`, `llm_synthesis`, `segment_count`, `segments_used`, `generated_at`. 404 if no accessible segments.
 

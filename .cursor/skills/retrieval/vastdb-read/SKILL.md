@@ -22,9 +22,11 @@ segment actually land in VastDB?".
 | Main table | `$VDB_COLLECTION` (segment rows: `source`, `original_video`, `reasoning_content`, `vectors` (256d text), `vectors_visual`, metadata, timing) |
 | Prompts table | `$VDB_PROMPTS_COLLECTION` (prompt-suggester output) |
 
-Endpoint and credentials are already in the environment as `S3_ENDPOINT`, `ACCESS_KEY`,
-`SECRET_KEY`. The data endpoint is reachable directly from your VM, so there is no tunnel
-to set up and no `.env` to create. The `vastdb` SDK is already installed.
+Endpoint and credentials are already in the environment as `VDB_ENDPOINT`, `ACCESS_KEY`,
+`SECRET_KEY`. `VDB_ENDPOINT` may point at the same host as `S3_ENDPOINT`; use
+`VDB_ENDPOINT` so the intent is clear. The endpoint is reachable directly from your VM, so
+there is no tunnel to set up and no `.env` to create. The `vastdb` SDK is already
+installed.
 
 ## List the catalog
 
@@ -42,7 +44,7 @@ python .cursor/skills/retrieval/vastdb-read/list_catalog.py --bucket "$VASTDB_BU
 import os, vastdb
 
 session = vastdb.connect(
-    endpoint=os.environ["S3_ENDPOINT"],
+    endpoint=os.environ["VDB_ENDPOINT"],
     access=os.environ["ACCESS_KEY"],
     secret=os.environ["SECRET_KEY"],
     ssl_verify=False,

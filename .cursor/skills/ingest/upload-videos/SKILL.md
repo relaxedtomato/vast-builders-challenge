@@ -43,7 +43,9 @@ fine; use the direct S3 path if you need to set it explicitly.
 ## When to use
 
 - Upload 1..N pre-chunked MP4 files from disk.
-- **Not** for live URLs / RTSP / YouTube → use `ingest-stream-capture`.
+- **Not** for live streams / RTSP → use `ingest-stream-capture`.
+- Handed a YouTube link? Download it locally first, then use this skill. YouTube
+  capture is not supported (see `ingest-stream-capture`).
 
 Optional metadata options: `GET /api/v1/metadata/ingest-config` (public) — see
 `retrieval/list-metadata`.

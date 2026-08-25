@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -25,7 +26,7 @@ def resolve_credentials() -> tuple[str, str, str]:
 
     missing = [
         name
-        for name, value in (("S3_ENDPOINT", endpoint), ("ACCESS_KEY", access), ("SECRET_KEY", secret))
+        for name, value in (("VDB_ENDPOINT", endpoint), ("ACCESS_KEY", access), ("SECRET_KEY", secret))
         if not value
     ]
     if missing:
@@ -44,10 +45,12 @@ def probe_endpoint(endpoint: str) -> None:
         urllib.request.urlopen(endpoint, timeout=5)
     except urllib.error.HTTPError:
         return  # any HTTP response means we reached it
+    except ssl.SSLError:
+        return  # TLS handshake happened, so the host is up; the SDK skips verification
     except OSError:
         print(
             f"Cannot reach {endpoint}. The VastDB data endpoint should be reachable from\n"
-            "your VM. Check that S3_ENDPOINT is correct, then tell an organizer.",
+            "your VM. Check VDB_ENDPOINT, then tell an organizer.",
             file=sys.stderr,
         )
         sys.exit(1)

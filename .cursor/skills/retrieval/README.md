@@ -36,7 +36,7 @@ No `/reports`, `/alerts`, `/analytics`, `/videos/ask`, `/tags`, `/locations`, or
 
 ## Backing store
 
-VastDB `$VASTDB_BUCKET` / `$VDB_SCHEMA` / `$VDB_COLLECTION` (plus
+VastDB at `$VDB_ENDPOINT`: `$VASTDB_BUCKET` / `$VDB_SCHEMA` / `$VDB_COLLECTION` (plus
 `$VDB_PROMPTS_COLLECTION`), with Cosmos-Embed1 256-dim hybrid vectors (`vectors` for
 caption text, `vectors_visual` for the visual embedding). All row access through the
 backend is ACL-filtered to the calling user.

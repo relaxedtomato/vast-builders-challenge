@@ -14,7 +14,7 @@ description: >-
 | | **stream-capture** (this skill) | **upload-videos** (other skill) |
 |---|--------------------------------|----------------------------------|
 | What you do | Call `POST /streaming/start` (+ status/stop) | Upload fixed-length MP4s to `$S3_CHUNKS_BUCKET` |
-| Source | YouTube URL, RTSP, HTTP stream, remote file URL | Local files on disk (pre-chunked ~30s) |
+| Source | RTSP, HTTP stream, remote file URL | Local files on disk (pre-chunked ~30s) |
 | Who writes S3 | the capture service (automatic) | You (upload API or S3) |
 
 Both paths land **fixed-length** chunks in `$S3_CHUNKS_BUCKET`. The ingest pipeline only reacts to S3 objects; it does not call the streaming API.
@@ -27,9 +27,14 @@ Requires a JWT (`retrieval/login`). Only **one capture runs at a time** (service
 
 ## Source support
 
-Request field `youtube_url` accepts:
-- **YouTube** VOD/live → yt-dlp path.
-- **RTSP / HTTP / file** (OpenCV/FFmpeg) → put URL/path in `youtube_url`.
+Supported for this event: **RTSP streams, HTTP streams, and remote file URLs**, read via
+OpenCV/FFmpeg.
+
+**YouTube is not supported.** The field is named `youtube_url` for historical reasons and
+the service does have a yt-dlp path, but it isn't enabled here — YouTube throttles and
+bot-checks shared egress, which fails unpredictably mid-event. Put your RTSP/HTTP/file URL
+in `youtube_url` anyway; that's just what the field is called. If someone hands you a
+YouTube link, download it beforehand and use `ingest/upload-videos` instead.
 
 ## Prefill S3 credentials
 
@@ -47,19 +52,19 @@ curl -s "$INGRESS_URL/api/v1/streaming/prefill" -H "Authorization: Bearer $TOKEN
 ```bash
 curl -s -X POST "$INGRESS_URL/api/v1/streaming/start" \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-  -d '{
-    "youtube_url": "https://www.youtube.com/watch?v=...",
-    "access_key": "...", "secret_key": "...", "s3_endpoint": "http://...",
-    "bucket_name": "$S3_CHUNKS_BUCKET",
-    "name": "capture",
-    "capture_interval": 30,
-    "camera_id": "", "capture_type": "", "location": "", "scenario": ""
-  }'
+  -d "{
+    \"youtube_url\": \"rtsp://camera-host:554/stream\",
+    \"access_key\": \"$ACCESS_KEY\", \"secret_key\": \"$SECRET_KEY\", \"s3_endpoint\": \"$S3_ENDPOINT\",
+    \"bucket_name\": \"$S3_CHUNKS_BUCKET\",
+    \"name\": \"capture\",
+    \"capture_interval\": 30,
+    \"camera_id\": \"\", \"capture_type\": \"\", \"location\": \"\", \"scenario\": \"\"
+  }"
 ```
 
 | Field | Req | Notes |
 |-------|-----|-------|
-| `youtube_url` | yes | YouTube URL, or any RTSP/HTTP/file URL |
+| `youtube_url` | yes | RTSP / HTTP / file URL, despite the field name. Not YouTube. |
 | `access_key`/`secret_key`/`s3_endpoint` | yes | usually from `/prefill` |
 | `bucket_name` | yes | set to `$S3_CHUNKS_BUCKET` explicitly |
 | `capture_interval` | no | 1–300s fixed chunk length (default 30) |

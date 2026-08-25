@@ -9,7 +9,7 @@ streaming or batch-sync services.
 | Skill | Mechanism | Purpose |
 |-------|-----------|---------|
 | [upload-videos](upload-videos/SKILL.md) | `POST /videos/upload`, or direct `aws s3 cp` | Upload 1..N fixed-length chunk files from disk |
-| [stream-capture](stream-capture/SKILL.md) | `POST /streaming/start`, `GET /status`, `POST /stop` | Capture from a YouTube / RTSP / HTTP source |
+| [stream-capture](stream-capture/SKILL.md) | `POST /streaming/start`, `GET /status`, `POST /stop` | Capture from an RTSP / HTTP / file-URL source (not YouTube) |
 
 ## Fixed length (important)
 

@@ -18,7 +18,7 @@ curl -s "$INGRESS_URL/api/v1/suggestions" -H "Authorization: Bearer $TOKEN"
 
 Content is ACL-filtered to the caller. Use the returned prompts as ready-to-run `query` strings for `retrieval/search`, and key events as highlights.
 
-## May be empty early in the day
+## Empty results are normal
 
 These come from a scheduled enrichment job that reads recent segments and writes to
 `$VDB_PROMPTS_COLLECTION`. It runs on the shared stack, not something you deploy.
