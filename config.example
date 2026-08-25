@@ -18,6 +18,8 @@ S3_CHUNKS_BUCKET=team-x-vss-chunks
 S3_SEGMENTS_BUCKET=team-x-vss-chunks-segments
 
 # ---- VastDB (database = bucket; schema + tables below) ----
+# May be the same host as S3_ENDPOINT; named separately for clarity.
+VDB_ENDPOINT=<https://vastdb-endpoint>
 VASTDB_BUCKET=team-x-vss-db
 VDB_SCHEMA=vss-schema
 VDB_COLLECTION=vss-collection
