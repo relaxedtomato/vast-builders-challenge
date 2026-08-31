@@ -188,6 +188,100 @@ believe what the API is telling you.
 
 ## 4. Ingest and search
 
+Before you build anything, put one video through the pipeline. This tells you the whole
+stack is working.
+
+Your team's index already has video in it, so search works from the start. This section is
+about the other half: watching footage go in.
+
+### Ingest a clip
+
+<!-- TODO: write the bring-your-own-footage rules. Attendees will upload phone video,
+     doorbell clips, and footage from work. Needs a plain disclaimer covering:
+       - only upload footage you have the rights to use
+       - no identifiable people without consent; nothing confidential from an employer
+       - uploads land in the shared TEAM bucket and index, visible to teammates, not private
+       - what happens to it after: environment destroyed, but say so explicitly
+       - three jurisdictions: London is UK GDPR, SF and NYC are not
+     Needs legal review; do not ship Claude's wording. Related: any footage sourced from a
+     third party (transit agency, archive) may be licensed for hosted VMs only, which is a
+     different rule than for attendees' own clips. -->
+
+There are sample clips in `~/samples/` that are deliberately not indexed yet. Ask for one:
+
+```
+upload ~/samples/<clip>.mp4 and tell me when it's searchable
+```
+
+The agent loads `upload-videos`, splits the file into ~30 second chunks, uploads each one,
+and reports what landed. Uploading takes seconds. Indexing takes a few minutes, because
+every segment gets captioned, described, and embedded before it can be found.
+
+### Try your own prompt
+
+That upload used the default ingestion prompt. Run the same clip again with your own:
+
+```
+upload ~/samples/<clip>.mp4 again, with a prompt that describes <what your agent needs>
+```
+
+The agent passes it as `custom_prompt`. Once both are indexed, search for something only
+your prompt asked about. The first copy won't match, because its captions never mention it.
+
+Pick your prompt before you ingest anything at volume.
+
+This matters for the video already in your index too. All of it was ingested with the
+default prompt, so if your project needs something that prompt never asked about, it isn't
+in those captions and no search will find it. The footage you upload yourself is the only
+footage whose prompt you control.
+
+<!-- TODO: link the prompts used to ingest the existing corpus, so attendees can see what
+     the pre-built index can actually answer before choosing a project. Options: point at
+     $VDB_PROMPTS_COLLECTION and let a skill read them, or paste them into the Reference
+     section. Preference: readable in the guide AND queryable, since a team that picks an
+     idea the default prompt never described has to re-ingest or change the idea. -->
+
+### Confirm it indexed
+
+```
+is my video indexed yet?
+```
+
+The agent checks the dashboard and compares what's in storage against what's in the index.
+Wait for it to say your video is fully indexed. Searching before then returns nothing, which
+looks like a broken search but is just impatience.
+
+### Search for it
+
+Ask for something you know is in the clip:
+
+```
+find the moment where <something you saw> happens
+```
+
+You get back ranked segments with timestamps, similarity scores, and the caption the model
+wrote. Play one to confirm it's the moment you meant.
+
+Then ask a question instead of searching:
+
+```
+what happens in the video I just uploaded?
+```
+
+Same index, different kind of answer. The first hands you moments. The second reads those
+moments and writes you an answer.
+
+Do you want to show someone the clip, or tell them what happened? Most of designing a video
+agent is picking one.
+
+### That's the whole loop
+
+Ingest, index, search, ask. Everything you build today sits on those four steps. If all
+four worked, your stack is healthy and you can start building.
+
+If any of them didn't, run the health check in the Reference section.
+
+
 
 
 ## 5. Build
