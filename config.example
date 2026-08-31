@@ -33,3 +33,9 @@ RTSP_URL=rtsp://<lab-host>:8554/<path>
 # ---- DataEngine / UI ----
 PIPELINE=team-x-vss
 INGRESS_URL=<https://ingress-url>
+
+# ---- Weights & Biases (agent logic / LLM inference) ----
+WANDB_API_KEY=<wandb-api-key>
+WANDB_TEAM=<wandb-team>
+# Often the same as the team name. One project per team.
+WANDB_PROJECT=<wandb-project>
