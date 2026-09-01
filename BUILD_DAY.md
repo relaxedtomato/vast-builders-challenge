@@ -250,10 +250,10 @@ only footage whose prompt you control.
 is my video indexed yet?
 ```
 
-**The dashboard tells you whether your video is ready.** Your upload is searchable once it
-shows up as a fully indexed parent and the segment count stops climbing.
+**The VSS UI dashboard tells you whether your video is ready.** Your upload is searchable
+once it shows up as a fully indexed parent and the segment count stops climbing.
 
-![The VSS dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
+![The VSS UI dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
 
 Wait for it to say your video is fully indexed. Searching before then returns nothing, which
 looks like a broken search.
