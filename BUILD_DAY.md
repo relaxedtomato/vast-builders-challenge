@@ -368,7 +368,7 @@ If it fails, tell an organizer.
 Everything the skills need is already in your environment. `config.example` in this repo
 lists every variable with a description.
 
-## 7. Submit
+## 7. Submit and demo
 
 Ask the agent to run the submission skill:
 
@@ -389,9 +389,12 @@ When `SUBMISSION.md` is ready, copy its contents into the event Slack channel.
      approach; revisit for the real events, where a form may be needed and where pasting
      member email addresses into a shared channel is worth a second look. -->
 
-<!-- HIDDEN for the dry run: restore before the real event.
+### Demo
 
-     ### Demo
+We'll book a time with each team to walk through what you built and to hear how the day
+went.
+
+<!-- HIDDEN for the dry run: restore before the real event.
 
      Needs: demo logistics (length is five minutes, running order, what should be on screen,
      whether slides are allowed, who presents), and the judging criteria, which is the same
