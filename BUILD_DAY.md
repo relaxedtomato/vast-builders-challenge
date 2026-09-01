@@ -18,12 +18,13 @@ when something matters. Pick one idea and ship a working app by end of day.
 Video runs through a pipeline that understands and indexes it.
 
 ```
-  INGEST         UNDERSTAND              INDEX          SEARCH / ASK        ACT
-  video  ─▶  segment·caption·detect  ─▶  vectors +  ─▶  semantic search ─▶  your agent
-            ·embed (Cosmos + YOLO)        metadata       · Q&A · metadata    (Slack, webhook,
-                                                                             app, report)
-       └────────────── pre-built, already running ──────────────┘      └─ you build ─┘
-                                                                     (agent logic: LLM via W&B)
+  INGEST          UNDERSTAND                 INDEX          SEARCH / ASK       ACT
+  video   ─▶  segment                  ─▶  vectors +  ─▶  semantic search ─▶  your app
+              describe  (Cosmos Reason)    metadata       · Q&A · metadata    (alert, report,
+              embed     (Cosmos Embed)                                         dashboard, bot)
+              detect    (YOLO)
+       └─────────────── pre-built, already running ───────────────┘      └─ you build ─┘
+                                                                    (your app's reasoning: W&B)
 ```
 <!-- IMAGE: architecture diagram, replacing the ASCII block. Alt: "Pipeline flow from
      video ingest through indexing and search to the agent you build." -->
