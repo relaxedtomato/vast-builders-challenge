@@ -27,12 +27,23 @@ the team what you found and ask them to correct it. Never present a guess as a f
 
 | Field | Where to look |
 |---|---|
-| Team name | `$USERNAME`, or the bucket prefix in `$S3_CHUNKS_BUCKET` |
-| Team members | `git log --format='%an <%ae>' \| sort -u` in their project repo |
-| Organization | the domain on those email addresses |
-| Link to code | `git remote get-url origin`, if it's reachable publicly |
+| Team name | the bucket prefix in `$S3_CHUNKS_BUCKET`, e.g. `team-b-vss-chunks` gives `team-b` |
 | Technology stack | which skills they called, plus Cosmos Reason, Cosmos Embed and YOLO in the pipeline, and the W&B model if they used one. Read their code rather than asking |
 | Location | which city event, from `$PIPELINE` or the ingress hostname if either encodes it |
+
+Always ask for these, never derive them:
+
+- **Team members and emails.** This repo arrives pre-cloned with the organizers' commit
+  history, so `git log` returns the people who wrote the starter repo, not the team. Commit
+  emails are also often noreply addresses nobody can be contacted on.
+- **Link to code.** `git remote` points at the starter repo. The team's project may live
+  somewhere else entirely.
+- **Organization.** Guessing from an email domain is wrong for anyone using a personal
+  address.
+
+Check that a derived value is plausible before showing it. `$USERNAME` on a laptop is the
+login name, not a team name. An unset variable and a variable set to something unrelated
+are different problems.
 
 Anything you can't determine, ask for.
 
