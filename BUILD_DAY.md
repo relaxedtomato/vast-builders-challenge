@@ -370,8 +370,6 @@ lists every variable with a description.
 
 ## 7. Submit
 
-### Submit
-
 Ask the agent to run the submission skill:
 
 ```
@@ -385,7 +383,7 @@ the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo
 > address for each team member. The confirmations are required too. An incomplete entry may
 > not be judged.
 
-When `SUBMISSION.md` is complete, copy its contents into the event Slack channel.
+When `SUBMISSION.md` is ready, copy its contents into the event Slack channel.
 
 <!-- TODO: name the Slack channel and add a join link. Pasting contents is the dry-run
      approach; revisit for the real events, where a form may be needed and where pasting
