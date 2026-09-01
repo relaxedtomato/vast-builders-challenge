@@ -288,6 +288,20 @@ If any of them didn't, run the health check in the Reference section.
 You have a working index and you know how to query it. The rest of the day is what you
 build on top.
 
+### What video you have
+
+<!-- TODO: PLACEHOLDER. The actual sources are not known yet. Describe each one attendees
+     can use, and for each: what it is, whether it is already ingested, and whether they
+     control the prompt.
+     Candidates so far, all unconfirmed:
+       - the pre-built team index (subject, setting, hours, camera count, overlapping views,
+         audio, time period) - this is the one teams pick a use case from, so it matters most
+       - sample clips staged in the VM, deliberately not pre-ingested
+       - a live RTSP feed at $RTSP_URL, optional per city
+       - attendees' own footage, subject to the bring-your-own rules in section 4
+     Confirm which of these exist per city, and note any licence limits on third-party
+     footage. -->
+
 ### The loop
 
 1. **Pick a use case**
