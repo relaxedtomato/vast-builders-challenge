@@ -380,8 +380,7 @@ It asks for your team details, drafts your project description from your code, a
 the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
 
 > 💡 **Have these ready:** a link to your code, a link to your demo video, and an email
-> address for each team member. The confirmations are required too. An incomplete entry may
-> not be judged.
+> address for each team member. An incomplete submission may not be judged.
 
 When `SUBMISSION.md` is ready, copy its contents into the event Slack channel.
 
