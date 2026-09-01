@@ -36,6 +36,13 @@ the team what you found and ask them to correct it. Never present a guess as a f
 
 Anything you can't determine, ask for.
 
+**Everything you derive must be reviewed.** Show it back as a short list and ask them to
+correct anything wrong before you write it to the file. A derived value nobody looked at is
+a guess with extra steps.
+
+If your agent has a structured way to ask (a multiple-choice or confirmation prompt), use
+it. If not, plain text is fine. Don't assume any particular tool exists.
+
 **Never derive a confirmation.** The four confirmations below come from a person saying so
 in the conversation, and from nothing else.
 
