@@ -1,5 +1,5 @@
 ---
-name: vast-builder-submission
+name: submission
 description: >-
   Collect everything a team needs to submit their VAST Builders Challenge project and write
   it to SUBMISSION.md. Asks for team details, project description, tech stack, code and demo
