@@ -39,3 +39,6 @@ DECISIONS.md
 
 # --- internal review notes (not for attendees) ---
 build-day-review.md
+
+# --- team submissions contain personal emails; never commit ---
+SUBMISSION.md
