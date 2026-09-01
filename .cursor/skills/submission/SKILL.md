@@ -69,8 +69,8 @@ an answer before moving to the next section. Don't dump all four sections at onc
 **Confirmations** (ask each one separately, record only what they actually say)
 - All team members are 18 or older
 - Partner opt-in: may partners contact the team
-- Agree to be contacted for further feedback on the contest and products
 - Agree to the Terms & Conditions
+- Agree to be contacted for further feedback on the contest and products
 
 ## Writing the file
 
@@ -102,8 +102,8 @@ rather than inventing a value.
 ## Confirmations
 - 18 or older (all members): <yes / no>
 - Partner opt-in: <yes / no>
-- Contact for further feedback: <yes / no>
 - Terms & Conditions: <agreed / not agreed>
+- Contact for further feedback: <yes / no>
 ```
 
 ## Agent instructions
