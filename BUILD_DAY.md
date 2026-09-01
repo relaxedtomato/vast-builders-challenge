@@ -188,7 +188,8 @@ believe what the API is telling you.
 
 <!-- TODO: replace both tables with a pointer to the overview skill (/pipeline-skills-101)
      once it exists. See DECISIONS.md "Parked". -->
-<!-- TODO: add `cosmos` and `vast-builder-submission` to the tables once written. -->
+<!-- TODO: add `cosmos` to the tables once written. `submission` exists but is covered in
+     section 7, so decide whether it also needs a row here. -->
 
 
 ## 4. Ingest and search
