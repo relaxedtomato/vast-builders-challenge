@@ -40,8 +40,10 @@ serving. You build what comes after: the app that searches the index and acts.
      its own env var? Attendees should click into their own instance. -->
 The VSS search UI is an example of what you can build, already built and running. Use it to test the pipeline and see what's indexed while you build.
 
-<!-- IMAGE: VSS search UI showing results. Alt: "The VSS search interface showing video
-     segments matching a natural-language query." -->
+**The VSS search UI.** Type what you want to see in plain words and it returns matching
+clips. Everything it does is available to your agent through the skills.
+
+![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
 ### What you have
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
@@ -247,6 +249,12 @@ only footage whose prompt you control.
 ```
 is my video indexed yet?
 ```
+
+**The dashboard tells you whether your video is ready.** Look at segment rows and fully
+indexed parents. If ingest quality is at 100% and the counts have stopped rising, your
+video is fully indexed and searchable.
+
+![The VSS dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
 
 The agent checks the dashboard and compares what's in storage against what's in the index.
 Wait for it to say your video is fully indexed. Searching before then returns nothing, which
