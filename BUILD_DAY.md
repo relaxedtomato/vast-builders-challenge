@@ -381,9 +381,9 @@ help me submit our project
 It asks for your team details, drafts your project description from your code, and collects
 the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
 
-You need three things ready before it can be finished: a link to your code, a link to your
-demo video, and an email address for each team member. The confirmations are required too.
-An incomplete entry may not be judged.
+> 💡 **Have these ready:** a link to your code, a link to your demo video, and an email
+> address for each team member. The confirmations are required too. An incomplete entry may
+> not be judged.
 
 When `SUBMISSION.md` is complete, copy its contents into the event Slack channel. Writing
 the file isn't submitting. Nothing is entered until it's posted.
