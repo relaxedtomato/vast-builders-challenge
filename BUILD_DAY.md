@@ -150,6 +150,11 @@ locally with ffmpeg, then uploads each chunk.
 **Indexing takes a few minutes.** Upload succeeding means the file landed, not that it's
 searchable. Ask the agent to confirm before you go looking for it.
 
+<!-- TODO: move these prompt warnings into the skills themselves. A warning in the guide
+     only works if someone read the guide; the same words inside `upload-videos` and
+     `stream-capture` reach the attendee at the moment they ingest, which is when it matters.
+     Applies to all three prompt callouts (sections 3, 4, 5). Keep a short version here and
+     let the skill carry the detail. -->
 > 💡 **Your prompt decides what gets indexed.** Cosmos Reason captions every segment using
 > an ingestion prompt. Anything it doesn't ask about never gets described, so you can't
 > search for it later.
