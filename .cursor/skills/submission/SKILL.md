@@ -146,8 +146,8 @@ rather than inventing a value.
 
 ## After the file is written
 
-Tell the team to post `SUBMISSION.md` in the event Slack channel. Writing the file is not
-submitting; nothing is entered until it's posted.
+Tell the team to copy the contents of `SUBMISSION.md` into the event Slack channel. Writing
+the file is not submitting. Nothing is entered until it's posted.
 
 <!-- TODO: name the Slack channel here once known, and confirm whether teams paste the
      contents, upload the file, or post a link. Also confirm with whoever owns the Terms &

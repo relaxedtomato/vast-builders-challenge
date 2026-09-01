@@ -385,11 +385,12 @@ You need three things ready before it can be finished: a link to your code, a li
 demo video, and an email address for each team member. The confirmations are required too.
 An incomplete entry may not be judged.
 
-When `SUBMISSION.md` is complete, post it in the event Slack channel.
+When `SUBMISSION.md` is complete, copy its contents into the event Slack channel. Writing
+the file isn't submitting. Nothing is entered until it's posted.
 
-<!-- TODO: name the Slack channel and add a join link. Also decide the exact expectation:
-     paste the file contents, upload the file, or post a link to a pushed branch. If teams
-     push it, note that SUBMISSION.md contains member email addresses. -->
+<!-- TODO: name the Slack channel and add a join link. Pasting contents is the dry-run
+     approach; revisit for the real events, where a form may be needed and where pasting
+     member email addresses into a shared channel is worth a second look. -->
 
 ### Demo
 
