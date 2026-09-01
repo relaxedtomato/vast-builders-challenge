@@ -44,9 +44,9 @@ guess or fill in placeholders.
 
 **Confirmations** (ask each one separately, record only what they actually say)
 - All team members are 18 or older
-- Agree to the Terms & Conditions
 - Partner opt-in: may partners contact the team
 - Agree to be contacted for further feedback on the contest and products
+- Agree to the Terms & Conditions
 
 ## Writing the file
 
@@ -80,9 +80,9 @@ rather than inventing a value.
 
 ## Confirmations
 - 18 or older (all members): <yes / no>
-- Terms & Conditions: <agreed / not agreed>
 - Partner opt-in: <yes / no>
 - Contact for further feedback: <yes / no>
+- Terms & Conditions: <agreed / not agreed>
 ```
 
 ## Agent instructions
