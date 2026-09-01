@@ -256,7 +256,7 @@ shows up as a fully indexed parent and the segment count stops climbing.
 ![The VSS dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
 
 Wait for it to say your video is fully indexed. Searching before then returns nothing, which
-looks like a broken search but is just impatience.
+looks like a broken search.
 
 ### Search for it
 
