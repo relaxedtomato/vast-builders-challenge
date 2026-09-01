@@ -22,16 +22,21 @@ Run it early to see what's outstanding, and again at the end to produce the fina
 
 ## Work it out first
 
-Derive one thing only: the **technology stack**. Read the team's code and see which skills
-they called, which parts of the pipeline they used (Cosmos Reason for captions, Cosmos Embed
-for search, YOLO for detection), and whether they called a W&B model for their own logic.
-Show them what you found and let them correct it.
+Derive the **project details** only: what the project does, and the technology stack.
 
-Ask for everything else. Team name, members, emails, organization, location, and the links
-are all things you would be guessing at, and a wrong value that looks right gets submitted
-without anyone noticing.
+Read the team's code. What it does should come from what the code actually does, not from
+how they describe it in a hurry at the end of the day. For the stack, note which skills they
+called, which parts of the pipeline that implies (Cosmos Reason for captions, Cosmos Embed
+for search, YOLO for detection), whether they called a W&B model, and what they built the
+app itself with.
 
-If you aren't sure about the stack either, leave it empty and ask.
+Draft both, show them, and let them correct it. A team that has been building for eight
+hours writes a better description by editing yours than by starting from a blank prompt.
+
+Ask for everything else: team details, links, feedback, and confirmations. Those are not in
+the code, and a wrong value that looks right gets submitted without anyone noticing.
+
+If you aren't sure, leave it empty and ask.
 
 **Never derive a confirmation.** The four confirmations below come from a person saying so
 in the conversation, and from nothing else.
@@ -104,7 +109,8 @@ rather than inventing a value.
 ## Agent instructions
 
 1. Read `SUBMISSION.md` first if it exists, and only ask for what's missing.
-2. Derive only the technology stack, and show it for correction. Ask for everything else.
+2. Derive only the project description and technology stack, and show them for correction.
+   Ask for everything else.
 3. Take one section at a time: team, then project, then feedback, then confirmations.
 4. Never invent a value, and never assume a confirmation. When unsure, leave the field
    empty rather than offering a guess. If someone hasn't answered a
