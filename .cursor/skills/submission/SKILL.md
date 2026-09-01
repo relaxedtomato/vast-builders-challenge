@@ -63,8 +63,8 @@ an answer before moving to the next section. Don't dump all four sections at onc
 - Links to supplementary material, if any
 
 **Feedback**
-- Overall feedback on the day. Optional. Invite them to call out anything specific, but
-  don't ask about each product in turn. Honest criticism is more useful than praise.
+- Overall feedback on the day. Invite them to call out anything specific, but don't ask
+  about each product in turn. Honest criticism is more useful than praise.
 
 **Confirmations** (ask each one separately, record only what they actually say)
 - All team members are 18 or older
