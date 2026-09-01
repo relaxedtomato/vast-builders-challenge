@@ -228,12 +228,11 @@ upload ~/samples/<clip>.mp4 again, with a prompt that describes <what your agent
 The agent passes it as `custom_prompt`. Once both are indexed, search for something only
 your prompt asked about. The first copy won't match, because its captions never mention it.
 
-Pick your prompt before you ingest anything at volume.
+> 💡 **Pick your prompt before you ingest anything at volume.**
 
-This matters for the video already in your index too. All of it was ingested with the
-default prompt, so if your project needs something that prompt never asked about, it isn't
-in those captions and no search will find it. The footage you upload yourself is the only
-footage whose prompt you control.
+This applies to the video already in your index. It was all ingested with the default
+prompt, so anything that prompt didn't ask about isn't searchable. Your own uploads are the
+only footage whose prompt you control.
 
 <!-- TODO: link the prompts used to ingest the existing corpus, so attendees can see what
      the pre-built index can actually answer before choosing a project. Options: point at
@@ -286,13 +285,47 @@ If any of them didn't, run the health check in the Reference section.
 
 ## 5. Build
 
-<!-- TODO: 4-6 use-case sparks (search hours of footage, ask-your-video Q&A, incident
-     board, alert-on-event agent, highlight reel) + link the Request for Builds doc. Teams
-     re-decide scope in the morning regardless. -->
+You have a working index and you know how to query it. The rest of the day is what you
+build on top.
 
-<!-- TODO: absorbs old §6 + §7. Needs: use-case sparks (above); the build loop (pick a
-     use case, ingest for it, query, wrap it) kept short; where agent logic runs (W&B) with
-     a minimal example. -->
+### The loop
+
+1. **Pick a use case**
+2. **Build an app or agent**
+3. **Deploy and iterate**
+
+If the existing captions cover what you need, you never have to think about prompts. If they
+don't, ingest the footage again with a different prompt.
+
+> 💡 **Start with a few clips.** Read the captions that come back before you ingest anything
+> at volume.
+
+<!-- TODO: say what footage is actually available. Attendees need to know before picking a
+     use case: what's already indexed (source, subject, hours, how many cameras), what's
+     staged in ~/samples/, the RTSP feed, and whether they may bring their own. Any footage
+     from a third party may carry licence terms that limit what attendees can do with it, so
+     state those limits here rather than leaving people to guess. -->
+
+### LLM access
+
+Search and Q&A come from your VSS instance. Anything your agent decides on top of that,
+classifying results, drafting a summary, choosing an action, runs on serverless LLM
+inference from Weights & Biases.
+
+<!-- TODO: restore this line once the script exists:
+     Run [`examples/wandb-inference.py`](./examples/wandb-inference.py) to check it works
+     before wiring it into your agent. -->
+
+<!-- TODO: examples/wandb-inference.py DOES NOT EXIST YET. The link above is dead until it
+     is written. Script should read WANDB_API_KEY / WANDB_TEAM / WANDB_PROJECT from the
+     environment, make one call, print the response, and exit non-zero with a clear message
+     if inference is unreachable.
+     Blocked on: which model is available, and whether the OpenAI-compatible path or the W&B
+     SDK is recommended. Also confirm examples/ is where we want it. -->
+
+<!-- TODO: use-case sparks. 4-6 concrete ideas grounded in the footage teams actually have,
+     plus a link to the Request for Builds doc. Teams re-decide scope on the morning
+     regardless of what they read beforehand, so this needs to be skimmable. -->
 
 ## 6. Reference
 
