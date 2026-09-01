@@ -156,7 +156,7 @@ searchable. Ask the agent to confirm before you go looking for it.
 > Pick your prompt before ingesting at volume. On a construction site you might ask it to
 > describe safety gear. In a public space you might ask how many people are in frame.
 > Ingest everything with the safety prompt, then switch to building the crowd monitor, and
-> your searches come back empty. Fixing that means ingesting it all over again.
+> your searches come back empty. **Fixing that means ingesting it all over again.**
 >
 > Set the prompt per upload with `custom_prompt` (800 characters max), or pick a `scenario`
 > preset.
