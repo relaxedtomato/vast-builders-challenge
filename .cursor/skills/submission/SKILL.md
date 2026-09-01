@@ -30,6 +30,9 @@ called, which parts of the pipeline that implies (Cosmos Reason for captions, Co
 for search, YOLO for detection), whether they called a W&B model, and what they built the
 app itself with.
 
+Keep the description to two or three sentences: what it does, and who would use it. The
+stack is a list, not prose. Judges read a lot of these.
+
 Draft both, show them, and let them correct it. A team that has been building for eight
 hours writes a better description by editing yours than by starting from a blank prompt.
 
@@ -53,7 +56,7 @@ an answer before moving to the next section. Don't dump all four sections at onc
 - Location (which city event)
 
 **Project**
-- Description: what it does, who it's for, what question it answers about video
+- Description: what it does and who it's for, in two or three sentences
 - Technology stack: which skills, which models, what you built on top
 - Link to code (GitHub or any public URL)
 - Link to demo video (YouTube or any public platform)
