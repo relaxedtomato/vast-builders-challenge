@@ -385,8 +385,7 @@ the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo
 > address for each team member. The confirmations are required too. An incomplete entry may
 > not be judged.
 
-When `SUBMISSION.md` is complete, copy its contents into the event Slack channel. Writing
-the file isn't submitting. Nothing is entered until it's posted.
+When `SUBMISSION.md` is complete, copy its contents into the event Slack channel.
 
 <!-- TODO: name the Slack channel and add a join link. Pasting contents is the dry-run
      approach; revisit for the real events, where a form may be needed and where pasting
