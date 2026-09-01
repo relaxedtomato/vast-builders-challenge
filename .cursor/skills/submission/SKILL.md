@@ -63,8 +63,9 @@ an answer before moving to the next section. Don't dump all four sections at onc
 - Links to supplementary material, if any
 
 **Feedback**
-- Product feedback on each of: NVIDIA VSS Blueprint, VAST, Cursor, CoreWeave.
-  Optional per product, and honest criticism is more useful than praise.
+- Overall feedback on the day. Optional. Invite them to call out anything specific about the
+  NVIDIA VSS Blueprint, VAST, Cursor, or CoreWeave, but don't ask about each in turn.
+  Honest criticism is more useful than praise.
 
 **Confirmations** (ask each one separately, record only what they actually say)
 - All team members are 18 or older
@@ -97,10 +98,7 @@ rather than inventing a value.
 **Supplementary:** <urls, or none>
 
 ## Feedback
-**NVIDIA VSS Blueprint:** ...
-**VAST:** ...
-**Cursor:** ...
-**CoreWeave:** ...
+<overall feedback, with anything product-specific they mentioned>
 
 ## Confirmations
 - 18 or older (all members): <yes / no>
