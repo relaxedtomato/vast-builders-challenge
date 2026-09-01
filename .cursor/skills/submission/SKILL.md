@@ -22,40 +22,16 @@ Run it early to see what's outstanding, and again at the end to produce the fina
 
 ## Work it out first
 
-Before asking anything, gather what you can from the environment and the repo, then show
-the team what you found and ask them to correct it. Never present a guess as a fact.
+Derive one thing only: the **technology stack**. Read the team's code and see which skills
+they called, which parts of the pipeline they used (Cosmos Reason for captions, Cosmos Embed
+for search, YOLO for detection), and whether they called a W&B model for their own logic.
+Show them what you found and let them correct it.
 
-| Field | Where to look |
-|---|---|
-| Team name | the bucket prefix in `$S3_CHUNKS_BUCKET`, e.g. `team-b-vss-chunks` gives `team-b` |
-| Technology stack | which skills they called, plus Cosmos Reason, Cosmos Embed and YOLO in the pipeline, and the W&B model if they used one. Read their code rather than asking |
-| Location | which city event, from `$PIPELINE` or the ingress hostname if either encodes it |
+Ask for everything else. Team name, members, emails, organization, location, and the links
+are all things you would be guessing at, and a wrong value that looks right gets submitted
+without anyone noticing.
 
-Always ask for these, never derive them:
-
-- **Team members and emails.** This repo arrives pre-cloned with the organizers' commit
-  history, so `git log` returns the people who wrote the starter repo, not the team. Commit
-  emails are also often noreply addresses nobody can be contacted on.
-- **Link to code.** `git remote` points at the starter repo. The team's project may live
-  somewhere else entirely.
-- **Organization.** Guessing from an email domain is wrong for anyone using a personal
-  address.
-
-Check that a derived value is plausible before showing it. `$USERNAME` on a laptop is the
-login name, not a team name. An unset variable and a variable set to something unrelated
-are different problems.
-
-If you aren't sure, leave it empty. An empty field is obvious and gets filled in. A wrong
-one that looks right gets submitted.
-
-Anything you can't determine, ask for.
-
-**Everything you derive must be reviewed.** Show it back as a short list and ask them to
-correct anything wrong before you write it to the file. A derived value nobody looked at is
-a guess with extra steps.
-
-If your agent has a structured way to ask (a multiple-choice or confirmation prompt), use
-it. If not, plain text is fine. Don't assume any particular tool exists.
+If you aren't sure about the stack either, leave it empty and ask.
 
 **Never derive a confirmation.** The four confirmations below come from a person saying so
 in the conversation, and from nothing else.
@@ -128,8 +104,7 @@ rather than inventing a value.
 ## Agent instructions
 
 1. Read `SUBMISSION.md` first if it exists, and only ask for what's missing.
-2. Work out what you can before asking (see above), and show your answers for correction
-   rather than stating them as final.
+2. Derive only the technology stack, and show it for correction. Ask for everything else.
 3. Take one section at a time: team, then project, then feedback, then confirmations.
 4. Never invent a value, and never assume a confirmation. When unsure, leave the field
    empty rather than offering a guess. If someone hasn't answered a
