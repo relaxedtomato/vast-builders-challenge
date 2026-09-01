@@ -330,6 +330,16 @@ don't, ingest the footage again with a different prompt.
      from a third party may carry licence terms that limit what attendees can do with it, so
      state those limits here rather than leaving people to guess. -->
 
+### Using the skills outside Cursor
+
+The skills are plain markdown, so they aren't limited to Cursor. If you build on your own
+agent framework, read the frontmatter descriptions, pick the one that matches the request,
+and put its body in the prompt. That's all Cursor is doing.
+
+Two things to know. The skills are instructions, not tools, so your agent still needs a way
+to make HTTP calls. And a smaller model will follow a multi-step skill less reliably than
+the one in Cursor, so expect to do more of the orchestration yourself.
+
 ### LLM access
 
 Search and Q&A come from your VSS instance. Anything your agent decides on top of that,
