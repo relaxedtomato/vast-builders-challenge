@@ -36,12 +36,14 @@ serving. You build what comes after: the app that searches the index and acts.
 
 <!-- TODO: describe the VSS UI as a pre-built example, and as the way to sanity-check
      ingest and explore what's indexed. -->
-<!-- TODO: link the running app. Is the UI on $INGRESS_URL (what path?) or does it need
-     its own env var? Attendees should click into their own instance. -->
+<!-- TODO: confirm the UI path. The guide now says the UI is at $INGRESS_URL; check
+     whether it's served at the root or on a subpath, and correct if so. -->
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
 clips.
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
+
+Your team's UI is at `$INGRESS_URL`.
 
 > 💡 The VSS search UI is an example of what you can build, already built and running. Use
 > it to test the pipeline and see what's indexed while you build.
