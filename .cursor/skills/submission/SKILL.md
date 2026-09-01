@@ -45,6 +45,9 @@ Check that a derived value is plausible before showing it. `$USERNAME` on a lapt
 login name, not a team name. An unset variable and a variable set to something unrelated
 are different problems.
 
+If you aren't sure, leave it empty. An empty field is obvious and gets filled in. A wrong
+one that looks right gets submitted.
+
 Anything you can't determine, ask for.
 
 **Everything you derive must be reviewed.** Show it back as a short list and ask them to
@@ -128,7 +131,8 @@ rather than inventing a value.
 2. Work out what you can before asking (see above), and show your answers for correction
    rather than stating them as final.
 3. Take one section at a time: team, then project, then feedback, then confirmations.
-4. Never invent a value, and never assume a confirmation. If someone hasn't answered a
+4. Never invent a value, and never assume a confirmation. When unsure, leave the field
+   empty rather than offering a guess. If someone hasn't answered a
    confirmation, write `NOT PROVIDED` and tell them it blocks submission.
 5. Confirmations must come from a person in this conversation. Do not infer them from
    context, from the team having registered, or from anything said earlier.
