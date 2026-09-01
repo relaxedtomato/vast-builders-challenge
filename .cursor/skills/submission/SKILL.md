@@ -144,8 +144,12 @@ rather than inventing a value.
 7. When you finish, list anything still `NOT PROVIDED`, say the entry is incomplete, and
    offer to fill the gaps now. Confirm the checklist at the top of this skill.
 
-<!-- TODO: where does SUBMISSION.md actually go? The skill produces the file but nothing
-     tells the team what to do with it. Decide: upload to a form, post in the event Slack,
-     push a branch, or hand it to an organizer. Then add a final step here.
-     Also confirm with whoever owns the Terms & Conditions whether confirmations collected
-     this way are sufficient, or whether the official form must still be signed separately. -->
+## After the file is written
+
+Tell the team to post `SUBMISSION.md` in the event Slack channel. Writing the file is not
+submitting; nothing is entered until it's posted.
+
+<!-- TODO: name the Slack channel here once known, and confirm whether teams paste the
+     contents, upload the file, or post a link. Also confirm with whoever owns the Terms &
+     Conditions whether confirmations collected this way are sufficient, or whether the
+     official form must still be signed separately. -->

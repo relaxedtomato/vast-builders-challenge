@@ -345,8 +345,6 @@ inference from Weights & Biases.
 
 ## 6. Reference
 
-Lookup material. You don't need to read this section, only find things in it.
-
 ### Health check
 
 If something isn't working, ask the agent first:
@@ -357,12 +355,13 @@ check that everything is working: log in, and show me the dashboard
 
 If it fails, tell an organizer.
 
-### Getting help
+<!-- HIDDEN until we have the details: restore this before the event.
 
-<!-- TODO: how to get help. Needs: which organizers to find and where they sit, the event
-     Slack channel name and join link, and the `cosmos` skill once it exists (ask a question
-     without leaving the agent). Also decide whether questions go to Slack or to a person
-     first. -->
+     ### Getting help
+
+     Needs: which organizers to find and where they sit, the event Slack channel name and
+     join link, and the `cosmos` skill once it exists (ask a question without leaving the
+     agent). Also decide whether questions go to Slack or to a person first. -->
 
 ### Your team's values
 
@@ -371,5 +370,31 @@ lists every variable with a description.
 
 ## 7. Submit and demo
 
-<!-- TODO: absorbs old §10 + §11. Needs: how to submit (`vast-builder-submission` skill),
-     the judging rubric (see §1 TODO), and demo logistics (length, order, what's on screen). -->
+### Submit
+
+Ask the agent to run the submission skill:
+
+```
+help me submit our project
+```
+
+It asks for your team details, drafts your project description from your code, and collects
+the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
+
+You need three things ready before it can be finished: a link to your code, a link to your
+demo video, and an email address for each team member. The confirmations are required too.
+An incomplete entry may not be judged.
+
+When `SUBMISSION.md` is complete, post it in the event Slack channel.
+
+<!-- TODO: name the Slack channel and add a join link. Also decide the exact expectation:
+     paste the file contents, upload the file, or post a link to a pushed branch. If teams
+     push it, note that SUBMISSION.md contains member email addresses. -->
+
+### Demo
+
+<!-- TODO: demo logistics. Length (five minutes), running order, what should be on screen,
+     whether slides are allowed, and who from the team presents. -->
+
+<!-- TODO: judging criteria. Same open question as the one in section 1: publish the rubric
+     here, or link the version on the event page. -->
