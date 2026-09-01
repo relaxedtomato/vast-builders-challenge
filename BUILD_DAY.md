@@ -38,12 +38,13 @@ serving. You build what comes after: the app that searches the index and acts.
      ingest and explore what's indexed. -->
 <!-- TODO: link the running app. Is the UI on $INGRESS_URL (what path?) or does it need
      its own env var? Attendees should click into their own instance. -->
-The VSS search UI is an example of what you can build, already built and running. Use it to test the pipeline and see what's indexed while you build.
-
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
-clips. Everything it does is available to your agent through the skills.
+clips.
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
+
+> 💡 The VSS search UI is an example of what you can build, already built and running. Use
+> it to test the pipeline and see what's indexed while you build.
 
 ### What you have
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
