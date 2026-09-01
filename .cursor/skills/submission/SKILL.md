@@ -72,6 +72,27 @@ an answer before moving to the next section. Don't dump all four sections at onc
 - Agree to the Terms & Conditions
 - Agree to be contacted for further feedback on the contest and products
 
+## Nothing should be left blank
+
+This is a contest entry. An incomplete one may not be judged, and the team won't find out
+until it's too late to fix.
+
+So: never invent a value, but never quietly accept a blank either. If a field is missing,
+say what it is and why it matters, then ask again. Two of them are worth pushing on:
+
+- **Emails.** This is how judges reach the team if they win. A submission without them can't
+  be contacted. If someone hesitates, note that only organizers and judges see them.
+- **Code and demo links.** Judges assess what they can open. A project nobody can run or
+  watch is judged on its description alone.
+
+The four confirmations are eligibility, not paperwork. Without them the entry can't be
+accepted, no matter how good the project is. Say that plainly rather than moving on.
+
+When you finish, list what's still missing and tell them the entry isn't complete. Don't
+end on a summary that reads like success when four fields say `NOT PROVIDED`.
+
+Check the location is one of the event cities, and ask if it isn't.
+
 ## Writing the file
 
 Write `SUBMISSION.md` in the repo root using this shape. Leave a field as `NOT PROVIDED`
@@ -120,8 +141,8 @@ rather than inventing a value.
 6. `SUBMISSION.md` contains personal email addresses. Write it, but do not commit or push it
    unless asked. If the team wants it committed, say plainly that the addresses become part
    of the repo history.
-7. When the file is complete, list anything still `NOT PROVIDED` and confirm the checklist
-   at the top of this skill.
+7. When you finish, list anything still `NOT PROVIDED`, say the entry is incomplete, and
+   offer to fill the gaps now. Confirm the checklist at the top of this skill.
 
 <!-- TODO: where does SUBMISSION.md actually go? The skill produces the file but nothing
      tells the team what to do with it. Decide: upload to a form, post in the event Slack,
