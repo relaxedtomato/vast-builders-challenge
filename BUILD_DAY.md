@@ -368,7 +368,7 @@ If it fails, tell an organizer.
 Everything the skills need is already in your environment. `config.example` in this repo
 lists every variable with a description.
 
-## 7. Submit and demo
+## 7. Submit
 
 ### Submit
 
@@ -391,10 +391,11 @@ When `SUBMISSION.md` is complete, copy its contents into the event Slack channel
      approach; revisit for the real events, where a form may be needed and where pasting
      member email addresses into a shared channel is worth a second look. -->
 
-### Demo
+<!-- HIDDEN for the dry run: restore before the real event.
 
-<!-- TODO: demo logistics. Length (five minutes), running order, what should be on screen,
-     whether slides are allowed, and who from the team presents. -->
+     ### Demo
 
-<!-- TODO: judging criteria. Same open question as the one in section 1: publish the rubric
-     here, or link the version on the event page. -->
+     Needs: demo logistics (length is five minutes, running order, what should be on screen,
+     whether slides are allowed, who presents), and the judging criteria, which is the same
+     open question as the TODO in section 1: publish the rubric here or link the event page.
+-->
