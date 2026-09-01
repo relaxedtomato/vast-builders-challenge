@@ -52,15 +52,17 @@ The VSS search UI is an example of what you can build, already built and running
   endpoints already set as environment variables.
 - A set of **Cursor skills** that drive ingest and search in plain language.
 
-### How the day runs
-| Time | What |
-|------|------|
-| 8:30 | Doors + breakfast |
-| 9:00 | Opening remarks |
-| 9:30 | Build begins |
-| 12:30 | Lunch |
-| 4:30 | Demos |
-| 6:30 | Closing + awards |
+<!-- HIDDEN for the dry run: restore the schedule before the real event.
+     ### How the day runs
+     | Time | What |
+     |------|------|
+     | 8:30 | Doors + breakfast |
+     | 9:00 | Opening remarks |
+     | 9:30 | Build begins |
+     | 12:30 | Lunch |
+     | 4:30 | Demos |
+     | 6:30 | Closing + awards |
+-->
 
 ### What "done" looks like
 Something that runs, not slides. A small app, agent, or a dashboard. Judging rewards a
@@ -343,11 +345,29 @@ inference from Weights & Biases.
 
 ## 6. Reference
 
-<!-- TODO: lookup material, absorbs old §8 + §9. Needs: health check (one command per
-     piece, what healthy looks like, what to do when it isn't); getting help (organizers,
-     event Slack, `cosmos` skill); the full env var list (S3 buckets, VastDB collections,
-     ingress, W&B endpoint) pointing at config.example; and $PIPELINE and $RTSP_URL,
-     which no skill provides. -->
+Lookup material. You don't need to read this section, only find things in it.
+
+### Health check
+
+If something isn't working, ask the agent first:
+
+```
+check that everything is working: log in, and show me the dashboard
+```
+
+If it fails, tell an organizer.
+
+### Getting help
+
+<!-- TODO: how to get help. Needs: which organizers to find and where they sit, the event
+     Slack channel name and join link, and the `cosmos` skill once it exists (ask a question
+     without leaving the agent). Also decide whether questions go to Slack or to a person
+     first. -->
+
+### Your team's values
+
+Everything the skills need is already in your environment. `config.example` in this repo
+lists every variable with a description.
 
 ## 7. Submit and demo
 
