@@ -43,10 +43,9 @@ clips.
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
-Your team's UI is at `$INGRESS_URL`.
-
 > 💡 The VSS search UI is an example of what you can build, already built and running. Use
-> it to test the pipeline and see what's indexed while you build.
+> it to test the pipeline and see what's indexed while you build. Your team's UI is at
+> `$INGRESS_URL`.
 
 ### What you have
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
