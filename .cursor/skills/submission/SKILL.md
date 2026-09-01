@@ -20,10 +20,29 @@ Run it early to see what's outstanding, and again at the end to produce the fina
 - [ ] Your demo video is uploaded and the link works in a private window
 - [ ] One person can explain the project in two minutes
 
+## Work it out first
+
+Before asking anything, gather what you can from the environment and the repo, then show
+the team what you found and ask them to correct it. Never present a guess as a fact.
+
+| Field | Where to look |
+|---|---|
+| Team name | `$USERNAME`, or the bucket prefix in `$S3_CHUNKS_BUCKET` |
+| Team members | `git log --format='%an <%ae>' \| sort -u` in their project repo |
+| Organization | the domain on those email addresses |
+| Link to code | `git remote get-url origin`, if it's reachable publicly |
+| Technology stack | which skills they called, plus Cosmos Reason, Cosmos Embed and YOLO in the pipeline, and the W&B model if they used one. Read their code rather than asking |
+| Location | which city event, from `$PIPELINE` or the ingress hostname if either encodes it |
+
+Anything you can't determine, ask for.
+
+**Never derive a confirmation.** The four confirmations below come from a person saying so
+in the conversation, and from nothing else.
+
 ## What to collect
 
-Ask for anything not already known. Ask once, in as few messages as possible, and don't
-guess or fill in placeholders.
+Go section by section. Present what you already worked out, ask for the gaps, and wait for
+an answer before moving to the next section. Don't dump all four sections at once.
 
 **Team**
 - Team name
@@ -88,14 +107,17 @@ rather than inventing a value.
 ## Agent instructions
 
 1. Read `SUBMISSION.md` first if it exists, and only ask for what's missing.
-2. Never invent a value, and never assume a confirmation. If someone hasn't answered a
+2. Work out what you can before asking (see above), and show your answers for correction
+   rather than stating them as final.
+3. Take one section at a time: team, then project, then feedback, then confirmations.
+4. Never invent a value, and never assume a confirmation. If someone hasn't answered a
    confirmation, write `NOT PROVIDED` and tell them it blocks submission.
-3. Confirmations must come from a person in this conversation. Do not infer them from
+5. Confirmations must come from a person in this conversation. Do not infer them from
    context, from the team having registered, or from anything said earlier.
-4. `SUBMISSION.md` contains personal email addresses. Write it, but do not commit or push it
+6. `SUBMISSION.md` contains personal email addresses. Write it, but do not commit or push it
    unless asked. If the team wants it committed, say plainly that the addresses become part
    of the repo history.
-5. When the file is complete, list anything still `NOT PROVIDED` and confirm the checklist
+7. When the file is complete, list anything still `NOT PROVIDED` and confirm the checklist
    at the top of this skill.
 
 <!-- TODO: where does SUBMISSION.md actually go? The skill produces the file but nothing
