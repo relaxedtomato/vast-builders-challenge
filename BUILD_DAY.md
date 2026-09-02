@@ -341,7 +341,7 @@ don't, ingest the footage again with a different prompt.
 ### Using the skills
 
 The skills follow the standard `SKILL.md` format, so agent frameworks can load them straight
-from `.cursor/skills/`.
+from `.cursor/skills/` and your agent can make use of them.
 
 <!-- TODO: link LangChain Deep Agents (docs.langchain.com/oss/python/deepagents/skills) and
      Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
