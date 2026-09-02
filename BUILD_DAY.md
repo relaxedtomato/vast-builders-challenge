@@ -338,7 +338,11 @@ don't, ingest the footage again with a different prompt.
      from a third party may carry licence terms that limit what attendees can do with it, so
      state those limits here rather than leaving people to guess. -->
 
-### Using the skills
+### LLM access
+
+Search and Q&A come from your VSS instance. Anything your agent decides on top of that,
+classifying results, drafting a summary, choosing an action, runs on serverless LLM
+inference from Weights & Biases.
 
 The skills use the standard `SKILL.md` format, so they work outside Cursor too. Most agent
 frameworks can load them straight from `.cursor/skills/`.
@@ -347,12 +351,6 @@ frameworks can load them straight from `.cursor/skills/`.
      Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
      SKILL.md natively with progressive disclosure. Pydantic AI scans recursively, so it
      handles our two-level ingest/ and retrieval/ nesting as-is. -->
-
-### LLM access
-
-Search and Q&A come from your VSS instance. Anything your agent decides on top of that,
-classifying results, drafting a summary, choosing an action, runs on serverless LLM
-inference from Weights & Biases.
 
 <!-- TODO: restore this line once the script exists:
      Run [`examples/wandb-inference.py`](./examples/wandb-inference.py) to check it works
