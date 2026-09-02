@@ -338,10 +338,10 @@ don't, ingest the footage again with a different prompt.
      from a third party may carry licence terms that limit what attendees can do with it, so
      state those limits here rather than leaving people to guess. -->
 
-### Using the skills outside Cursor
+### Using the skills
 
 The skills follow the standard `SKILL.md` format, so agent frameworks can load them straight
-from `.cursor/skills/`. Your agent still needs a way to make HTTP calls.
+from `.cursor/skills/`.
 
 <!-- TODO: link LangChain Deep Agents (docs.langchain.com/oss/python/deepagents/skills) and
      Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
