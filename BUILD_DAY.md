@@ -40,7 +40,9 @@ serving. You build what comes after: the app that searches the index and acts.
 <!-- TODO: confirm the UI path. The guide now says the UI is at $INGRESS_URL; check
      whether it's served at the root or on a subpath, and correct if so. -->
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
-clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. Three tabs:
+clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. 
+
+Three tabs:
 **Search** to query the archive, **Explore** to browse what's indexed, and **Dashboard** to
 get ingest stats.
 
@@ -338,13 +340,13 @@ don't, ingest the footage again with a different prompt.
 
 ### Using the skills outside Cursor
 
-The skills are plain markdown, so they aren't limited to Cursor. If you build on your own
-agent framework, read the frontmatter descriptions, pick the one that matches the request,
-and put its body in the prompt. That's all Cursor is doing.
+The skills follow the standard `SKILL.md` format, so agent frameworks can load them straight
+from `.cursor/skills/`. Your agent still needs a way to make HTTP calls.
 
-Two things to know. The skills are instructions, not tools, so your agent still needs a way
-to make HTTP calls. And a smaller model will follow a multi-step skill less reliably than
-the one in Cursor, so expect to do more of the orchestration yourself.
+<!-- TODO: link LangChain Deep Agents (docs.langchain.com/oss/python/deepagents/skills) and
+     Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
+     SKILL.md natively with progressive disclosure. Pydantic AI scans recursively, so it
+     handles our two-level ingest/ and retrieval/ nesting as-is. -->
 
 ### LLM access
 
