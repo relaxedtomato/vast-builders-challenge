@@ -42,3 +42,6 @@ build-day-review.md
 
 # --- team submissions contain personal emails; never commit ---
 SUBMISSION.md
+
+# --- generated TODO digest ---
+TODOS.md
