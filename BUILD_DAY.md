@@ -44,9 +44,12 @@ clips.
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
+Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. Three tabs:
+**Search** to query the archive, **Explore** to browse what's indexed, and **Dashboard** to
+check ingest health.
+
 > 💡 The VSS search UI is an example of what you can build, already built and running. Use
-> it to test the pipeline and see what's indexed while you build. Your team's UI is at
-> `$INGRESS_URL`.
+> it to test the pipeline and see what's indexed while you build.
 
 ### What you have
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
