@@ -55,7 +55,7 @@ get ingest stats.
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
   your video. Cosmos Reason, Cosmos Embed, and YOLO run inside it on CoreWeave GPUs; you
   don't call them directly, you query the vectors generated.
-- **Serverless LLM inference from Weights & Biases** for your agent's own logic.
+- **Serverless LLM inference from Weights & Biases** for your app's own logic.
 - A **VM with Cursor** pre-loaded, with this repo cloned and your stack credentials and
   endpoints already set as environment variables.
 - A set of **Cursor skills** that drive ingest and search in plain language.
@@ -237,7 +237,7 @@ every segment gets captioned, described, and embedded before it can be found.
 That upload used the default ingestion prompt. Run the same clip again with your own:
 
 ```
-upload ~/samples/<clip>.mp4 again, with a prompt that describes <what your agent needs>
+upload ~/samples/<clip>.mp4 again, with a prompt that describes <what your app needs>
 ```
 
 The agent passes it as `custom_prompt`. Once both are indexed, search for something only
@@ -340,7 +340,7 @@ don't, ingest the footage again with a different prompt.
 
 ### LLM access
 
-Search and Q&A come from your VSS instance. Anything your agent decides on top of that,
+Search and Q&A come from your VSS instance. Anything your app decides on top of that,
 classifying results, drafting a summary, choosing an action, runs on serverless LLM
 inference from Weights & Biases.
 
