@@ -95,7 +95,7 @@ No setup. Nothing to install, no config to paste, no keys to type.
 
 That's it. You're in.
 
-### Work from the agent
+### Cursor Agent
 Drive the day from the **Cursor Agent (CLI)**. Describe what you want in plain language
 and let the code agent build. That's how the skills are meant to be used.
 Alternatively, you can use the IDE.
