@@ -344,8 +344,8 @@ Search and Q&A come from your VSS instance. Anything your agent decides on top o
 classifying results, drafting a summary, choosing an action, runs on serverless LLM
 inference from Weights & Biases.
 
-The skills use the standard `SKILL.md` format, so they work outside Cursor too. Most agent
-frameworks can load them straight from `.cursor/skills/`.
+The skills used by Cursor can be used by agent frameworks too. They follow the standard
+`SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
 
 <!-- TODO: link LangChain Deep Agents (docs.langchain.com/oss/python/deepagents/skills) and
      Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
