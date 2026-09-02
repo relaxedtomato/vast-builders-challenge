@@ -42,7 +42,7 @@ serving. You build what comes after: the app that searches the index and acts.
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
 clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. Three tabs:
 **Search** to query the archive, **Explore** to browse what's indexed, and **Dashboard** to
-check ingest health.
+get ingest stats.
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
