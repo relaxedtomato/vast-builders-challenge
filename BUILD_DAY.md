@@ -1,4 +1,4 @@
-# VAST Builders Challenge
+# VAST Builders Challenge: Video Agents
 
 Spend the day building with video. The infrastructure is already running, so you
 skip straight to the interesting part: turning hours of video into something that
@@ -11,11 +11,11 @@ searches, reasons, and acts.
 
 ### What you're building
 An app that understands video and does something with it. Search hours of
-footage in plain language, ask what happened, detect and track objects, or fire an action
+footage in plain language, ask what happened, detect and track objects, or call an action
 when something matters. Pick one idea and ship a working app by end of day.
 
-### The Tech Stack
-Video runs through a pipeline that understands and indexes it.
+### The Builders Stack
+Video runs through a pipeline that understands and indexes it:
 
 ```
   INGEST          UNDERSTAND                 INDEX          SEARCH / ASK       ACT
@@ -30,8 +30,8 @@ Video runs through a pipeline that understands and indexes it.
      video ingest through indexing and search to the agent you build." -->
 
 Everything under "pre-built, already running" is done for you. The pipeline ingests,
-understands, and indexes your video, and the models it calls are already deployed and
-serving. You build what comes after: the app that searches the index and acts.
+understands, and indexes video, and the models it calls are already deployed and
+serving. You build the app that searches and acts.
 
 <!-- TODO: can we simulate ingestion for testing agents, via re-ingestion? -->
 
@@ -43,22 +43,21 @@ serving. You build what comes after: the app that searches the index and acts.
 clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. 
 
 Three tabs:
-**Search** to query the archive, **Explore** to browse what's indexed, and **Dashboard** to
-get ingest stats.
+**Search** to query videos, **Explore** to browse what's indexed, and **Dashboard** to get stats:
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
-> 💡 The VSS search UI is an example of what you can build, already built and running. Use
-> it to test the pipeline and see what's indexed while you build.
+> 💡 The VSS search UI runs on the same API your skills call. It's a working example of what
+> you can build, and a quick way to see what's indexed while you work.
 
 ### What you have
 - A **VSS instance** running for your team: the pipeline ingests, understands, and indexes
   your video. Cosmos Reason, Cosmos Embed, and YOLO run inside it on CoreWeave GPUs; you
   don't call them directly, you query the vectors generated.
 - **Serverless LLM inference from Weights & Biases** for your app's own logic.
-- A **VM with Cursor** pre-loaded, with this repo cloned and your stack credentials and
-  endpoints already set as environment variables.
-- A set of **Cursor skills** that drive ingest and search in plain language.
+- A **VM with Cursor** pre-loaded, with this repo cloned and your  credentials and
+  endpoints already available as environment variables.
+- A set of **skills** that drive the pipeline in plain language (more soon).
 
 <!-- HIDDEN for the dry run: restore the schedule before the real event.
      ### How the day runs
@@ -73,9 +72,7 @@ get ingest stats.
 -->
 
 ### What "done" looks like
-Something that runs, not slides. A small app, agent, or a dashboard. Judging rewards a
-clear use case and clever use of search plus metadata over polish. Scope it small enough
-to demo live.
+A small app, agent, or a dashboard. A clear use case.
 
 <!-- TODO: judging criteria. Decide owner: §7 here, or the event page. Needs the rubric
      (categories, weightings, judges, demo length, is code assessed?) and a link from this
@@ -93,9 +90,9 @@ No setup. Nothing to install, no config to paste, no keys to type.
 3. If Cursor asks you to sign in, use the email you applied with. Expect one or two tries;
    that's normal.
 
-That's it. You're in.
+That's it. You're in!
 
-### Cursor Agent
+### Coding Agent
 Drive the day from the **Cursor Agent (CLI)**. Describe what you want in plain language
 and let the code agent build. That's how the skills are meant to be used.
 Alternatively, you can use the IDE.
@@ -103,7 +100,7 @@ Alternatively, you can use the IDE.
 Start the agent in the terminal:
 
 ```sh
-cursor-agent            # start an interactive agent session
+cursor-agent # start an interactive agent session
 ```
 <!-- TODO: confirm the Cursor Agent CLI command and flags; replace the example. -->
 <!-- TODO: does signing into the Cursor IDE also authenticate the CLI agent, or is a
@@ -122,11 +119,11 @@ flag an organizer if anything is red.
 
 ## 3. Meet your skills
 
-Your starter code lives in `.cursor/skills/`, split into `ingest/` and `retrieval/`. Each
-skill teaches the agent one piece of the stack: the endpoint, the request, the response, and
+The skills live in `.cursor/skills/`, split into `ingest/` and `retrieval/`. Each
+skill guides the coding agent: the endpoint, the request, the response, and
 what to do when it fails.
 
-Describe what you want and the agent loads the matching skill.
+Describe what you want and the coding agent loads the matching skill.
 
 ```
 "upload the clips in ~/samples and tell me when they're searchable"
@@ -144,11 +141,10 @@ password or a URL. If something isn't working, ask for help.
 | `upload-videos` | Upload video files from disk. Handles the chunking rules and reports what indexed. |
 | `stream-capture` | Capture from a live RTSP or HTTP stream into the pipeline. |
 
-Both land video in the same place and the pipeline takes over. Two things that catch
-people out:
+Both land video in the same place and the pipeline takes over. Two things to note:
 
 **Video is ingested in ~30 second chunks**, not whole files. The skill splits long files
-locally with ffmpeg, then uploads each chunk.
+locally with `ffmpeg`, then uploads each chunk.
 
 **Indexing takes a few minutes.** Upload succeeding means the file landed, not that it's
 searchable. Ask the agent to confirm before you go looking for it.
@@ -158,7 +154,7 @@ searchable. Ask the agent to confirm before you go looking for it.
      `stream-capture` reach the attendee at the moment they ingest, which is when it matters.
      Applies to all three prompt callouts (sections 3, 4, 5). Keep a short version here and
      let the skill carry the detail. -->
-> 💡 **Your prompt decides what gets indexed.** Cosmos Reason captions every segment using
+> 💡 **The prompt decides what gets indexed.** Cosmos Reason captions every segment using
 > an ingestion prompt. Anything it doesn't ask about never gets described, so you can't
 > search for it later.
 >
@@ -192,8 +188,7 @@ searchable. Ask the agent to confirm before you go looking for it.
 | `dashboard` | Check what's indexed and whether ingest is healthy. |
 | `suggest-prompts` | Get generated example queries and notable recent events. |
 
-Worth knowing: `vastdb-read` queries the database directly, for when you don't
-believe what the API is telling you.
+Worth knowing: `vastdb-read` queries the database directly, for when you want to check the database contents.
 
 <!-- TODO: replace both tables with a pointer to the overview skill (/pipeline-skills-101)
      once it exists. See DECISIONS.md "Parked". -->
@@ -222,7 +217,7 @@ about the other half: watching footage go in.
      third party (transit agency, archive) may be licensed for hosted VMs only, which is a
      different rule than for attendees' own clips. -->
 
-There are sample clips in `~/samples/` that are deliberately not indexed yet. Ask for one:
+There are sample clips in `~/samples/` that are deliberately not indexed yet. Prompt to ingest:
 
 ```
 upload ~/samples/<clip>.mp4 and tell me when it's searchable
