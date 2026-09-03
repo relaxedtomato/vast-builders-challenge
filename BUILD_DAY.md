@@ -40,14 +40,14 @@ serving. You build the app that searches and acts.
 <!-- TODO: confirm the UI path. The guide now says the UI is at $INGRESS_URL; check
      whether it's served at the root or on a subpath, and correct if so. -->
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
-clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`. 
+clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`.
 
 Three tabs:
 **Search** to query videos, **Explore** to browse what's indexed, and **Dashboard** to get stats:
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
-> 💡 The VSS search UI runs on the same API your skills call. It's a working example of what
+> 💡 The VSS search UI runs on the same API as the skills (`.cursor/skills`) you will be using. It's a working example of what
 > you can build, and a quick way to see what's indexed while you work.
 
 ### What you have
@@ -57,7 +57,8 @@ Three tabs:
 - **Serverless LLM inference from Weights & Biases** for your app's own logic.
 - A **VM with Cursor** pre-loaded, with this repo cloned and your  credentials and
   endpoints already available as environment variables.
-- A set of **skills** that drive the pipeline in plain language (more soon).
+- A set of **skills** that drive the pipeline in plain language. See
+  [Meet your skills](#3-meet-your-skills).
 
 <!-- HIDDEN for the dry run: restore the schedule before the real event.
      ### How the day runs
@@ -100,9 +101,14 @@ Alternatively, you can use the IDE.
 Start the agent in the terminal:
 
 ```sh
-agent vast-builders-challenge # start an interactive agent session
+cd ~/vast-builders-challenge   # the agent works from the current directory
+agent                          # start an interactive session
+```
 
-/model #in Cursor agent, ensure you are on Auto (to save tokens)
+Once it's running, set the model to Auto to save tokens:
+
+```
+/model
 ```
 
 
@@ -120,8 +126,7 @@ From there, describe the task and the agent picks the matching skill. Start with
 <!-- TODO: walk through what attendees see on load. Screenshot or short clip. -->
 
 ### If something looks off
-Run the health check in the Reference section to confirm each piece is reachable, then
-flag an organizer if anything is red.
+Run the health check in the Reference section, then flag an organizer if something's wrong.
 
 ## 3. Meet your skills
 
@@ -228,10 +233,10 @@ about the other half: watching footage go in.
      the VM, nothing to move from Slack, and no 25 MB upload cap. Removes a provisioning
      step that can fail. Needs the clips hosted somewhere publicly reachable. -->
 
-There are sample clips in `~/samples/` that are deliberately not indexed yet. Prompt to ingest:
+There are sample clips in `~/samples/$USERNAME` that are deliberately not indexed yet. Prompt to ingest:
 
 ```
-upload ~/samples/<clip>.mp4 and tell me when it's searchable
+upload ~/samples/$USERNAME/<clip>.mp4 and tell me when it's searchable
 ```
 
 The agent loads `upload-videos`, splits the file into ~30 second chunks, uploads each one,
@@ -243,7 +248,7 @@ every segment gets captioned, described, and embedded before it can be found.
 That upload used the default ingestion prompt. Run the same clip again with your own:
 
 ```
-upload ~/samples/<clip>.mp4 again, with a prompt that describes <what your app needs>
+upload ~/samples/$USERNAME/<clip>.mp4 again, with a prompt that describes <what your app needs>
 ```
 
 The agent passes it as `custom_prompt`. Once both are indexed, search for something only
@@ -314,17 +319,7 @@ build on top.
 
 ### What video you have
 
-<!-- TODO: PLACEHOLDER. The actual sources are not known yet. Describe each one attendees
-     can use, and for each: what it is, whether it is already ingested, and whether they
-     control the prompt.
-     Candidates so far, all unconfirmed:
-       - the pre-built team index (subject, setting, hours, camera count, overlapping views,
-         audio, time period) - this is the one teams pick a use case from, so it matters most
-       - sample clips staged in the VM, deliberately not pre-ingested
-       - a live RTSP feed at $RTSP_URL, optional per city
-       - attendees' own footage, subject to the bring-your-own rules in section 4
-     Confirm which of these exist per city, and note any licence limits on third-party
-     footage. -->
+[describe video sources]
 
 ### The loop
 
