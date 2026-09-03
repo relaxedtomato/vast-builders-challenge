@@ -25,20 +25,15 @@ ask how many chunks.
 
 ## Authenticate
 
-Use the team config for the selected team. Ask which team if it is not obvious.
-
-From that config take:
-
-- `INGRESS_URL` → `BACKEND`
-- `USERNAME` / `PASSWORD` → login (do not print them)
-- `S3_CHUNKS_BUCKET` and `USERNAME` → complete a chunk filename to `original_video`
+Everything you need is already in the environment: `INGRESS_URL`, `USERNAME`, `PASSWORD`,
+and `S3_CHUNKS_BUCKET`. Don't ask the user for them, and never print them.
 
 Login:
 
 ```bash
-TOKEN=$(curl -s -X POST "$BACKEND/api/v1/auth/login" \
+TOKEN=$(curl -s -X POST "$INGRESS_URL/api/v1/auth/login" \
   -H "Content-Type: application/json" \
-  -d '{"username":"<USERNAME>","password":"<PASSWORD>"}' \
+  -d "{\"username\":\"$USERNAME\",\"password\":\"$PASSWORD\"}" \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
 ```
 
@@ -48,7 +43,7 @@ Use `Authorization: Bearer $TOKEN` on later calls. Never print credentials or to
 
 Choose the discovery method from what the user knows.
 
-### Filename — complete with team-config (then confirm)
+### Filename: complete it from the environment (then confirm)
 
 The user will often paste only the card title, for example:
 
@@ -59,16 +54,16 @@ The user will often paste only the card title, for example:
 or a truncated UI title such as `20260901_224739_london-luxury-walk_chun...`.
 If truncated, match the unique Explore `filename` that starts with that stem.
 
-That basename is **not** the API field. Complete it from the team config:
+That basename is **not** the API field. Complete it from the environment:
 
 ```text
-s3://<S3_CHUNKS_BUCKET>/<USERNAME>/<filename>
+s3://$S3_CHUNKS_BUCKET/$USERNAME/<filename>
 ```
 
-Example for team-a:
+which resolves to something like:
 
 ```text
-s3://team-a-vss-chunks/team-a/20260901_224739_london-luxury-walk_chunk_0000.mp4
+s3://team-b-vss-chunks/team-b/20260901_224739_london-luxury-walk_chunk_0000.mp4
 ```
 
 Batch-sync / upload keys are `{username}/{timestamp}_{name}_chunk_NNNN.mp4` in the
@@ -78,7 +73,7 @@ Then confirm the URI exists on Explore (or that search/explore returns the same
 `original_video`):
 
 ```bash
-curl -s "$BACKEND/api/v1/videos/explore?scope=all&limit=100&offset=0" \
+curl -s "$INGRESS_URL/api/v1/videos/explore?scope=all&limit=100&offset=0" \
   -H "Authorization: Bearer $TOKEN"
 ```
 
@@ -95,7 +90,7 @@ disagrees with the constructed URI (that is what VastDB indexed).
 Browse Explore:
 
 ```bash
-curl -s "$BACKEND/api/v1/videos/explore?scope=all&limit=100&offset=0" \
+curl -s "$INGRESS_URL/api/v1/videos/explore?scope=all&limit=100&offset=0" \
   -H "Authorization: Bearer $TOKEN"
 ```
 
@@ -108,7 +103,7 @@ capture type, filename, and upload time client-side.
 If the user describes visual content or an event, use semantic search:
 
 ```bash
-curl -s -X POST "$BACKEND/api/v1/search" \
+curl -s -X POST "$INGRESS_URL/api/v1/search" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"query":"<description>","top_k":30,"llm_top_n":0,"min_similarity":0.3,"include_public":true}'
@@ -138,7 +133,7 @@ For every candidate show:
 Offer preview when needed using the candidate's `preview_source`:
 
 ```text
-$BACKEND/api/v1/videos/stream?source=<url-encoded-preview_source>&token=<JWT>
+$INGRESS_URL/api/v1/videos/stream?source=<url-encoded-preview_source>&token=<JWT>
 ```
 
 Explore only returns fully indexed chunks, so a displayed candidate is safe for
@@ -152,14 +147,14 @@ clip count, and short reasoning preview.
 Fetch valid scenario/capture options:
 
 ```bash
-curl -s "$BACKEND/api/v1/metadata/ingest-config"
+curl -s "$INGRESS_URL/api/v1/metadata/ingest-config"
 ```
 
 Ask for one prompt mode:
 
-- **Keep original prompt** — omit `scenario` and `custom_prompt`;
-- **Scenario preset** — show available presets and ask which one;
-- **Custom prompt** — collect exact text, maximum 800 characters.
+- **Keep original prompt**: omit `scenario` and `custom_prompt`;
+- **Scenario preset**: show available presets and ask which one;
+- **Custom prompt**: collect exact text, maximum 800 characters.
 
 Then ask whether to keep or change `camera_id`, `capture_type`, and `location`.
 Omitted/blank fields preserve original values.
@@ -177,7 +172,7 @@ overrides, and that only this one chunk will be affected.
 Send the exact URI returned by Explore/search:
 
 ```bash
-curl -s -X POST "$BACKEND/api/v1/dashboard/reingest" \
+curl -s -X POST "$INGRESS_URL/api/v1/dashboard/reingest" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -198,7 +193,7 @@ escaped safely.
 Poll every four seconds:
 
 ```bash
-curl -s "$BACKEND/api/v1/dashboard/reingest/<job_id>" \
+curl -s "$INGRESS_URL/api/v1/dashboard/reingest/<job_id>" \
   -H "Authorization: Bearer $TOKEN"
 ```
 
