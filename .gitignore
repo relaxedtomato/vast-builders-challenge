@@ -47,3 +47,6 @@ SUBMISSION.md
 # --- generated TODO digest ---
 TODOS.md
 
+
+# --- organizer verification script (internal) ---
+verify-vm.sh
