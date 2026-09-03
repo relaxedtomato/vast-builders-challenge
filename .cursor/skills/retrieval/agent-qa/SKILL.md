@@ -7,39 +7,39 @@ description: >-
   specific video, instead of raw search hits.
 ---
 
-# Retrieval: agent Q&A
+# Retrieval: agent Q&A (vss2)
 
-Thin agent that plans → searches/reads VastDB tools → returns a grounded answer. Use this (not `/search`) when the user wants an **answer**, not a hit list. JWT required (`retrieval/login`). There is **no** `/videos/ask` route, use `/agent/ask`.
+Thin agent that plans → searches/reads VastDB tools → returns a grounded answer. Use this (not `/search`) when the user wants an **answer**, not a hit list. JWT required (`retrieval/login`). There is **no** `/videos/ask` route — use `/agent/ask`.
 
-## Ask: `POST /api/v1/agent/ask`
+## Ask — `POST /api/v1/agent/ask`
 
 ```bash
-curl -s -X POST "$INGRESS_URL/api/v1/agent/ask" \
+curl -s -X POST "$BACKEND/api/v1/agent/ask" \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"question":"Was anyone near the loading dock after 6pm?","top_k":10}'
 ```
 
 | Field | Default | Behavior |
 |-------|---------|----------|
-| `question` | - | required |
+| `question` | — | required |
 | `original_video` | null | if set → answer from **that** parent video's segments; else global hybrid search |
-| `top_k` | 10 | segments/results considered (1-50) |
+| `top_k` | 10 | segments/results considered (1–50) |
 
 Response: `{ answer, tool_used ("search_hybrid"|"video_segments"), evidence }`.
 
-## Search + answer with filters: `POST /api/v1/agent/search-and-answer`
+## Search + answer with filters — `POST /api/v1/agent/search-and-answer`
 
 Same body as `POST /search` (`retrieval/search`: `tags`, `time_filter`, `metadata_filters`, `min_similarity`…) → grounded answer + rich chunk evidence.
 
 ```bash
-curl -s -X POST "$INGRESS_URL/api/v1/agent/search-and-answer" \
+curl -s -X POST "$BACKEND/api/v1/agent/search-and-answer" \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"query":"forklift incidents","time_filter":"7d","metadata_filters":{"location":"Warehouse A"},"top_k":10}'
 ```
 
 `evidence` includes `chunks[]` (`original_video`, `similarity_score`, `best_match_start_sec/end_sec`, `preview_source`), timings, and `llm_synthesis`.
 
-## Agent tools: `GET/POST /api/v1/tools/*`
+## Agent tools — `GET/POST /api/v1/tools/*`
 
 Composable building blocks (same auth): `POST tools/search`, `GET tools/segments?original_video=`, `GET tools/segment?source=`, `GET tools/detections?source=`, `GET tools/explore`, `POST tools/synthesize`. Use these to gather evidence when you orchestrate multi-step reasoning yourself.
 

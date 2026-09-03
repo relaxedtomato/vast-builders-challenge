@@ -8,8 +8,8 @@ description: Re-ingest an existing indexed VSS video or stream through detector,
 For this hackathon, **re-ingest is the only supported ingest path**. Never upload a
 new file, run batch sync, copy an object manually, or write directly to S3.
 
-If the request is specifically for one Explore card/chunk-or the user describes a
-scene but does not know its filename, use `ingest/reingest-chunk` instead.
+If the request is specifically for one Explore card/chunk—or the user describes a
+scene but does not know its filename—use `ingest/reingest-chunk` instead.
 
 Re-ingest copies existing segment objects to unique S3 keys, runs them through
 detector → reasoner → embedder → writer, and atomically replaces each matching
@@ -28,11 +28,22 @@ Use `AskQuestion` for choices. Never guess missing choices.
 
 ## Authenticate
 
-Resolve the backend URL and credentials from the selected team's config, or ask
-which team/namespace to use. Authenticate with:
+Resolve the backend URL and credentials from the single `/config/*.config` team
+file. Do not search the repo's `team-configs/`. If the file is missing or there
+are multiple candidates, ask the user. Load it with:
 
 ```bash
-TOKEN=$(curl -s -X POST "$INGRESS_URL/api/v1/auth/login" \
+mapfile -t TEAM_CONFIGS < <(find /config -maxdepth 1 -type f -name '*.config' | sort)
+(( ${#TEAM_CONFIGS[@]} == 1 )) || { echo "expected exactly one /config/*.config"; exit 1; }
+TEAM_CONFIG="${TEAM_CONFIGS[0]}"
+set -a && source "$TEAM_CONFIG" && set +a
+BACKEND="$INGRESS_URL"
+```
+
+Authenticate with:
+
+```bash
+TOKEN=$(curl -s -X POST "$BACKEND/api/v1/auth/login" \
   -H "Content-Type: application/json" \
   -d '{"username":"<username>","password":"<password>"}' \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
@@ -47,7 +58,7 @@ If the user did not identify one exact video/stream, fetch **all accessible
 options**, not only the dashboard's 15 recent entries:
 
 ```bash
-curl -s "$INGRESS_URL/api/v1/videos/explore?scope=all&limit=100&offset=0" \
+curl -s "$BACKEND/api/v1/videos/explore?scope=all&limit=100&offset=0" \
   -H "Authorization: Bearer $TOKEN"
 ```
 
@@ -87,7 +98,7 @@ Before asking for changes, show the selected target's current values:
 For a representative chunk, fetch its current row:
 
 ```bash
-curl -sG "$INGRESS_URL/api/v1/videos/metadata" \
+curl -sG "$BACKEND/api/v1/videos/metadata" \
   -H "Authorization: Bearer $TOKEN" \
   --data-urlencode "source=<preview_source>"
 ```
@@ -102,23 +113,23 @@ used by the preceding re-ingest.
 Fetch valid prompt presets and field options:
 
 ```bash
-curl -s "$INGRESS_URL/api/v1/metadata/ingest-config"
+curl -s "$BACKEND/api/v1/metadata/ingest-config"
 ```
 
 Ask the user to choose one prompt mode:
 
-- **Keep original prompt**: omit both `scenario` and `custom_prompt`;
-- **Scenario preset**: show the scenario names/descriptions returned by
+- **Keep original prompt** — omit both `scenario` and `custom_prompt`;
+- **Scenario preset** — show the scenario names/descriptions returned by
   `ingest-config`, then ask which one;
-- **Custom prompt**: ask for the exact prompt text (maximum 800 characters).
+- **Custom prompt** — ask for the exact prompt text (maximum 800 characters).
 
 Explain that a custom prompt overrides a scenario. Sending a new scenario without
 a custom prompt intentionally removes the old custom prompt.
 
 Separately ask whether to:
 
-- **Keep original metadata**: omit `camera_id`, `capture_type`, and `location`;
-- **Change metadata**: show existing values and valid options from
+- **Keep original metadata** — omit `camera_id`, `capture_type`, and `location`;
+- **Change metadata** — show existing values and valid options from
   `ingest-config`, then collect only the fields the user wants changed. Blank
   fields mean preserve, not erase.
 
@@ -142,7 +153,7 @@ prompt mode, and metadata overrides. Start only after explicit confirmation.
 For a stream:
 
 ```bash
-curl -s -X POST "$INGRESS_URL/api/v1/dashboard/reingest" \
+curl -s -X POST "$BACKEND/api/v1/dashboard/reingest" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"stream_id":"<stream-id>","chunk_count":<N>}'
@@ -151,7 +162,7 @@ curl -s -X POST "$INGRESS_URL/api/v1/dashboard/reingest" \
 For a non-stream video:
 
 ```bash
-curl -s -X POST "$INGRESS_URL/api/v1/dashboard/reingest" \
+curl -s -X POST "$BACKEND/api/v1/dashboard/reingest" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"original_video":"<s3-uri>","chunk_count":1}'
@@ -168,7 +179,7 @@ Save the returned `job_id`, `selected_chunks`, and `copied_segments`.
 Poll every four seconds:
 
 ```bash
-curl -s "$INGRESS_URL/api/v1/dashboard/reingest/<job_id>" \
+curl -s "$BACKEND/api/v1/dashboard/reingest/<job_id>" \
   -H "Authorization: Bearer $TOKEN"
 ```
 

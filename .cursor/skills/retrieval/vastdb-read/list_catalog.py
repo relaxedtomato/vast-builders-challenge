@@ -5,52 +5,72 @@ from __future__ import annotations
 
 import argparse
 import os
-import ssl
 import sys
 import urllib.error
 import urllib.request
 from collections import defaultdict
+from pathlib import Path
+
+
+def _team_config() -> Path:
+    configs = sorted(Path("/config").glob("*.config"))
+    if len(configs) != 1:
+        print(
+            f"Expected exactly one /config/*.config team file; found {len(configs)}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    return configs[0]
+
+
+ENV_PATH = Path(os.environ.get("VAST_ENV_FILE", _team_config()))
 
 INTERNAL_TABLES = frozenset({"tabular_schema_table"})
+
+
+def load_env(path: Path) -> dict[str, str]:
+    if not path.is_file():
+        print(f"Missing team config: {path}", file=sys.stderr)
+        sys.exit(1)
+
+    env: dict[str, str] = {}
+    for raw in path.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        env[key.strip()] = value.strip()
+    return env
 
 
 def normalize_endpoint(url: str) -> str:
     return url if url.startswith(("http://", "https://")) else f"http://{url}"
 
 
-def resolve_credentials() -> tuple[str, str, str]:
-    """Read endpoint and keys from the pre-provisioned environment."""
-    endpoint = os.environ.get("VDB_ENDPOINT") or os.environ.get("S3_ENDPOINT", "")
-    access = os.environ.get("ACCESS_KEY", "")
-    secret = os.environ.get("SECRET_KEY", "")
-
-    missing = [
-        name
-        for name, value in (("VDB_ENDPOINT", endpoint), ("ACCESS_KEY", access), ("SECRET_KEY", secret))
-        if not value
-    ]
-    if missing:
-        print(
-            f"Not set in the environment: {', '.join(missing)}.\n"
-            "These are provisioned for you. If they are missing, tell an organizer.",
-            file=sys.stderr,
-        )
+def resolve_endpoint(env: dict[str, str]) -> str:
+    endpoint = (
+        os.environ.get("VDB_ENDPOINT")
+        or env.get("VDB_ENDPOINT")
+        or env.get("S3_ENDPOINT", "")
+    )
+    if not endpoint:
+        print("Set VDB_ENDPOINT or S3_ENDPOINT in /config/<team>.config", file=sys.stderr)
         sys.exit(1)
-    return normalize_endpoint(endpoint), access, secret
+    return normalize_endpoint(endpoint)
 
 
 def probe_endpoint(endpoint: str) -> None:
-    """Fail fast with a clear message if the data endpoint is unreachable."""
+    """Warn if localhost tunnel port is not reachable."""
+    if "127.0.0.1" not in endpoint and "localhost" not in endpoint:
+        return
     try:
         urllib.request.urlopen(endpoint, timeout=5)
     except urllib.error.HTTPError:
-        return  # any HTTP response means we reached it
-    except ssl.SSLError:
-        return  # TLS handshake happened, so the host is up; the SDK skips verification
-    except OSError:
+        return  # HTTP 404/200 both mean tunnel is up
+    except OSError as exc:
         print(
-            f"Cannot reach {endpoint}. The VastDB data endpoint should be reachable from\n"
-            "your VM. Check VDB_ENDPOINT, then tell an organizer.",
+            f"Cannot reach {endpoint} — start SSH tunnel first:\n"
+            f"  ssh -N -f -L 18080:172.27.121.1:80 vastdata@v151lg1",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -143,7 +163,17 @@ def main() -> None:
     parser.add_argument("--live-only", action="store_true", help="Use bucket.schemas() only (requires --bucket)")
     args = parser.parse_args()
 
-    endpoint, access, secret = resolve_credentials()
+    env = load_env(ENV_PATH)
+    access = env.get("VAST_ACCESS_KEY") or env.get("ACCESS_KEY", "")
+    secret = env.get("VAST_SECRET_KEY") or env.get("SECRET_KEY", "")
+    if not access or not secret:
+        print(
+            "Set ACCESS_KEY/SECRET_KEY in /config/<team>.config",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    endpoint = resolve_endpoint(env)
     probe_endpoint(endpoint)
     print(f"VastDB endpoint: {endpoint}\n")
 

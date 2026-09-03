@@ -1,25 +1,19 @@
-# Ingest
+# Ingest (vss2)
 
-Video is already indexed for your team. Ingest here means **re-running footage through the
-pipeline with a different prompt**, not uploading new files.
+For this hackathon, existing indexed videos are ingested only through re-ingest.
+Direct upload, batch sync, and manual S3 copy are not supported workflows.
 
 ## Skills
 
-| Skill | Use it to |
-|-------|-----------|
-| [reingest-videos](reingest-videos/SKILL.md) | Re-run a whole indexed video or stream with a new prompt or metadata |
-| [reingest-chunk](reingest-chunk/SKILL.md) | Re-run one specific chunk, found by filename, scene, date, or camera |
+| Skill | Mechanism | Purpose |
+|-------|-----------|---------|
+| [reingest-videos](reingest-videos/SKILL.md) | `POST /api/v1/dashboard/reingest` | Select an indexed video/stream, choose prompt and metadata behavior, choose latest complete chunks, and monitor replacement |
+| [reingest-chunk](reingest-chunk/SKILL.md) | Explore/search → `POST /api/v1/dashboard/reingest` | Find one specific chunk from a filename, metadata, date, or scene description, then re-ingest only that Explore card |
 
-## Why re-ingest
+The skill discovers all accessible indexed targets, requires explicit choices, and
+re-runs complete chunks through detector → reasoner → embedder → writer. Writer
+replacement is atomic per segment slot.
 
-Every segment is described by a model following an ingestion prompt. Anything that prompt
-didn't ask about was never written down, so it can't be searched for. Changing the prompt
-and re-ingesting is how you get descriptions that match what you're building.
-
-`reingest-videos` is the one to reach for. Use `reingest-chunk` when the user names a single
-clip and only that clip should be re-run.
-
-Both take a few minutes: each segment is captioned, embedded, and detected again before it
-becomes searchable. Check progress with `retrieval/dashboard`.
-
-Auth: JWT via `retrieval/login`. Credentials and endpoints are already in your environment.
+Auth is a backend JWT from `POST /api/v1/auth/login`.
+Team URL and credentials come only from the single `/config/*.config` file on
+the VM. Skills must not search the repository's `team-configs/`.
