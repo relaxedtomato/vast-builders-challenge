@@ -100,14 +100,22 @@ Alternatively, you can use the IDE.
 Start the agent in the terminal:
 
 ```sh
-cursor-agent # start an interactive agent session
+agent vast-builders-challenge # start an interactive agent session
+
+/model #in Cursor agent, ensure you are on Auto (to save tokens)
 ```
+
+
 <!-- TODO: confirm the Cursor Agent CLI command and flags; replace the example. -->
 <!-- TODO: does signing into the Cursor IDE also authenticate the CLI agent, or is a
      separate sign-in needed? Verify with Cursor. -->
 
 From there, describe the task and the agent picks the matching skill. Start with
 [Meet your skills](#3-meet-your-skills), then ingest a clip and search it.
+
+> 💡 **Copy and paste in the VM.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`,
+> since plain `Ctrl+C` interrupts whatever is running. In Cursor itself, `Ctrl+C` and
+> `Ctrl+V` work as usual.
 
 <!-- IMAGE: the loaded VM. Alt: "The workshop VM with Cursor open on the Builders
      Challenge repo." -->
