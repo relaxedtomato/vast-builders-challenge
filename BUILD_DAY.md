@@ -137,7 +137,7 @@ what to do when it fails.
 Describe what you want and the coding agent loads the matching skill.
 
 ```
-"upload the clips in ~/samples and tell me when they're searchable"
+"re-ingest the warehouse video with a prompt about safety gear"
 "find people near the entrance after 6pm"
 "summarize what happens in the warehouse video"
 ```
@@ -145,49 +145,28 @@ Describe what you want and the coding agent loads the matching skill.
 Skills read what they need from environment variables, so nothing should ask you for a
 password or a URL. If something isn't working, ask for help.
 
-### Ingest: Adding Video
+### Ingest: re-running video
+
+Your team's video is already indexed. Ingest here means running it through the pipeline
+again with a different prompt, so the descriptions match what you're building.
 
 | Skill | Use it to |
 |-------|-----------|
-| `upload-videos` | Upload video files from disk. Handles the chunking rules and reports what indexed. |
-| `stream-capture` | Capture from a live RTSP or HTTP stream into the pipeline. |
+| `reingest-videos` | Re-run a whole indexed video with a new prompt or metadata |
+| `reingest-chunk` | Re-run one specific chunk, found by filename, scene, date, or camera |
 
-Both land video in the same place and the pipeline takes over. Two things to note:
+**Re-ingesting takes a few minutes.** Every segment is described, embedded, and detected
+again before it becomes searchable. Ask the agent to confirm before you go looking.
 
-**Video is ingested in ~30 second chunks**, not whole files. The skill splits long files
-locally with `ffmpeg`, then uploads each chunk.
-
-**Indexing takes a few minutes.** Upload succeeding means the file landed, not that it's
-searchable. Ask the agent to confirm before you go looking for it.
-
-<!-- TODO: move these prompt warnings into the skills themselves. A warning in the guide
-     only works if someone read the guide; the same words inside `upload-videos` and
-     `stream-capture` reach the attendee at the moment they ingest, which is when it matters.
-     Applies to all three prompt callouts (sections 3, 4, 5). Keep a short version here and
-     let the skill carry the detail. -->
-> 💡 **The prompt decides what gets indexed.** Cosmos Reason captions every segment using
-> an ingestion prompt. Anything it doesn't ask about never gets described, so you can't
-> search for it later.
+> 💡 **The prompt decides what gets indexed.** Cosmos Reason describes every segment
+> following an ingestion prompt. Anything it doesn't ask about never gets written down, so
+> you can't search for it later.
 >
-> Pick your prompt before ingesting at volume. On a construction site you might ask it to
-> describe safety gear. In a public space you might ask how many people are in frame.
-> Ingest everything with the safety prompt, then switch to building the crowd monitor, and
-> your searches come back empty. **Fixing that means ingesting it all over again.**
+> On a construction site you might ask it to describe safety gear. In a public space you
+> might ask how many people are in frame. Search the existing index for what your idea
+> needs; if it isn't there, that's what re-ingesting is for.
 >
-> Set the prompt per upload with `custom_prompt` (800 characters max), or pick a `scenario`
-> preset.
-
-<!-- TODO: paste the default ingestion prompt verbatim, from the pipeline config /
-     VDB_PROMPTS_COLLECTION. -->
-<!-- TODO: list the `scenario` presets and what each asks for, plus a stable reference
-     for `custom_prompt`. -->
-<!-- TODO: net-new `reingest` skill. Re-run captioning/embedding with a different prompt,
-     without re-uploading. Open: granularity (segment / filtered set / whole video); the
-     writer skips duplicate `source`, so overwrite or version? (`dashboard` already reports
-     `re_ingest_rows`, find out what that does first); cost cap on shared Cosmos endpoints.
-     Covers the §1 re-ingestion note too. -->
-<!-- TODO: can a team change the pipeline DEFAULT prompt, or only override per upload? If
-     editable, that's a missing skill and the advice above changes. -->
+> Set the prompt with `custom_prompt` (800 characters max), or pick a `scenario` preset.
 
 ### Retrieval: Searching Video
 
@@ -207,110 +186,70 @@ Worth knowing: `vastdb-read` queries the database directly, for when you want to
      section 7, so decide whether it also needs a row here. -->
 
 
-## 4. Ingest and search
+## 4. Search and re-ingest
 
-Before you build anything, put one video through the pipeline. This tells you the whole
-stack is working.
+Before you build anything, run one loop by hand. It tells you the whole stack is working
+and shows you the one thing that decides what you can build.
 
-Your team's index already has video in it, so search works from the start. This section is
-about the other half: watching footage go in.
+### Search what's there
 
-### Ingest a clip
-
-<!-- TODO: write the bring-your-own-footage rules. Attendees will upload phone video,
-     doorbell clips, and footage from work. Needs a plain disclaimer covering:
-       - only upload footage you have the rights to use
-       - no identifiable people without consent; nothing confidential from an employer
-       - uploads land in the shared TEAM bucket and index, visible to teammates, not private
-       - what happens to it after: environment destroyed, but say so explicitly
-       - three jurisdictions: London is UK GDPR, SF and NYC are not
-     Needs legal review; do not ship Claude's wording. Related: any footage sourced from a
-     third party (transit agency, archive) may be licensed for hosted VMs only, which is a
-     different rule than for attendees' own clips. -->
-
-<!-- TODO: consider ingesting from a URL instead of ~/samples/. stream-capture accepts an
-     HTTP URL and the capture service pulls it server-side, so there's nothing to stage on
-     the VM, nothing to move from Slack, and no 25 MB upload cap. Removes a provisioning
-     step that can fail. Needs the clips hosted somewhere publicly reachable. -->
-
-There are sample clips in `~/samples/$USERNAME` that are deliberately not indexed yet. Prompt to ingest:
+Your team's index already has video in it, so start by looking:
 
 ```
-upload ~/samples/$USERNAME/<clip>.mp4 and tell me when it's searchable
+what's in the index? show me a few examples
 ```
 
-The agent loads `upload-videos`, splits the file into ~30 second chunks, uploads each one,
-and reports what landed. Uploading takes seconds. Indexing takes a few minutes, because
-every segment gets captioned, described, and embedded before it can be found.
-
-### Try your own prompt
-
-That upload used the default ingestion prompt. Run the same clip again with your own:
+Then search for something specific to your idea:
 
 ```
-upload ~/samples/$USERNAME/<clip>.mp4 again, with a prompt that describes <what your app needs>
+find the moment where <something you care about> happens
 ```
 
-The agent passes it as `custom_prompt`. Once both are indexed, search for something only
-your prompt asked about. The first copy won't match, because its captions never mention it.
+You get back ranked segments with timestamps, scores, and the description the model wrote.
+Play one to confirm it's the moment you meant.
 
-> 💡 **Pick your prompt before you ingest anything at volume.**
-
-This applies to the video already in your index. It was all ingested with the default
-prompt, so anything that prompt didn't ask about isn't searchable. Your own uploads are the
-only footage whose prompt you control.
-
-<!-- TODO: link the prompts used to ingest the existing corpus, so attendees can see what
-     the pre-built index can actually answer before choosing a project. Options: point at
-     $VDB_PROMPTS_COLLECTION and let a skill read them, or paste them into the Reference
-     section. Preference: readable in the guide AND queryable, since a team that picks an
-     idea the default prompt never described has to re-ingest or change the idea. -->
-
-### Confirm it indexed
+### Ask instead of search
 
 ```
-is my video indexed yet?
-```
-
-**The VSS UI dashboard tells you whether your video is ready.** Your upload is searchable
-once it shows up as a fully indexed parent and the segment count stops climbing.
-
-![The VSS UI dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
-
-Give it a few minutes. Searching too early just returns nothing.
-
-### Search for it
-
-Ask for something you know is in the clip:
-
-```
-find the moment where <something you saw> happens
-```
-
-You get back ranked segments with timestamps, similarity scores, and the caption the model
-wrote. Play one to confirm it's the moment you meant.
-
-Then ask a question instead of searching:
-
-```
-what happens in the video I just uploaded?
+what happens in <one of those videos>?
 ```
 
 Same index, different kind of answer. The first hands you moments. The second reads those
 moments and writes you an answer.
 
 Do you want to show someone the clip, or tell them what happened? Most of designing a video
-agent is picking one.
+app is picking one.
+
+### Find what's missing
+
+Search for something your idea needs that the existing descriptions probably don't mention.
+Counts of people. What someone is carrying. Whether a vehicle stopped.
+
+If it comes back empty, that's not a broken search. It means the ingestion prompt never
+asked about it, so nothing was written down.
+
+### Re-ingest with your prompt
+
+```
+re-ingest <that video> with a prompt that describes <what your app needs>
+```
+
+The agent loads `reingest-videos`, shows you what it's about to re-run, and asks for the
+prompt. Give it a few minutes, then run the same search again. This time it matches.
+
+To watch progress, ask `is it done yet?` or open the Dashboard tab.
+
+![The VSS UI dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
+
+> 💡 That gap, between what you searched for and what the prompt asked about, is the thing
+> to keep in mind all day. Everything you can build depends on what the descriptions say.
 
 ### That's the whole loop
 
-Ingest, index, search, ask. Everything you build today sits on those four steps. If all
-four worked, your stack is healthy and you can start building.
+Search, ask, re-ingest, search again. Everything you build today sits on those steps. If
+they worked, your stack is healthy and you can start building.
 
 If any of them didn't, run the health check in the Reference section.
-
-
-
 
 ## 5. Build
 
