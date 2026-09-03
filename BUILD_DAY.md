@@ -390,9 +390,7 @@ If it fails, tell an organizer.
 
 ### Event dashboard
 
-Live across the whole event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
-
-This is not the Dashboard tab in your own VSS UI, which shows only your team's ingest.
+Live for the event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
 
 <!-- TODO: say what it actually shows (teams, ingest volume, activity, leaderboard?) so
      attendees know when to open it. Also confirm it resolves from the attendee VM, since

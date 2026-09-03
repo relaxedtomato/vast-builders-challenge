@@ -33,6 +33,7 @@ Thumbs.db
 # --- misc local ---
 *.log
 tmp/
+resp.json
 
 # --- internal decision log (not for attendees) ---
 DECISIONS.md
@@ -45,3 +46,4 @@ SUBMISSION.md
 
 # --- generated TODO digest ---
 TODOS.md
+
