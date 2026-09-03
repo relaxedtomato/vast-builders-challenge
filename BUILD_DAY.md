@@ -113,9 +113,7 @@ agent vast-builders-challenge # start an interactive agent session
 From there, describe the task and the agent picks the matching skill. Start with
 [Meet your skills](#3-meet-your-skills), then ingest a clip and search it.
 
-> 💡 **Copy and paste in the VM.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`,
-> since plain `Ctrl+C` interrupts whatever is running. In Cursor itself, `Ctrl+C` and
-> `Ctrl+V` work as usual.
+> 💡 **Copy and paste in the VM.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`
 
 <!-- IMAGE: the loaded VM. Alt: "The workshop VM with Cursor open on the Builders
      Challenge repo." -->
@@ -389,6 +387,16 @@ If it fails, tell an organizer.
      Needs: which organizers to find and where they sit, the event Slack channel name and
      join link, and the `cosmos` skill once it exists (ask a question without leaving the
      agent). Also decide whether questions go to Slack or to a person first. -->
+
+### Event dashboard
+
+Live across the whole event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
+
+This is not the Dashboard tab in your own VSS UI, which shows only your team's ingest.
+
+<!-- TODO: say what it actually shows (teams, ingest volume, activity, leaderboard?) so
+     attendees know when to open it. Also confirm it resolves from the attendee VM, since
+     it's a different host from $INGRESS_URL and may need its own DNS or hosts entry. -->
 
 ### Your team's values
 
