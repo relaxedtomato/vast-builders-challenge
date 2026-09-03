@@ -223,6 +223,11 @@ about the other half: watching footage go in.
      third party (transit agency, archive) may be licensed for hosted VMs only, which is a
      different rule than for attendees' own clips. -->
 
+<!-- TODO: consider ingesting from a URL instead of ~/samples/. stream-capture accepts an
+     HTTP URL and the capture service pulls it server-side, so there's nothing to stage on
+     the VM, nothing to move from Slack, and no 25 MB upload cap. Removes a provisioning
+     step that can fail. Needs the clips hosted somewhere publicly reachable. -->
+
 There are sample clips in `~/samples/` that are deliberately not indexed yet. Prompt to ingest:
 
 ```
