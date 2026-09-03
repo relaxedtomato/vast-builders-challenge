@@ -58,8 +58,13 @@ an answer before moving to the next section. Don't dump all four sections at onc
 **Project**
 - Description: what it does and who it's for, in two or three sentences
 - Technology stack: which skills, which models, what you built on top
-- Link to code (GitHub or any public URL)
-- Link to demo video (YouTube or any public platform)
+- Link to code on GitLab
+- Link to the demo video, dropped in the event Slack channel
+
+<!-- TODO: dry run only. For the real events, code goes back to GitHub or any public URL,
+     and the demo video needs a proper home (a Google Form with file upload, or unlisted
+     YouTube). Slack is fine for a dry run but the video scrolls away and judges may not be
+     in the workspace. -->
 - Links to supplementary material, if any
 
 **Feedback**
@@ -84,6 +89,10 @@ say what it is and why it matters, then ask again. Two of them are worth pushing
   be contacted. If someone hesitates, note that only organizers and judges see them.
 - **Code and demo links.** Judges assess what they can open. A project nobody can run or
   watch is judged on its description alone.
+- **The demo video is recorded on your own laptop, not the VM.** You're already looking at
+  the VM in a window, so your laptop's built-in recorder captures it: `Cmd+Shift+5` on a
+  Mac, `Win+G` on Windows. Recording inside the VM means installing a capture tool, using
+  GPU you need for other things, and then getting a large file back out.
 
 The four confirmations are eligibility, not paperwork. Without them the entry can't be
 accepted, no matter how good the project is. Say that plainly rather than moving on.

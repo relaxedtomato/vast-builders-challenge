@@ -412,8 +412,17 @@ help me submit our project
 It asks for your team details, drafts your project description from your code, and collects
 the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
 
-> 💡 **Have these ready:** a link to your code, a link to your demo video, and an email
+> 💡 **Have these ready:** a link to your code on GitLab, your demo video, and an email
 > address for each team member. An incomplete submission may not be judged.
+
+**Record the demo on your own laptop, not the VM.** You're already watching the VM in a
+window, so your laptop's own recorder captures it: `Cmd+Shift+5` on a Mac, `Win+G` on
+Windows. Drop the file in the event Slack channel.
+
+<!-- TODO: dry run only. For the real events, code links go back to GitHub or any public
+     URL, and the video needs a proper home: a Google Form with file upload, or unlisted
+     YouTube. Slack works now but videos scroll away and judges may not be in the
+     workspace. -->
 
 When `SUBMISSION.md` is ready, copy its contents into the event Slack channel.
 
