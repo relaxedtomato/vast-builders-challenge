@@ -214,23 +214,12 @@ If any of them didn't, run the health check in the Reference section.
 You have a working index and you know how to query it. The rest of the day is what you
 build on top.
 
-### What video you have _(draft, review me)_
+### What video you have
 
-Your index already holds footage from several sources, all searchable now:
-
-- **Street and intersection cameras** in Bangkok, Dublin and London. Fixed views of traffic
-  and crowds.
-- **First-person work footage**: baristas, a sushi chef, a cook. Hands at work, close up.
-- **Warehouse and forklift POV**, aisles and loading.
-- **Dashcam driving** in New York and San Francisco.
-- **Overhead and street-level New York**, the same city from two heights.
-
-Filter any search by `scenario`, `city`, `camera_id` or `category`. Scenario values include
-`surveillance`, `traffic`, `retail`, `warehouse`, `egocentric` and `general`.
-
-Every folder and camera ID is in
+Your index is already full and searchable. Every folder and camera ID is in
 [Video corpus](HACKATHON_GUIDELINES.md#video-corpus-already-indexed), grouped by use case in
-[Use-case groups](HACKATHON_GUIDELINES.md#use-case-groups).
+[Use-case groups](HACKATHON_GUIDELINES.md#use-case-groups), with worked
+[Example queries](HACKATHON_GUIDELINES.md#example-queries).
 
 ### The loop
 
