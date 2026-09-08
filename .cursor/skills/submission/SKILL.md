@@ -58,7 +58,7 @@ an answer before moving to the next section. Don't dump all four sections at onc
 **Project**
 - Description: what it does and who it's for, in two or three sentences
 - Technology stack: which skills, which models, what you built on top
-- Link to code on GitLab
+- Link to the code or repo
 - Link to the demo video, dropped in the event Slack channel
 
 <!-- TODO: dry run only. For the real events, code goes back to GitHub or any public URL,

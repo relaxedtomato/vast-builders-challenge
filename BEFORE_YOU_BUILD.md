@@ -55,10 +55,6 @@ a restricted area" is something you can build for. "Do something with video" isn
 > anything that prompt didn't ask about isn't in there, so you can't search for it later.
 > During build day you'll be able to reingest with a different prompt if you need to.
 
-<!-- TODO: reingest is possible through the VSS UI, but no skill covers it, so the agent
-     can't do it for them. Either write a `reingest` skill or say in BUILD_DAY that this
-     one is a UI job. See the reingest TODO in BUILD_DAY section 4. -->
-
 <!-- TODO: no logistics section for now. The invite and Luma carry date, venue and
      timings. Add one only if the invite doesn't cover what to bring, when to arrive, and
      where to ask questions. -->

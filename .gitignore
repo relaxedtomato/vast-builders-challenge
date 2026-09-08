@@ -50,3 +50,6 @@ TODOS.md
 
 # --- organizer verification script (internal) ---
 verify-vm.sh
+
+# --- draft skill, not ready to ship ---
+.cursor/skills/ask-for-help/

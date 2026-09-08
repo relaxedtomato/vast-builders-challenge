@@ -4,7 +4,6 @@ Spend the day building with video. The infrastructure is already running, so you
 skip straight to the interesting part: turning hours of video into something that
 searches, reasons, and acts.
 
-
 ---
 
 ## 1. Kickoff
@@ -79,7 +78,6 @@ A small app, agent, or a dashboard. A clear use case.
      (categories, weightings, judges, demo length, is code assessed?) and a link from this
      sentence. -->
 
-
 ---
 
 ## 2. Launch your VM
@@ -110,7 +108,6 @@ Once it's running, set the model to Auto to save tokens:
 ```
 /model
 ```
-
 
 <!-- TODO: confirm the Cursor Agent CLI command and flags; replace the example. -->
 <!-- TODO: does signing into the Cursor IDE also authenticate the CLI agent, or is a
@@ -184,7 +181,6 @@ Worth knowing: `vastdb-read` queries the database directly, for when you want to
      once it exists. See DECISIONS.md "Parked". -->
 <!-- TODO: add `cosmos` to the tables once written. `submission` exists but is covered in
      section 7, so decide whether it also needs a row here. -->
-
 
 ## 4. Search and re-ingest
 
@@ -282,12 +278,6 @@ don't, ingest the footage again with a different prompt.
 > 💡 **Start with a few clips.** Read the captions that come back before you ingest anything
 > at volume.
 
-<!-- TODO: say what footage is actually available. Attendees need to know before picking a
-     use case: what's already indexed (source, subject, hours, how many cameras), what's
-     staged in ~/samples/, the RTSP feed, and whether they may bring their own. Any footage
-     from a third party may carry licence terms that limit what attendees can do with it, so
-     state those limits here rather than leaving people to guess. -->
-
 ### LLM access
 
 Search and Q&A come from your VSS instance. Anything your app decides on top of that,
@@ -361,7 +351,7 @@ help me submit our project
 It asks for your team details, drafts your project description from your code, and collects
 the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
 
-> 💡 **Have these ready:** a link to your code on GitLab, your demo video, and an email
+> 💡 **Have these ready:** a link to your code or repo, your demo video, and an email
 > address for each team member. An incomplete submission may not be judged.
 
 **Record the demo on your own laptop, not the VM.** You're already watching the VM in a
