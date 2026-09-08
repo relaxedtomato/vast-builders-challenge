@@ -246,8 +246,7 @@ The skills used by Cursor can be used by agent frameworks too. They follow the s
 
 ### Health check
 
-If something isn't working, pull first. The repo is pre-cloned, so a late start can leave
-you on an older commit than this guide describes:
+If something isn't working, pull first. The repo is pre-cloned and may be behind:
 
 ```sh
 git pull
