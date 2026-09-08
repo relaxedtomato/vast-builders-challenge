@@ -35,3 +35,28 @@ WANDB_API_KEY=<wandb-api-key>
 WANDB_TEAM=<wandb-team>
 # Often the same as the team name. One project per team.
 WANDB_PROJECT=<wandb-project>
+
+# ---- GPU model endpoints ----
+# Used by the gpu/ skills. The token is on the VM in /config/<team>.config; it is never
+# in this repo. Never echo it.
+GPU_BEARER_TOKEN=<gpu-bearer-token>
+
+# Model ids the smoke tests interpolate. If these are unset, ask the endpoint instead:
+#   curl -s "$ENDPOINT/v1/models" -H "Authorization: Bearer $GPU_BEARER_TOKEN"
+# and use the id it returns. Reason2 and Embed1 serve /v1/models; YOLO and Canary may not,
+# and a 404 there does not mean the model is down.
+# Known-good ids (public model names, not secrets):
+COSMOS_REASON2_MODEL=nvidia/cosmos-reason2-8b
+COSMOS_EMBED1_MODEL=nvidia/cosmos-embed1
+# Canary's id was not in the team config. Discover it rather than guessing; health checks
+# pass without it, only transcription needs it.
+CANARY_1B_MODEL=<ask-or-discover>
+
+# ---- Where these come from ----
+# On the VM these live in the single /config/<team>.config file, which the environment
+# should export. If a value is missing from the environment, source that file.
+# Files in /config may be team-prefixed rather than canonical:
+#   kubeconfig            <team>-k8s.yaml
+#   backend-secret.yaml   <team>-backend-secret.yaml
+#   vss-cli-secret.yaml   <team>-vss2-secret.yaml
+# Some VMs also carry symlinks from the canonical names. Handle both.
