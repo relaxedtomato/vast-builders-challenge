@@ -48,15 +48,21 @@ GPU_BEARER_TOKEN=<gpu-bearer-token>
 # Known-good ids (public model names, not secrets):
 COSMOS_REASON2_MODEL=nvidia/cosmos-reason2-8b
 COSMOS_EMBED1_MODEL=nvidia/cosmos-embed1
-# Canary's id was not in the team config. Discover it rather than guessing; health checks
-# pass without it, only transcription needs it.
-CANARY_1B_MODEL=<ask-or-discover>
+# Canary's id was not in the team config. Left unset on purpose: discover it from
+# /v1/models rather than guessing. Health checks pass without it; only transcription
+# needs it. Setting it to a placeholder would break the discover-if-unset path.
+#CANARY_1B_MODEL=
 
-# ---- Where these come from ----
-# On the VM these live in the single /config/<team>.config file, which the environment
-# should export. If a value is missing from the environment, source that file.
-# Files in /config may be team-prefixed rather than canonical:
+# ---- Where the variables above come from ----
+# All of them live in the single /config/<team>.config file on the VM, which the
+# environment should export. If one is missing from the environment, source that file.
+# WANDB_API_KEY, WANDB_TEAM and WANDB_PROJECT are often set in the environment even when
+# they are absent from the file, so check the environment before assuming they're missing.
+
+# ---- Other files in /config (not variables) ----
+# These may be team-prefixed rather than canonical. Prefer the canonical name, fall back
+# to the prefixed one, and treat a missing literal as "look for the alias", not an error.
 #   kubeconfig            <team>-k8s.yaml
 #   backend-secret.yaml   <team>-backend-secret.yaml
 #   vss-cli-secret.yaml   <team>-vss2-secret.yaml
-# Some VMs also carry symlinks from the canonical names. Handle both.
+# Some VMs also carry symlinks from the canonical names, so handle both.
