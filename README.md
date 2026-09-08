@@ -1,8 +1,13 @@
-# vss2-skills
+# VAST Builders Challenge
 
-Cursor agent skills for the VSS2 video search stack — re-ingest indexed video and query the archive.
+Starter repo for the build day. Build a video agent on top of a pre-running video
+understanding and search stack, all from Cursor.
 
-**Hackathon participants:** start with **[HACKATHON_GUIDELINES.md](HACKATHON_GUIDELINES.md)** (setup, UI walkthrough, starter videos, example prompts). UI screenshots are in [`docs/hackathon/`](docs/hackathon/).
+- **Before the day:** [BEFORE_YOU_BUILD.md](BEFORE_YOU_BUILD.md), what to do in advance.
+- **Start here:** [BUILD_DAY.md](BUILD_DAY.md), the guide for the day.
+- **Deeper dive:** [HACKATHON_GUIDELINES.md](HACKATHON_GUIDELINES.md), the full video
+  corpus, metadata reference, example queries, and demo packs. UI screenshots are in
+  [`docs/hackathon/`](docs/hackathon/).
 
 Open this repo in Cursor so agents discover skills under [`.cursor/skills/`](.cursor/skills/). On the VM, runtime configuration is mounted at absolute `/config/`: `<team>.config`, `kubeconfig`, `vss-cli-secret.yaml`, and `backend-secret.yaml`. Keep credentials outside this repository.
 

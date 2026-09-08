@@ -25,19 +25,11 @@ Video runs through a pipeline that understands and indexes it:
        └─────────────── pre-built, already running ───────────────┘      └─ you build ─┘
                                                                     (your app's reasoning: W&B)
 ```
-<!-- IMAGE: architecture diagram, replacing the ASCII block. Alt: "Pipeline flow from
-     video ingest through indexing and search to the agent you build." -->
 
 Everything under "pre-built, already running" is done for you. The pipeline ingests,
 understands, and indexes video, and the models it calls are already deployed and
 serving. You build the app that searches and acts.
 
-<!-- TODO: can we simulate ingestion for testing agents, via re-ingestion? -->
-
-<!-- TODO: describe the VSS UI as a pre-built example, and as the way to sanity-check
-     ingest and explore what's indexed. -->
-<!-- TODO: confirm the UI path. The guide now says the UI is at $INGRESS_URL; check
-     whether it's served at the root or on a subpath, and correct if so. -->
 **The VSS search UI.** Type what you want to see in plain words and it returns matching
 clips. Open `$INGRESS_URL` and log in with your team's `USERNAME` and `PASSWORD`.
 
@@ -59,24 +51,8 @@ Three tabs:
 - A set of **skills** that drive the pipeline in plain language. See
   [Meet your skills](#3-meet-your-skills).
 
-<!-- HIDDEN for the dry run: restore the schedule before the real event.
-     ### How the day runs
-     | Time | What |
-     |------|------|
-     | 8:30 | Doors + breakfast |
-     | 9:00 | Opening remarks |
-     | 9:30 | Build begins |
-     | 12:30 | Lunch |
-     | 4:30 | Demos |
-     | 6:30 | Closing + awards |
--->
-
 ### What "done" looks like
 A small app, agent, or a dashboard. A clear use case.
-
-<!-- TODO: judging criteria. Decide owner: §7 here, or the event page. Needs the rubric
-     (categories, weightings, judges, demo length, is code assessed?) and a link from this
-     sentence. -->
 
 ---
 
@@ -84,7 +60,6 @@ A small app, agent, or a dashboard. A clear use case.
 
 No setup. Nothing to install, no config to paste, no keys to type.
 
-1. Open the VM link for your team. <!-- TODO: confirm delivery channel (email / Luma / on-site card) and the one-click flow. -->
 2. Wait for the VM to load.
 3. If Cursor asks you to sign in, use the email you applied with. Expect one or two tries;
    that's normal.
@@ -109,18 +84,10 @@ Once it's running, set the model to Auto to save tokens:
 /model
 ```
 
-<!-- TODO: confirm the Cursor Agent CLI command and flags; replace the example. -->
-<!-- TODO: does signing into the Cursor IDE also authenticate the CLI agent, or is a
-     separate sign-in needed? Verify with Cursor. -->
-
 From there, describe the task and the agent picks the matching skill. Start with
 [Meet your skills](#3-meet-your-skills), then ingest a clip and search it.
 
 > 💡 **Copy and paste in the VM.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`
-
-<!-- IMAGE: the loaded VM. Alt: "The workshop VM with Cursor open on the Builders
-     Challenge repo." -->
-<!-- TODO: walk through what attendees see on load. Screenshot or short clip. -->
 
 ### If something looks off
 Run the health check in the Reference section, then flag an organizer if something's wrong.
@@ -176,11 +143,6 @@ again before it becomes searchable. Ask the agent to confirm before you go looki
 | `suggest-prompts` | Get generated example queries and notable recent events. |
 
 Worth knowing: `vastdb-read` queries the database directly, for when you want to check the database contents.
-
-<!-- TODO: replace both tables with a pointer to the overview skill (/pipeline-skills-101)
-     once it exists. See DECISIONS.md "Parked". -->
-<!-- TODO: add `cosmos` to the tables once written. `submission` exists but is covered in
-     section 7, so decide whether it also needs a row here. -->
 
 ## 4. Search and re-ingest
 
@@ -266,6 +228,10 @@ Your index already holds footage from several sources, all searchable now:
 Filter any search by `scenario`, `city`, `camera_id` or `category`. Scenario values include
 `surveillance`, `traffic`, `retail`, `warehouse`, `egocentric` and `general`.
 
+Every folder and camera ID is in
+[Video corpus](HACKATHON_GUIDELINES.md#video-corpus-already-indexed), grouped by use case in
+[Use-case groups](HACKATHON_GUIDELINES.md#use-case-groups).
+
 ### The loop
 
 1. **Pick a use case**
@@ -287,26 +253,6 @@ inference from Weights & Biases.
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
 
-<!-- TODO: link LangChain Deep Agents (docs.langchain.com/oss/python/deepagents/skills) and
-     Pydantic AI Skills (dougtrajano.github.io/pydantic-ai-skills), both of which read
-     SKILL.md natively with progressive disclosure. Pydantic AI scans recursively, so it
-     handles our two-level ingest/ and retrieval/ nesting as-is. -->
-
-<!-- TODO: restore this line once the script exists:
-     Run [`examples/wandb-inference.py`](./examples/wandb-inference.py) to check it works
-     before wiring it into your agent. -->
-
-<!-- TODO: examples/wandb-inference.py DOES NOT EXIST YET. The link above is dead until it
-     is written. Script should read WANDB_API_KEY / WANDB_TEAM / WANDB_PROJECT from the
-     environment, make one call, print the response, and exit non-zero with a clear message
-     if inference is unreachable.
-     Blocked on: which model is available, and whether the OpenAI-compatible path or the W&B
-     SDK is recommended. Also confirm examples/ is where we want it. -->
-
-<!-- TODO: use-case sparks. 4-6 concrete ideas grounded in the footage teams actually have,
-     plus a link to the Request for Builds doc. Teams re-decide scope on the morning
-     regardless of what they read beforehand, so this needs to be skimmable. -->
-
 ## 6. Reference
 
 ### Health check
@@ -319,21 +265,9 @@ check that everything is working: log in, and show me the dashboard
 
 If it fails, tell an organizer.
 
-<!-- HIDDEN until we have the details: restore this before the event.
-
-     ### Getting help
-
-     Needs: which organizers to find and where they sit, the event Slack channel name and
-     join link, and the `cosmos` skill once it exists (ask a question without leaving the
-     agent). Also decide whether questions go to Slack or to a person first. -->
-
 ### Event dashboard
 
 Live for the event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
-
-<!-- TODO: say what it actually shows (teams, ingest volume, activity, leaderboard?) so
-     attendees know when to open it. Also confirm it resolves from the attendee VM, since
-     it's a different host from $INGRESS_URL and may need its own DNS or hosts entry. -->
 
 ### Your team's values
 
@@ -358,25 +292,10 @@ the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo
 window, so your laptop's own recorder captures it: `Cmd+Shift+5` on a Mac, `Win+G` on
 Windows. Drop the file in the event Slack channel.
 
-<!-- TODO: dry run only. For the real events, code links go back to GitHub or any public
-     URL, and the video needs a proper home: a Google Form with file upload, or unlisted
-     YouTube. Slack works now but videos scroll away and judges may not be in the
-     workspace. -->
-
 When `SUBMISSION.md` is ready, copy its contents into the event Slack channel.
-
-<!-- TODO: name the Slack channel and add a join link. Pasting contents is the dry-run
-     approach; revisit for the real events, where a form may be needed and where pasting
-     member email addresses into a shared channel is worth a second look. -->
 
 ### Demo
 
 We'll book a time with each team to walk through what you built and to hear how the day
 went.
 
-<!-- HIDDEN for the dry run: restore before the real event.
-
-     Needs: demo logistics (length is five minutes, running order, what should be on screen,
-     whether slides are allowed, who presents), and the judging criteria, which is the same
-     open question as the TODO in section 1: publish the rubric here or link the event page.
--->

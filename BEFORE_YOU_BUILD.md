@@ -17,17 +17,13 @@ One idea, working, shipped by the end of the day.
 ## The Builders Stack: What's already running
 
 **VAST AI OS / DataEngine** implements the video ingestion pipeline at scale. Vectors, metadata, and video data are in one unified platform.
-<!-- TODO: add a VAST docs link. -->
 
 **The VSS UI** is a working example of what you can build on this stack, and a quick way to
 see what's indexed. [VSS UI implementation overview](https://drive.google.com/file/d/110rh4vdBSFRNhdFX9Q5qXB9umqrm3nEO/view?usp=drive_link)
-<!-- TODO: confirm this Drive link is shareable with external attendees. A Drive link that
-     asks for access is worse than no link. Consider hosting it publicly instead. -->
 
 **NVIDIA VSS Blueprint** turns raw video into something searchable, using three models. Cosmos Reason describes each segment, Cosmos Embed turns it into vectors you can search by meaning, and YOLO finds objects. You query the results instead of calling the models. [NVIDIA VSS Blueprint docs](https://docs.nvidia.com/vss/latest/)
 
 **CoreWeave** provides the GPUs the models run on.
-<!-- TODO: add a CoreWeave link. -->
 
 **Weights & Biases** provides serverless LLM inference for your own app's reasoning, on an OpenAI-compatible endpoint. [W&B Serverless Inference docs](https://docs.wandb.ai/inference)
 
@@ -40,9 +36,6 @@ curl https://cursor.com/install -fsS | bash
 agent login
 agent                    # interactive session
 ```
-<!-- TODO: confirm the command name. Cursor's docs show `agent`; BUILD_DAY section 2 says
-     `cursor-agent`. One of them is wrong. Verify on the VM image. -->
-<!-- TODO: add a Cursor CLI link. -->
 
 ## Think about your use case
 
@@ -55,6 +48,3 @@ a restricted area" is something you can build for. "Do something with video" isn
 > anything that prompt didn't ask about isn't in there, so you can't search for it later.
 > During build day you'll be able to reingest with a different prompt if you need to.
 
-<!-- TODO: no logistics section for now. The invite and Luma carry date, venue and
-     timings. Add one only if the invite doesn't cover what to bring, when to arrive, and
-     where to ask questions. -->
