@@ -14,6 +14,7 @@ PASSWORD=<password>
 S3_ENDPOINT=<https://s3-endpoint>
 ACCESS_KEY=<access-key>
 SECRET_KEY=<secret-key>
+# Your team's video chunks, and the segments the pipeline cut from them.
 S3_CHUNKS_BUCKET=team-x-vss-chunks
 S3_SEGMENTS_BUCKET=team-x-vss-chunks-segments
 
@@ -22,11 +23,15 @@ S3_SEGMENTS_BUCKET=team-x-vss-chunks-segments
 # They are often the same host; it's named separately so the intent is clear.
 VDB_ENDPOINT=<https://vastdb-endpoint>
 VASTDB_BUCKET=team-x-vss-db
+# Schema and tables inside VASTDB_BUCKET. Same for every team today.
+# VDB_COLLECTION is the search index; VDB_PROMPTS_COLLECTION holds the ingestion prompts.
 VDB_SCHEMA=vss-schema
 VDB_COLLECTION=vss-collection
 VDB_PROMPTS_COLLECTION=vss-prompts-events
 
 # ---- DataEngine / UI ----
+# PIPELINE is the name you see for your VSS instance in the UI. No skill reads it.
+# INGRESS_URL is the base URL of that instance's API. Skills call it as their backend.
 PIPELINE=team-x-vss
 INGRESS_URL=<https://ingress-url>
 
