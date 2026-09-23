@@ -2,8 +2,8 @@
 name: submission
 description: >-
   Collect everything a team needs to submit their VAST Builders Challenge project and write
-  it to SUBMISSION.md. Asks for team details, project description, tech stack, code and demo
-  links and feedback. Use when a team is ready to submit, or
+  it to SUBMISSION.md. Asks for team name, project description, tech stack, code and demo
+  links and feedback. Never collects personal details. Use when a team is ready to submit, or
   wants to check what is still missing.
 ---
 
@@ -36,7 +36,7 @@ stack is a list, not prose. Judges read a lot of these.
 Draft both, show them, and let them correct it. A team that has been building for eight
 hours writes a better description by editing yours than by starting from a blank prompt.
 
-Ask for everything else: team details, links and feedback. Those are not in
+Ask for everything else: team name, links and feedback. Those are not in
 the code, and a wrong value that looks right gets submitted without anyone noticing.
 
 If you aren't sure, leave it empty and ask.
@@ -48,7 +48,8 @@ an answer before moving to the next section. Don't dump all four sections at onc
 
 **Team**
 - Team name
-- Every member's name
+
+Do not ask for member names, emails, or any other personal detail. Those fields stay blank.
 
 **Project**
 - Description: what it does and who it's for, in two or three sentences
@@ -66,12 +67,15 @@ an answer before moving to the next section. Don't dump all four sections at onc
 - Overall feedback on the day. Invite them to call out anything specific, but don't ask
   about each product in turn. Honest criticism is more useful than praise.
 
-## Nothing should be left blank
+## Nothing should be left blank, except personal details
 
 This is a contest entry. An incomplete one may not be judged, and the team won't find out
 until it's too late to fix.
 
-So: never invent a value, but never quietly accept a blank either. If a field is missing,
+Personal details are the exception. They are left blank on purpose and never count as
+missing (see the agent instructions).
+
+For everything else: never invent a value, but never quietly accept a blank either. If a field is missing,
 say what it is and why it matters, then ask again. Two of them are worth pushing on:
 
 - **Code and demo links.** Judges assess what they can open. A project nobody can run or
@@ -84,8 +88,6 @@ say what it is and why it matters, then ask again. Two of them are worth pushing
 When you finish, list what's still missing and tell them the entry isn't complete. Don't
 end on a summary that reads like success when four fields say `NOT PROVIDED`.
 
-Check the location is one of the event cities, and ask if it isn't.
-
 ## Writing the file
 
 Write `SUBMISSION.md` in the repo root using this shape. Leave a field as `NOT PROVIDED`
@@ -95,9 +97,7 @@ rather than inventing a value.
 # <Team name>
 
 ## Team
-| Name |
-|---|
-| ... |
+**Members:**
 
 ## Project
 <description>
@@ -114,13 +114,17 @@ rather than inventing a value.
 
 ## Agent instructions
 
-1. Read `SUBMISSION.md` first if it exists, and only ask for what's missing.
-2. Derive only the project description and technology stack, and show them for correction.
+1. Never ask for, collect, or write personal details: member names, emails, ages, contact
+   or consent confirmations. Leave those fields blank. Blank personal fields are not
+   `NOT PROVIDED` and don't make the entry incomplete. If a team volunteers one, don't
+   write it into the file.
+2. Read `SUBMISSION.md` first if it exists, and only ask for what's missing.
+3. Derive only the project description and technology stack, and show them for correction.
    Ask for everything else.
-3. Take one section at a time: team, then project, then feedback.
-4. Never invent a value. When unsure, leave the field empty rather than guessing.
-5. Write `SUBMISSION.md` but do not commit or push it unless asked.
-6. When you finish, list anything still `NOT PROVIDED`, say the entry is incomplete, and
+4. Take one section at a time: team name, then project, then feedback.
+5. Never invent a value. When unsure, leave the field empty rather than guessing.
+6. Write `SUBMISSION.md` but do not commit or push it unless asked.
+7. When you finish, list anything still `NOT PROVIDED`, say the entry is incomplete, and
    offer to fill the gaps now. Confirm the checklist at the top of this skill.
 
 ## After the file is written
