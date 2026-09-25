@@ -24,11 +24,11 @@ Everything under "pre-built, already running" is done for you. The pipeline inge
 understands, and indexes video, and the models it calls are already deployed and
 serving. You build something cool that searches and acts.
 
-For a deeper dive, check out the [Architecture Reference](https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md).
+For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
 
 ## 2. Launch VM
 
-[Visit and join Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge) to access the VM and ask questions! No setup. Nothing to install, no config to paste :)
+<a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! No setup. Nothing to install, no config to paste :)
 
 > 💡 All commands run on the workshop VM via the terminal in your browser. Nothing runs on your laptop.
 
@@ -74,7 +74,7 @@ Here is a video overview of the steps from this section:
 Before you kick off the coding agent and start using skills, head to the next section. We'll circle back to Skills very soon.
 
 ### If something looks off
-Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969).
+Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>.
 
 ## Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
@@ -279,7 +279,7 @@ Then ask the agent:
 check that everything is working: log in, and show me the dashboard
 ```
 
-If it fails, or you need more help, run `/ask-cosmos`. It writes up the problem with your team name so you can post it on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969), and we'll drop by.
+If it fails, or you need more help, run `/ask-cosmos`. It writes up the problem with your team name so you can post it on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll drop by.
 
 ### Your team's values
 
