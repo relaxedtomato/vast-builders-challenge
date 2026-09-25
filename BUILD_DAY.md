@@ -2,7 +2,7 @@
 
 Spend the day building with video:
 
-<p align="center"><img src="docs/images/flow.svg" alt="Day flow: Kickoff, Launch VM, Skills, Test Drive, then most of the day on Build, then Ship" width="100%"></p>
+<p align="center"><img src="docs/images/flow.svg" alt="Day flow: Kickoff, Launch VM, Skills, Test Drive, then most of the day on Build, then Ship" width="75%"></p>
 
 The infrastructure is already running, so you skip straight to the interesting part: turning hours of video into something that searches, reasons, and acts.
 
@@ -18,7 +18,7 @@ when something matters.
 ### The Builders Stack
 Video runs through a pipeline that understands and indexes it:
 
-<p align="center"><img src="docs/images/stack.svg" alt="The Builders Stack: ingest, understand, index, and search or ask are pre-built and running on VAST S3, DataEngine, DataBase and CoreWeave GPUs (Cosmos Reason, Cosmos Embed, YOLO); you build something cool with Cursor that uses Weights & Biases Serverless Inference" width="100%"></p>
+<p align="center"><img src="docs/images/stack.svg" alt="The Builders Stack: ingest, understand, index, and search or ask are pre-built and running on VAST S3, DataEngine, DataBase and CoreWeave GPUs (Cosmos Reason, Cosmos Embed, YOLO); you build something cool with Cursor that uses Weights & Biases Serverless Inference" width="75%"></p>
 
 Everything under "pre-built, already running" is done for you. The pipeline ingests,
 understands, and indexes video, and the models it calls are already deployed and
@@ -44,7 +44,7 @@ credentials, so anything a teammate ingests shows up in every team members searc
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
-<p align="center"><img src="docs/videos/cursor-signup-2.gif" alt="Signing in to Cursor IDE" width="100%"></p>
+<p align="center"><img src="docs/videos/cursor-signup-2.gif" alt="Signing in to Cursor IDE" width="75%"></p>
 
 > 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
 
@@ -64,9 +64,7 @@ Once it's running, set the model to Auto to save tokens:
 
 Here is a video overview of the steps from this section:
 
-<video src="docs/videos/vm-loading-2.mp4" controls width="100%" style="width:100%;height:auto;display:block;">
-  <a href="docs/videos/vm-loading-2.mp4">Watch the Launch VM walkthrough (mp4)</a>
-</video></br>
+<p align="center"><a href="https://drive.google.com/file/d/17bFHbTp_pgHSe7xLpc6JRZmBBu77EJYa/view"><img src="https://drive.google.com/thumbnail?id=17bFHbTp_pgHSe7xLpc6JRZmBBu77EJYa&sz=w1000" alt="Watch the Launch VM walkthrough" width="75%"></a></p>
 
 > 💡 **Useful VM Keybindings.**
 > - **Copy and paste.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`
@@ -82,11 +80,13 @@ Run the health check in the [Reference](#reference) section. If it fails, or you
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
 
 From the same page you loaded the VM, click on the the Video Search & Summary button:
-![The VSS link on the VAST workshop home page](docs/images/vss-ui-load.png)
+<p align="center"><img src="docs/images/vss-ui-load.png" alt="The VSS link on the VAST workshop home page" width="75%"></p>
+
+The VSS login information is `USERNAME` and `PASSWORD`, which you can access by typing `echo $USERNAME` and `echo $PASSWORD` in the VM terminal.
 
 Try a few of the search suggestions to see ranked clips with timestamps and the description Cosmos Reason returned for each one:
 
-![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
+<p align="center"><img src="docs/images/vss-search.png" alt="The VSS search interface with the search box, filters, and suggested prompts" width="80%"></p>
 
 <!-- > [TODO] replace w/ giphy / video and search topic -->
 
@@ -280,11 +280,6 @@ check that everything is working: log in, and show me the dashboard
 ```
 
 If it fails, or you need more help, run `/ask-cosmos`. It writes up the problem with your team name so you can post it on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969), and we'll drop by.
-
-### Event dashboard
-
-[Update]
-Live for the event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
 
 ### Your team's values
 
