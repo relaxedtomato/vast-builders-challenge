@@ -76,7 +76,7 @@ Here is a video overview of the steps from this section:
 Before you kick off the coding agent and start using skills, head to the next section. We'll circle back to Skills very soon.
 
 ### If something looks off
-Run the health check in the [Reference](#reference) section, then drop a question on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969) (include team name) and someone will reach out.
+Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969).
 
 ## Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
@@ -149,8 +149,6 @@ Worth knowing: `vastdb-read` queries the database directly, for when you want to
 
 ## 4. Test Drive
 
-STOPPED HERE
-
 Before you build, run one loop by hand. It tells you the whole stack is working
 and helps you understand what you can build.
 
@@ -200,7 +198,7 @@ re-ingest <that video> with a prompt that describes <what your app needs>
 The agent loads `reingest-videos`, shows you what it's about to re-run, and asks for the
 prompt. Give it a few minutes, then run the same search again. This time it matches.
 
-To watch progress, ask `is it done yet?` or open the Dashboard tab.
+To watch progress, ask `is it done yet?` or open the Dashboard tab:
 
 ![The VSS UI dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
 
@@ -232,6 +230,8 @@ You have a working index and you know how to query it. The rest of the day is wh
 build on top. A small app, agent, or a dashboard. A clear use case.
 
 ### What video you have
+
+[Expand on this section]
 
 Your index is already full and searchable. Every folder and camera ID is in
 [Video corpus](HACKATHON_GUIDELINES.md#video-corpus-already-indexed), grouped by use case in
@@ -279,10 +279,11 @@ Then ask the agent:
 check that everything is working: log in, and show me the dashboard
 ```
 
-If it fails, tell an organizer.
+If it fails, or you need more help, run `/ask-cosmos`. It writes up the problem with your team name so you can post it on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969), and we'll drop by.
 
 ### Event dashboard
 
+[Update]
 Live for the event: [video-lab-event.cosmos.vastdata.com](http://video-lab-event.cosmos.vastdata.com/)
 
 ### Your team's values
@@ -304,11 +305,11 @@ the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo
 > 💡 **Have these ready:** a link to your code or repo, your demo video, and an email
 > address for each team member. An incomplete submission may not be judged.
 
-**Record the demo on your own laptop, not the VM.** You're already watching the VM in a
-window, so your laptop's own recorder captures it: `Cmd+Shift+5` on a Mac, `Win+G` on
+**Record the demo on your own laptop, not the VM.** You're on the VM in a
+browser window, so your laptop's own recorder captures it: `Cmd+Shift+5` on a Mac, `Win+G` on
 Windows. Upload the file to your google drive (or equivalent) and share a link.
 
-When `SUBMISSION.md` is ready, send your submission over.
+When `SUBMISSION.md` is ready with your personal details included, send your submission over.
 
 ### Demo
 
