@@ -28,7 +28,7 @@ stack. The stack is already deployed. The team builds on top of it; they do not 
 
 ## When stuck
 
-Use the `ask-for-help` skill. It runs the health check and prepares a question with the
+Use the `ask-cosmos` skill. It runs the health check and prepares a question with the
 details and team name ($USERNAME, $PIPELINE). It does not post anywhere; the team decides where to share it.
 
 ## When finished
