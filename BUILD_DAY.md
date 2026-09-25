@@ -24,7 +24,7 @@ Everything under "pre-built, already running" is done for you. The pipeline inge
 understands, and indexes video, and the models it calls are already deployed and
 serving. You build something cool that searches and acts.
 
-[TODO: Add link] For a deeper dive, check out the Architecture Reference.
+For a deeper dive, check out the [Architecture Reference](https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md).
 
 ## 2. Launch VM
 
@@ -35,19 +35,20 @@ serving. You build something cool that searches and acts.
 Wait for the VM to load. That's it. You're in!
 
 ### Your team
-> ⚠️ **IMPORTANT: Ensure you select the assigned team (e.g. `team-b`) so each team members accesses the same video ingestion pipeline.**
+> ⚠️ **IMPORTANT: Ensure you select the assigned team (e.g. `team-1`) so each team members accesses the same video ingestion pipeline.**
 
 You build as a team. Your team shares one video ingestion instance, one index, and one set of
 credentials, so anything a teammate ingests shows up in every team members searches.
 
 ### Coding Agent
-Drive the day from the **Cursor Agent (CLI)**. Describe what you want in plain language
-and let the code agent build. That's how the skills are meant to be used.
-Alternatively, you can use the IDE.
+Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
+To get started, sign in using the Cursor IDE:
+
+<p align="center"><img src="docs/videos/cursor-signup-2.gif" alt="Signing in to Cursor IDE" width="100%"></p>
 
 > 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
 
-Start the agent in the terminal:
+Drive the day from the **Cursor Agent (CLI)**. Start the agent in the terminal:
 
 ```sh
 cd ~/vast-builders-challenge    # the agent works from the current directory
@@ -63,8 +64,8 @@ Once it's running, set the model to Auto to save tokens:
 
 Here is a video overview of the steps from this section:
 
-<video src="docs/videos/launch-vm.mp4" controls width="100%" style="width:100%;height:auto;display:block;">
-  <a href="docs/videos/launch-vm.mp4">Watch the Launch VM walkthrough (mp4)</a>
+<video src="docs/videos/vm-loading-2.mp4" controls width="100%" style="width:100%;height:auto;display:block;">
+  <a href="docs/videos/vm-loading-2.mp4">Watch the Launch VM walkthrough (mp4)</a>
 </video></br>
 
 > 💡 **Useful VM Keybindings.**
@@ -72,38 +73,25 @@ Here is a video overview of the steps from this section:
 > - **Display size.** Use `Ctrl -` to zoom out and `Ctrl 0` to zoom in.
 
 
-From here, describe the task and the agent picks the matching skill. Start with
-[Skills](#3-skills-skills-skills), then ingestion a clip and search for it (covered in Skills section below).
+Before you kick off the coding agent and start using skills, head to the next section. We'll circle back to Skills very soon.
 
 ### If something looks off
-Run the health check in the Reference section, then drop a question on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969) (include team name) and someone will reach out.
+Run the health check in the [Reference](#reference) section, then drop a question on [Cosmos](https://community.vastdata.com/t/about-the-workshop-category/1969) (include team name) and someone will reach out.
 
-**[stopped here]** 
 ## Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
 
-Open `$INGRESS_URL` (echo $INGRESS_URL) if its not loaded and log in with your team's `$USERNAME` and `$PASSWORD`. Type what you want to see in plain words and it returns matching clips:
+From the same page you loaded the VM, click on the the Video Search & Summary button:
+![The VSS link on the VAST workshop home page](docs/images/vss-ui-load.png)
+
+Try a few of the search suggestions to see ranked clips with timestamps and the description Cosmos Reason returned for each one:
 
 ![The VSS search interface with the search box, filters, and suggested prompts](docs/images/vss-search.png)
 
-> [TODO] replace images with a giphy
+<!-- > [TODO] replace w/ giphy / video and search topic -->
 
-Three tabs:
+Explore the three tabs:
 **Search** to query videos, **Explore** to browse what's indexed, and **Dashboard** to get stats.
-
-### What you have
-- A **video ingestion instance** running for your team: the pipeline ingests, understands, and indexes
-  your video.
-    - Cosmos Reason, Cosmos Embed, and YOLO run inside it on CoreWeave GPUs; you
-  don't call them directly, you query the vectors generated.
-- A **VM with Cursor** pre-loaded, including this repo and your credentials and
-  endpoints available as environment variables.
-- **Serverless LLM inference from Weights & Biases** for your app's own logic.
-- A set of **skills** that drive the pipeline in plain language. See
-  [Skills](#3-skills-skills-skills).
-
-### What "done" looks like
-A small app, agent, or a dashboard. A clear use case.
 
 ## 3. Skills, Skills, Skills
 
@@ -114,7 +102,7 @@ what to do when it fails.
 Describe what you want and the coding agent loads the matching skill.
 
 ```
-"re-ingest the warehouse video with a prompt about safety gear"
+"ingest the warehouse video with a prompt about safety gear"
 "find people near the entrance after 6pm"
 "summarize what happens in the warehouse video"
 ```
@@ -142,10 +130,10 @@ again before it becomes searchable. Ask the agent to confirm before you go looki
 > you can't search for it later.
 >
 > On a construction site you might ask it to describe safety gear. In a public space you
-> might ask how many people are in frame. Search the existing index for what your idea
+> might ask to identify people with umbrellas are in frame. Search the existing index for what your idea
 > needs; if it isn't there, that's what re-ingesting is for.
 >
-> Set the prompt with `custom_prompt` (800 characters max), or pick a `scenario` preset.
+> Set the prompt with `custom_prompt`, or pick a `scenario` preset.
 
 ### Retrieval: Searching Video
 
@@ -161,8 +149,10 @@ Worth knowing: `vastdb-read` queries the database directly, for when you want to
 
 ## 4. Test Drive
 
-Before you build anything, run one loop by hand. It tells you the whole stack is working
-and shows you the one thing that decides what you can build.
+STOPPED HERE
+
+Before you build, run one loop by hand. It tells you the whole stack is working
+and helps you understand what you can build.
 
 ### Search what's there
 
@@ -222,12 +212,24 @@ To watch progress, ask `is it done yet?` or open the Dashboard tab.
 Search, ask, re-ingest, search again. Everything you build today sits on those steps. If
 they worked, your stack is healthy and you can start building.
 
-If any of them didn't, run the health check in the Reference section.
+If any of them didn't, run the health check in the [Reference](#reference) section.
+
+### Recap: What you have
+- A **video ingestion instance** running for your team: the pipeline ingests, understands, and indexes
+  your video.
+    - Cosmos Reason, Cosmos Embed, and YOLO run on CoreWeave GPUs; you
+  don't call them directly, you query the vectors generated.
+- A **VM with Cursor** pre-loaded, including this repo and your credentials and
+  endpoints available as environment variables.
+- **Serverless LLM inference** from Weights & Biases by Coreweave for your app's own logic.
+- A set of **skills** that drive the pipeline in plain language. See next section on
+  [Skills](#3-skills-skills-skills).
 
 ## 5. Build
 
+### What "done" looks like
 You have a working index and you know how to query it. The rest of the day is what you
-build on top.
+build on top. A small app, agent, or a dashboard. A clear use case.
 
 ### What video you have
 
@@ -253,6 +255,10 @@ don't, ingest the footage again with a different prompt.
 Search and Q&A come from your VSS instance. Anything your app decides on top of that,
 classifying results, drafting a summary, choosing an action, runs on serverless LLM
 inference from Weights & Biases.
+
+> [TODO] Reference or point to the actual Serverless Inference endpoint(s) here — how to
+> get the URL/key from env vars, and how to point your own app's reasoning or agent at it
+> if you need one.
 
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
