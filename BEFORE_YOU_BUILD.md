@@ -12,7 +12,7 @@
 
 **5. Bring your ideas.** It's the most useful thing you can prepare. See more below.
 
-For the build day, you need to bring your laptop and charger.
+For the build day, you need to bring your laptop and charger. A personal laptop is preferred over a work laptop, since a work laptop's VPN or IT restrictions may get in the way.
 
 ## What you're building
 
@@ -28,13 +28,6 @@ For the build day, you need to bring your laptop and charger.
 - **[NVIDIA VSS Blueprint](https://docs.nvidia.com/vss/latest/)** turns raw video into something searchable. [NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/) describes and generates vector embeddings for each video segment, and [YOLO](https://docs.ultralytics.com/models/yolo11#overview) finds objects.
 - **[CoreWeave](https://coreweave.com/)** provides the GPUs the models run on. [Weights & Biases](https://wandb.ai/) by CoreWeave provides [serverless LLM inference](https://docs.wandb.ai/inference) for your own app's reasoning and experiment tracking, observability, and auto research through ARIA and Weave.
 - **[Cursor](https://cursor.com/)** is how you build, and where you'll spend the day. We'll share skills that drive the whole stack in plain language, so you describe what you want instead of wrangling endpoints.
-
-> 💡 Worth twenty minutes beforehand if you haven't used Cursor: [Cursor CLI docs](https://cursor.com/docs/cli/overview). Try it on your machine first:
-> ```sh
-> curl https://cursor.com/install -fsS | bash
-> agent login
-> agent                    # interactive session
-> ```
 
 ## Think about your use case
 
