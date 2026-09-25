@@ -44,7 +44,9 @@ credentials, so anything a teammate ingests shows up in every team members searc
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
-<p align="center"><img src="docs/videos/cursor-signup-2.gif" alt="Signing in to Cursor IDE" width="75%"></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/60670a38-c227-4867-9815-82f00a4d2a9d" controls width="75%">
+  <a href="https://github.com/user-attachments/assets/60670a38-c227-4867-9815-82f00a4d2a9d">Watch how to sign in to Cursor</a>
+</video></p>
 
 > 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
 
@@ -64,7 +66,9 @@ Once it's running, set the model to Auto to save tokens:
 
 Here is a video overview of the steps from this section:
 
-<p align="center"><a href="https://drive.google.com/file/d/17bFHbTp_pgHSe7xLpc6JRZmBBu77EJYa/view"><img src="https://drive.google.com/thumbnail?id=17bFHbTp_pgHSe7xLpc6JRZmBBu77EJYa&sz=w1000" alt="Watch the Launch VM walkthrough" width="75%"></a></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/f2a3673b-24fc-43b2-b31a-0b5bb44c004d" controls width="75%">
+  <a href="https://github.com/user-attachments/assets/f2a3673b-24fc-43b2-b31a-0b5bb44c004d">Watch the Launch VM walkthrough</a>
+</video></p>
 
 > 💡 **Useful VM Keybindings.**
 > - **Copy and paste.** In the terminal it's `Ctrl+Shift+C` and `Ctrl+Shift+V`
