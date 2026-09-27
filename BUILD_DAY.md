@@ -28,11 +28,15 @@ For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-
 
 ## 2. Launch VM
 
-<a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! No setup. Nothing to install, no config to paste :)
+<a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! 
+
+The load the VM, click on `Open Desktop` button:
+<p align="center"><img src="docs/images/vm-load.png" alt="The VM link on the VAST workshop home page" width="75%"></p>
+
 
 > 💡 All commands run on the workshop VM via the terminal in your browser. Nothing runs on your laptop.
 
-Wait for the VM to load. That's it. You're in!
+Wait for the VM to load. That's it. You're in! No setup. Nothing to install, no config to paste :) 
 
 ### Your team
 > ⚠️ **IMPORTANT: Ensure you select the assigned team (e.g. `team-1`) so each team members accesses the same video ingestion pipeline.**
@@ -44,8 +48,8 @@ credentials, so anything a teammate ingests shows up in every team members searc
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
-<p align="center"><video src="https://github.com/user-attachments/assets/60670a38-c227-4867-9815-82f00a4d2a9d" controls width="75%">
-  <a href="https://github.com/user-attachments/assets/60670a38-c227-4867-9815-82f00a4d2a9d">Watch how to sign in to Cursor</a>
+<p align="center"><video src="https://github.com/user-attachments/assets/4c3edb5c-7d55-4e73-bb61-3986baf4d010" controls width="75%">
+  <a href="https://github.com/user-attachments/assets/4c3edb5c-7d55-4e73-bb61-3986baf4d010">Watch how to sign in to Cursor</a>
 </video></p>
 
 > 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
@@ -66,8 +70,8 @@ Once it's running, set the model to Auto to save tokens:
 
 Here is a video overview of the steps from this section:
 
-<p align="center"><video src="https://github.com/user-attachments/assets/f2a3673b-24fc-43b2-b31a-0b5bb44c004d" controls width="75%">
-  <a href="https://github.com/user-attachments/assets/f2a3673b-24fc-43b2-b31a-0b5bb44c004d">Watch the Launch VM walkthrough</a>
+<p align="center"><video src="https://github.com/user-attachments/assets/73eace1b-c4ca-42f7-a59f-5a6e77e34a93" controls width="75%">
+  <a href="https://github.com/user-attachments/assets/73eace1b-c4ca-42f7-a59f-5a6e77e34a93">Watch the Launch VM walkthrough</a>
 </video></p>
 
 > 💡 **Useful VM Keybindings.**
