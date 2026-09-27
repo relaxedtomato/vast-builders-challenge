@@ -30,7 +30,7 @@ For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-
 
 <a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! 
 
-The load the VM, click on `Open Desktop` button:
+To load the VM, click the `Open Desktop` button:
 <p align="center"><img src="docs/images/vm-load.png" alt="The VM link on the VAST workshop home page" width="75%"></p>
 
 
