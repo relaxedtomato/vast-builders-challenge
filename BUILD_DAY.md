@@ -261,12 +261,12 @@ don't, ingest the footage again with a different prompt.
 ### LLM access
 
 Search and Q&A come from your VSS instance. Anything your app decides on top of that,
-classifying results, drafting a summary, choosing an action, runs on serverless LLM
-inference from Weights & Biases.
+classifying results, drafting a summary, choosing an action, runs on <a href="https://docs.wandb.ai/inference" target="_blank" rel="noopener">serverless LLM inference from Weights & Biases</a>.
 
-> [TODO] Reference or point to the actual Serverless Inference endpoint(s) here — how to
-> get the URL/key from env vars, and how to point your own app's reasoning or agent at it
-> if you need one.
+Your `WANDB_` keys are already in your environment. Point
+your own app's reasoning or agent at the inference endpoint using those; see the
+<a href="https://docs.wandb.ai/inference/prerequisites/" target="_blank" rel="noopener">prerequisites guide</a>
+for how an OpenAI-compatible client picks up the API key to get started.
 
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
