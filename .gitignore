@@ -1,7 +1,15 @@
+# --- root .md files: whitelist, not blacklist ---
+# Only these root-level docs are attendee-facing / public. Any new root .md is internal
+# by default and must be explicitly un-ignored below to ship. Doesn't affect .cursor/,
+# where every .md is a shipped skill.
+/*.md
+!/README.md
+!/BEFORE_YOU_BUILD.md
+!/BUILD_DAY.md
+!/HACKATHON_GUIDELINES.md
+
 # --- internal / agent context (not for attendees) ---
-CLAUDE.md
 .claude/
-ORGANIZER_PREP.md
 
 # --- secrets & real per-team configs (keep only *.example tracked) ---
 .env
@@ -35,21 +43,5 @@ Thumbs.db
 tmp/
 resp.json
 
-# --- internal decision log (not for attendees) ---
-DECISIONS.md
-
-# --- internal review notes (not for attendees) ---
-build-day-review.md
-
-# --- team submissions contain personal emails; never commit ---
-SUBMISSION.md
-
-# --- generated TODO digest ---
-TODOS.md
-
-
 # --- organizer verification script (internal) ---
 verify-vm.sh
-
-# --- internal venue checklist ---
-VENUE_CHECKLIST.md

@@ -1,12 +1,8 @@
 # Builders Challenge Reference
 
-Ten teams. Ten isolated **VAST Video Search System (VSS)** stacks. One shared idea: use video understanding + search + metadata to build something useful.
-
-Each team gets its own pipeline, storage, UI, and credentials (`/config/<your-team>.config` on the VM). Your data stays in your namespace — you are not competing for someone else’s archive.
-
-Each team gets a git repo with the **Cursor skills** for VSS.
-
-- The VM provides `/config/<your-team>.config`, `/config/kubeconfig`, `/config/vss-cli-secret.yaml`, and `/config/backend-secret.yaml`. Keep them outside the repository.
+A deeper dive into the architecture behind [BUILD_DAY.md](BUILD_DAY.md) — the models, the
+DataEngine pipeline, and the full video corpus. Team setup and credentials are covered
+there; this doc doesn't repeat them.
 
 ---
 
@@ -234,27 +230,7 @@ Start with **Pack A (Vehicle & Pedestrian)** or **Pack C (Warehouse Safety)** �
 
 ## You can do everything from Cursor (skills)
 
-You do **not** need to memorize REST paths. In Cursor, describe what you want; the agent should pick the matching skill.
-
-Useful skills (start here):
-
-
-| Skill                       | Use it for                                                |
-| --------------------------- | --------------------------------------------------------- |
-| `retrieval/login`           | Get a JWT with your team username/password                |
-| `retrieval/list-metadata`   | Discover filterable fields and legal values               |
-| `retrieval/search`          | Semantic / hybrid search + optional LLM synthesis         |
-| `retrieval/suggest-prompts` | AI-generated search chips & key events                    |
-| `retrieval/dashboard`       | Counts, quality, objects, ingest vs index health          |
-| `retrieval/agent-qa`        | Natural-language Q&A grounded in the archive              |
-| `ingest/reingest-videos`    | Re-ingest an indexed video/stream (hackathon ingest path) |
-| `ingest/reingest-chunk`     | Re-ingest one specific Explore card / chunk               |
-
-
-And a lot more :)  
-Ask Cursor to discover the skills. He’s your best friend 🙂
-
-Full skill index: `[.cursor/README.md](.cursor/README.md)`
+You do **not** need to memorize REST paths. In Cursor, describe what you want; the agent should pick the matching skill. Full skill index: [.cursor/README.md](.cursor/README.md).
 
 ---
 
@@ -287,12 +263,7 @@ Write full prompts in Cursor: name what you want, point at your team config, and
 > Keep `parking-cam-private` out of any public demo.  
 > *(Cursor will use skills: `retrieval/login`, `retrieval/dashboard`, `retrieval/search`, `retrieval/videos`)*
 
-### Your turn
-
-1. Open your `INGRESS_URL` and log in with the team user from your config file.
-2. Pick a **demo pack** from the table above (good first picks: **Vehicle & Pedestrian** or **Warehouse Safety**), search with the example queries, then re-ingest with the prompt/metadata you need.
-3. Ask Cursor to discover skills, then write prompts in this style for **your** scenario.
-4. Ship something that runs: search + metadata (or detections / dashboard / agent) in a small vertical — not slides.
+Steps for getting started are in [BUILD_DAY.md](BUILD_DAY.md) §4 (Test Drive) and §5 (Build).
 
 ---
 
