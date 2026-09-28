@@ -25,6 +25,9 @@ stack. The stack is already deployed. The team builds on top of it; they do not 
 - `config.example` documents what each variable is for. Read it when a name is unclear.
 - Never print, log, or commit secrets, and never commit real values from `config`.
 - If search returns nothing, check the filter values and whether ingestion is still running before assuming a bug.
+- Build a web app, CLI, or script — not a native desktop or mobile app. The VM is a
+  browser-based session with no app store or mobile device attached, so a native app can't
+  be demoed or judged. If asked to build one, redirect to a web app instead.
 
 ## When stuck
 
