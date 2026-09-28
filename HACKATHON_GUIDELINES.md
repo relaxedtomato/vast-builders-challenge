@@ -1,4 +1,4 @@
-# VSS Hackathon Guidelines
+# Builders Challenge Reference
 
 Ten teams. Ten isolated **VAST Video Search System (VSS)** stacks. One shared idea: use video understanding + search + metadata to build something useful.
 
@@ -14,27 +14,25 @@ Each team gets a git repo with the **Cursor skills** for VSS.
 
 Inference for the pipeline runs on shared **GPU endpoints** (NVIDIA Cosmos + YOLO + Canary). You don’t deploy the models yourself.
 
-| Model | Role in VSS | Endpoint |
+| Model | Role in VSS | Endpoint (env var, in `/config/<team>.config`) |
 |-------|-------------|----------|
-| **NVIDIA Cosmos Reason2** (`nvidia/cosmos-reason2-8b`) | Video understanding / reasoning over segments | `http://166.19.38.112:8001` |
-| **YOLO11** (`yolo11s`, Ultralytics) | Object detection (bounding boxes / labels) | `http://166.19.38.112:8002` |
-| **NVIDIA Cosmos Embed1** (`nvidia/cosmos-embed1`) | Text and visual embeddings (256-dim) for hybrid search | `http://166.19.38.112:8003` |
-| **NVIDIA Canary-1B** (`nvidia/canary-1b`) | Speech-to-text (ASR) + speech translation — **not** Cosmos; NeMo audio model | `http://166.19.38.112:8004` |
+| **NVIDIA Cosmos3-Reason** (`nvidia/cosmos3-reason`) | Video understanding / reasoning over segments | `$COSMOS3_REASON_URL` |
+| **YOLO11** (`yolo11s`, Ultralytics) | Object detection (bounding boxes / labels) | `$YOLO_URL` |
+| **NVIDIA Cosmos Embed1** (`nvidia/cosmos-embed1`) | Text and visual embeddings (256-dim) for hybrid search | `$COSMOS_EMBED1_URL` |
+| **NVIDIA Canary-1B** (`nvidia/canary-1b`) | Speech-to-text (ASR) + speech translation — **not** Cosmos; NeMo audio model | `$CANARY_1B_URL` |
 
-Host: `166.19.38.112`. The bearer token is in `/config/<team>.config` (`GPU_BEARER_TOKEN`). Ask Cursor / see `.cursor/skills/gpu/` for how to call each model.
+Each model has its own host and port; don't assume they share a host. No auth token is
+needed to call them. Ask Cursor / see `.cursor/skills/gpu/` for how to call each model.
 
-Ingest and search call **Reason2**, **YOLO11**, and **Embed1** through your pipeline and backend today.
+Ingest and search call **Cosmos3-Reason**, **YOLO11**, and **Embed1** through your pipeline and backend today.
 
-**Canary-1B** is on the same GPU host (`:8004`) but is **not wired into the current VSS pipeline**. If you want audio transcripts, spoken-word search, or speech translation in your demo — let your imagination go and hook it in. **Ask Cursor how to use Canary-1B** against your stack and skills.
+**Canary-1B** is not wired into the current VSS pipeline. If you want audio transcripts, spoken-word search, or speech translation in your demo — let your imagination go and hook it in. **Ask Cursor how to use Canary-1B** against your stack and skills.
 
 ---
 
 ## Data Engine
 
 ### VSS Blueprint
-
-DataEngine url UI:
-https://10.146.15.201/#/login/builder-series-poc
 
 Your team’s ingest runs as a **VAST DataEngine** serverless pipeline. A video chunk lands in S3, then functions run in sequence until searchable rows exist in VastDB.
 
@@ -54,7 +52,7 @@ A separate **events / prompt-suggester** function runs on a schedule and feeds U
 |----------|--------------|
 | **Segmenter** | Splits each uploaded chunk into short fixed-length clips and writes them to the segments bucket. **Builders challenge:** organizers already used the Segmenter to pre-ingest your corpus. During the challenge you **only re-ingest** data that is already segmented and indexed — the Segmenter is **not** in the path you run. |
 | **Detector** | Runs **YOLO11** on each segment and records object classes, counts, and bbox sidecars. |
-| **Reasoner** | Calls **NVIDIA Cosmos Reason2** to write a searchable natural-language description of the segment. |
+| **Reasoner** | Calls **NVIDIA Cosmos3-Reason** to write a searchable natural-language description of the segment. |
 | **Embedder** | Calls **NVIDIA Cosmos Embed1** to build text (and visual) vectors for hybrid search. |
 | **VastDB writer** | Persists embeddings, reasoning, detections, and metadata as a row in your VastDB collection. |
 | **Events (prompt-suggester)** | Periodically scans recent segments and writes suggested search prompts / key events for the UI. |

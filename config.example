@@ -42,16 +42,19 @@ WANDB_TEAM=<wandb-team>
 WANDB_PROJECT=<wandb-project>
 
 # ---- GPU model endpoints ----
-# Used by the gpu/ skills. The token is on the VM in /config/<team>.config; it is never
-# in this repo. Never echo it.
-GPU_BEARER_TOKEN=<gpu-bearer-token>
+# Used by the gpu/ skills. Each model has its own host and port; they are not the same
+# across models, so don't derive one from another. No auth token is needed to call them.
+COSMOS3_REASON_URL=<http://host:port>
+YOLO_URL=<http://host:port>
+COSMOS_EMBED1_URL=<http://host:port>
+CANARY_1B_URL=<http://host:port>
 
 # Model ids the smoke tests interpolate. If these are unset, ask the endpoint instead:
-#   curl -s "$ENDPOINT/v1/models" -H "Authorization: Bearer $GPU_BEARER_TOKEN"
-# and use the id it returns. Reason2 and Embed1 serve /v1/models; YOLO and Canary may not,
+#   curl -s "$ENDPOINT/v1/models"
+# and use the id it returns. Cosmos3-Reason and Embed1 serve /v1/models; YOLO and Canary may not,
 # and a 404 there does not mean the model is down.
 # Known-good ids (public model names, not secrets):
-COSMOS_REASON2_MODEL=nvidia/cosmos-reason2-8b
+COSMOS3_REASON_MODEL=nvidia/cosmos3-reason
 COSMOS_EMBED1_MODEL=nvidia/cosmos-embed1
 # Canary's id was not in the team config. Left unset on purpose: discover it from
 # /v1/models rather than guessing. Health checks pass without it; only transcription

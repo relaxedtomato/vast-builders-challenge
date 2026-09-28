@@ -287,7 +287,7 @@ Then ask the agent:
 check that everything is working: log in, and show me the dashboard
 ```
 
-If it fails, or you need more help, run `/ask-cosmos`. It writes up the problem with your team name so you can post it on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll drop by.
+If it fails, or you need more help, run `/ask-cosmos`. The skill shares a snippet with relevant details, that you can add to a post on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll follow up.
 
 ### Your team's values
 

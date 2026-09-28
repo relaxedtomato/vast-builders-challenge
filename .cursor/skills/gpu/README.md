@@ -1,8 +1,8 @@
 ---
 name: gpu-models
 description: >-
-  Explain and call the shared VSS GPU models (Cosmos Reason2, YOLO11, Cosmos Embed1,
-  Canary-1B). Load the GPU bearer token from /config/<team>.config. Use for
+  Explain and call the shared VSS GPU models (Cosmos3-Reason, YOLO11, Cosmos Embed1,
+  Canary-1B). Load each model's URL from /config/<team>.config. Use for
   health checks, smoke tests, wiring Canary into a custom demo, or debugging empty
   reasoning / embeddings / detections.
 ---
@@ -16,24 +16,23 @@ mapfile -t TEAM_CONFIGS < <(find /config -maxdepth 1 -type f -name '*.config' | 
 (( ${#TEAM_CONFIGS[@]} == 1 )) || { echo "expected exactly one /config/*.config"; exit 1; }
 TEAM_CONFIG="${TEAM_CONFIGS[0]}"
 set -a && source "$TEAM_CONFIG" && set +a
-GPU_HOST=166.19.38.112
-COSMOS_REASON2_URL=http://${GPU_HOST}:8001
-YOLO_URL=http://${GPU_HOST}:8002
-COSMOS_EMBED1_URL=http://${GPU_HOST}:8003
-CANARY_1B_URL=http://${GPU_HOST}:8004
-AUTH=(-H "Authorization: Bearer ${GPU_BEARER_TOKEN}")
+: "${COSMOS3_REASON_URL:?COSMOS3_REASON_URL not set in team config}"
+: "${YOLO_URL:?YOLO_URL not set in team config}"
+: "${COSMOS_EMBED1_URL:?COSMOS_EMBED1_URL not set in team config}"
+: "${CANARY_1B_URL:?CANARY_1B_URL not set in team config}"
 ```
 
-If `/config/<team>.config` is missing or has no real `GPU_BEARER_TOKEN`, ask the user to put/fix it there. Do not invent or print the token.
+Each model has its own host and port; don't derive one endpoint from another. No auth
+token is needed to call them.
 
 ## Quick map
 
-| Model | Env URL | Port | In default pipeline? | Skill follow-ups |
-|-------|---------|------|----------------------|------------------|
-| Cosmos Reason2 | `$COSMOS_REASON2_URL` | 8001 | Yes — reasoner + backend LLM | [model-health](model-health/SKILL.md), [model-smoke-test](model-smoke-test/SKILL.md) |
-| YOLO11 (Ultralytics) | `$YOLO_URL` | 8002 | Yes — detector | same |
-| Cosmos Embed1 | `$COSMOS_EMBED1_URL` | 8003 | Yes — embedder + search | same |
-| Canary-1B (Riva / NeMo ASR) | `$CANARY_1B_URL` | 8004 | **No** — optional demos | invent with Cursor |
+| Model | Env URL | In default pipeline? | Skill follow-ups |
+|-------|---------|----------------------|------------------|
+| Cosmos3-Reason | `$COSMOS3_REASON_URL` | Yes — reasoner + backend LLM | [model-health](model-health/SKILL.md), [model-smoke-test](model-smoke-test/SKILL.md) |
+| YOLO11 (Ultralytics) | `$YOLO_URL` | Yes — detector | same |
+| Cosmos Embed1 | `$COSMOS_EMBED1_URL` | Yes — embedder + search | same |
+| Canary-1B (Riva / NeMo ASR) | `$CANARY_1B_URL` | **No** — optional demos | invent with Cursor |
 
 ## Health checks (verified — different per NIM)
 
@@ -41,14 +40,14 @@ If `/config/<team>.config` is missing or has no real `GPU_BEARER_TOKEN`, ask the
 
 | Model | Pass health with | Ignore (404 is normal) |
 |-------|------------------|------------------------|
-| Reason2 | `/v1/models`, `/v1/health/ready`, `/v1/health/live` | `/v1/health` |
+| Cosmos3-Reason | `/v1/models`, `/v1/health/ready`, `/v1/health/live` | `/v1/health` |
 | YOLO11 | **`/healthz`** only (`ok` + `model_loaded`) | `/v1/models`, `/v1/health/*` |
 | Embed1 | `/v1/models`, `/v1/health/ready`, `/v1/health/live` | `/v1/health` |
 | Canary | `/v1/health/ready`, `/v1/health/live` | **`/v1/models`**, `/healthz` |
 
 ---
 
-## 1. NVIDIA Cosmos Reason2 (`cosmos-reason2-8b`)
+## 1. NVIDIA Cosmos3-Reason (`cosmos3-reason`)
 
 **What it is:** Vision-language model (VLM). Understands video/image + text; writes natural-language descriptions and answers.
 
@@ -57,10 +56,10 @@ If `/config/<team>.config` is missing or has no real `GPU_BEARER_TOKEN`, ask the
 **API:** OpenAI-compatible chat
 
 ```bash
-curl -s -X POST "${COSMOS_REASON2_URL}/v1/chat/completions" \
-  "${AUTH[@]}" -H "Content-Type: application/json" \
+curl -s -X POST "${COSMOS3_REASON_URL}/v1/chat/completions" \
+  -H "Content-Type: application/json" \
   -d "{
-    \"model\": \"${COSMOS_REASON2_MODEL}\",
+    \"model\": \"${COSMOS3_REASON_MODEL}\",
     \"messages\": [{\"role\":\"user\",\"content\":\"Reply with the single word: OK\"}],
     \"max_tokens\": 16, \"temperature\": 0
   }"
@@ -75,7 +74,7 @@ Production-style content can mix text + video:
 ]
 ```
 
-Health: `GET ${COSMOS_REASON2_URL}/v1/models`, `/v1/health/ready`, `/v1/health/live` (all with bearer).
+Health: `GET ${COSMOS3_REASON_URL}/v1/models`, `/v1/health/ready`, `/v1/health/live`.
 
 ---
 
@@ -90,7 +89,7 @@ Health: `GET ${COSMOS_REASON2_URL}/v1/models`, `/v1/health/ready`, `/v1/health/l
 ```bash
 B64=$(base64 -i clip.mp4 | tr -d '\n')
 curl -s -X POST "${YOLO_URL}/v1/infer" \
-  "${AUTH[@]}" -H "Content-Type: application/json" \
+  -H "Content-Type: application/json" \
   -d "{\"video_base64\":\"$B64\",\"filename\":\"clip.mp4\",\"include_frames\":true}"
 ```
 
@@ -110,7 +109,7 @@ Expect fields like `perception_ok` / `object_classes` / `object_counts` / `frame
 
 ```bash
 curl -s -X POST "${COSMOS_EMBED1_URL}/v1/embeddings" \
-  "${AUTH[@]}" -H "Content-Type: application/json" \
+  -H "Content-Type: application/json" \
   -d "{\"input\":\"a person walking\",\"model\":\"${COSMOS_EMBED1_MODEL}\",\"request_type\":\"query\",\"encoding_format\":\"float\"}" \
   | python3 -c "import sys,json;d=json.load(sys.stdin)['data'][0]['embedding'];print('dim=',len(d))"
 ```
@@ -128,8 +127,8 @@ Expect `dim= 256`. Video: `input` as `data:video/mp4;base64,...` with `request_t
 **Health (verified):** only these:
 
 ```bash
-curl -s "${AUTH[@]}" "$CANARY_1B_URL/v1/health/ready"   # {"status":"ready"}
-curl -s "${AUTH[@]}" "$CANARY_1B_URL/v1/health/live"    # {"status":"live"}
+curl -s "$CANARY_1B_URL/v1/health/ready"   # {"status":"ready"}
+curl -s "$CANARY_1B_URL/v1/health/live"    # {"status":"live"}
 ```
 
 `/v1/models` returns **404** on this NIM — **do not** treat that as down. Optional: `/docs`, `/openapi.json`.
@@ -138,7 +137,6 @@ curl -s "${AUTH[@]}" "$CANARY_1B_URL/v1/health/live"    # {"status":"live"}
 
 ```bash
 curl -s -X POST "${CANARY_1B_URL}/v1/audio/transcriptions" \
-  "${AUTH[@]}" \
   -F "file=@clip_audio.wav" \
   -F "model=${CANARY_1B_MODEL}"
 ```
@@ -150,11 +148,11 @@ Wire results into your demo (metadata, UI, new function). Ask Cursor; use Bluepr
 ## Agent instructions
 
 1. Find the single `/config/*.config` team file; if missing or ambiguous, ask the user. Never search the repo's `team-configs/`.
-2. Source it and require a non-empty, non-placeholder `GPU_BEARER_TOKEN`; never copy it into the repository.
-3. Always send `Authorization: Bearer $GPU_BEARER_TOKEN`.
-4. For pipeline debugging: Reason2 / YOLO / Embed1 first (`gpu-model-health`, then `gpu-model-smoke-test`).
+2. Source it and require each model's URL to be set and non-placeholder; never copy them into the repository.
+3. No auth header is needed to call the models.
+4. For pipeline debugging: Cosmos3-Reason / YOLO / Embed1 first (`gpu-model-health`, then `gpu-model-smoke-test`).
 5. For Canary: explain it is optional ASR; probe the endpoint; help the user design a custom flow — never claim it runs in default ingest.
-6. Never invent alternate hosts/ports; never echo the bearer token.
+6. Never invent alternate hosts/ports.
 
 ## Related skills
 
