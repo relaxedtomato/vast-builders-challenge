@@ -48,8 +48,8 @@ credentials, so anything a teammate ingests shows up in every team members searc
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
-<p align="center"><video src="https://github.com/user-attachments/assets/4c3edb5c-7d55-4e73-bb61-3986baf4d010" controls width="75%">
-  <a href="https://github.com/user-attachments/assets/4c3edb5c-7d55-4e73-bb61-3986baf4d010">Watch how to sign in to Cursor</a>
+<p align="center"><video src="https://github.com/user-attachments/assets/a77e2fb2-7ad1-49a8-b824-2af4ce1a58d5" controls width="75%">
+  <a href="https://github.com/user-attachments/assets/a77e2fb2-7ad1-49a8-b824-2af4ce1a58d5">Watch how to sign in to Cursor</a>
 </video></p>
 
 > 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
