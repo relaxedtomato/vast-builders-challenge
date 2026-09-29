@@ -30,7 +30,7 @@ For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-
 
 <a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! 
 
-To load the VM, click the `Open Desktop` button:
+To load the VM, click on `Open Desktop`:
 <p align="center"><img src="docs/images/vm-load.png" alt="The VM link on the VAST workshop home page" width="75%"></p>
 
 
@@ -45,6 +45,9 @@ You build as a team. Your team shares one video ingestion instance, one index, a
 credentials, so anything a teammate ingests shows up in every team members searches.
 
 ### Coding Agent
+
+> 💡 No credits? <a href="https://forms.gle/AVta9RRTmfdeUNX26" target="_blank" rel="noopener">request Cursor credits</a>.
+
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
@@ -87,10 +90,10 @@ Run the health check in the [Reference](#reference) section. If it fails, or you
 ## Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
 
-From the same page you loaded the VM, click on the the Video Search & Summary button:
+From the same page you loaded the VM, click on Video Search & Summary:
 <p align="center"><img src="docs/images/vss-ui-load.png" alt="The VSS link on the VAST workshop home page" width="75%"></p>
 
-The VSS login information is `USERNAME` and `PASSWORD`, which you can access by typing `echo $USERNAME` and `echo $PASSWORD` in the VM terminal.
+If presented with a login screen, use `USERNAME` and `PASSWORD`, which you can access by typing `echo $USERNAME` and `echo $PASSWORD` in the VM terminal.
 
 Try a few of the search suggestions to see ranked clips with timestamps and the description Cosmos Reason returned for each one:
 
@@ -130,7 +133,7 @@ again with a different prompt, so the descriptions match what you're building.
 | `reingest-videos` | Re-run a whole indexed video with a new prompt or metadata |
 | `reingest-chunk` | Re-run one specific chunk, found by filename, scene, date, or camera |
 
-**Re-ingesting takes a few minutes.** Every segment is described, embedded, and detected
+**Ingesting takes a few minutes.** Every segment is described, embedded, and detected
 again before it becomes searchable. Ask the agent to confirm before you go looking.
 
 > 💡 **The prompt decides what gets indexed.** Cosmos Reason describes every segment
@@ -139,9 +142,13 @@ again before it becomes searchable. Ask the agent to confirm before you go looki
 >
 > On a construction site you might ask it to describe safety gear. In a public space you
 > might ask to identify people with umbrellas are in frame. Search the existing index for what your idea
-> needs; if it isn't there, that's what re-ingesting is for.
+> needs; if it isn't there, that's what ingesting is for.
 >
-> Set the prompt with `custom_prompt`, or pick a `scenario` preset.
+> Tell the agent what you want described, in your own words, or one of the built-in preset
+> scenarios. Ask the agent to list the scenarios (`list-metadata` looks these up live) if
+> you want to see what's available. We'll try this out in the next section.
+>
+> Not clear? Flag down someone to clarify.
 
 ### Retrieval: Searching Video
 
@@ -197,10 +204,10 @@ Counts of people. What someone is carrying. Whether a vehicle stopped.
 If it comes back empty, that's not a broken search. It means the ingestion prompt never
 asked about it, so nothing was written down.
 
-### Re-ingest with your prompt
+### Ingest with your prompt
 
 ```
-re-ingest <that video> with a prompt that describes <what your app needs>
+ingest <that video> with a prompt that describes <what your app needs>
 ```
 
 The agent loads `reingest-videos`, shows you what it's about to re-run, and asks for the
@@ -211,11 +218,11 @@ To watch progress, ask `is it done yet?` or open the Dashboard tab:
 ![The VSS UI dashboard showing segment counts, indexed clips, and ingest quality](docs/images/vss-dashboard.png)
 
 > 💡 That gap, between what you searched for and what the prompt asked about, is the thing
-> to keep in mind all day. Everything you can build depends on what the descriptions say.
+> to keep in mind. Everything you can build depends on what the descriptions say.
 
 ### That's the whole loop
 
-Search, ask, re-ingest, search again. Everything you build today sits on those steps. If
+Search, ask, ingest, search again. Everything you build today sits on those steps. If
 they worked, your stack is healthy and you can start building.
 
 If any of them didn't, run the health check in the [Reference](#reference) section.
@@ -264,9 +271,7 @@ Search and Q&A come from your VSS instance. Anything your app decides on top of 
 classifying results, drafting a summary, choosing an action, runs on <a href="https://docs.wandb.ai/inference" target="_blank" rel="noopener">serverless LLM inference from Weights & Biases</a>.
 
 Your `WANDB_` keys are already in your environment. Point
-your own app's reasoning or agent at the inference endpoint using those; see the
-<a href="https://docs.wandb.ai/inference/prerequisites/" target="_blank" rel="noopener">prerequisites guide</a>
-for how an OpenAI-compatible client picks up the API key to get started.
+your own app's reasoning or agent at the inference endpoint using those.
 
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.

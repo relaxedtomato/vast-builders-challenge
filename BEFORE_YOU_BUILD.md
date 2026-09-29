@@ -4,7 +4,7 @@
 
 **1. [Join the Cosmos Community](https://community.vastdata.com?utm_campaign=event26-builders-challenge).** Sign up to access the Builders Challenge infrastructure. You'll connect to the VAST environment (no local setup required).
 
-**2. [Sign up for Cursor](https://cursor.com/), using the email you applied with.** We add your credits to the email you sign up with before the day. No sign up means no credits.
+**2. [Sign up for Cursor](https://cursor.com/), using the personal email you applied with.** We add your credits to the personal email you sign up with before the day. No sign up means no credits. **A personal email is preferred to avoid IT issues.**
 
 **3. Create a [wandb account](https://wandb.ai/).** We will provide access to serverless inference at the start of the event to get you started. If you need more credits during the event, the Weights & Biases by CoreWeave team will use your account email to update your subscription as needed.
 
@@ -25,7 +25,7 @@ For the build day, you need to bring your laptop and charger. A personal laptop 
 ## The Builders Stack
 
 - **[VAST AI OS](https://www.vastdata.com/platform/ai-os)** implements the video ingestion pipeline at scale. Vectors, metadata, and video data are in one unified platform.
-- **[NVIDIA VSS Blueprint](https://docs.nvidia.com/vss/latest/)** turns raw video into something searchable. [NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/) describes and generates vector embeddings for each video segment, and [YOLO](https://docs.ultralytics.com/models/yolo11#overview) finds objects.
+- **[NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/)** describes and generates vector embeddings for each video segment, and **[YOLO](https://docs.ultralytics.com/models/yolo11#overview)** finds objects.
 - **[CoreWeave](https://coreweave.com/)** provides the GPUs the models run on. [Weights & Biases](https://wandb.ai/) by CoreWeave provides [serverless LLM inference](https://docs.wandb.ai/inference) for your own app's reasoning and experiment tracking, observability, and auto research through ARIA and Weave.
 - **[Cursor](https://cursor.com/)** is how you build, and where you'll spend the day. We'll share skills that drive the whole stack in plain language, so you describe what you want instead of wrangling endpoints.
 
