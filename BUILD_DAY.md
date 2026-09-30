@@ -2,7 +2,7 @@
 
 Spend the day building with video:
 
-<p align="center"><img src="docs/images/flow.svg" alt="Day flow: Kickoff, Launch VM, Skills, Test Drive, then most of the day on Build, then Ship" width="75%"></p>
+<p align="center"><img src="docs/images/flow.svg" alt="Day flow: Kickoff, Launch VM, Skills, Test Drive, then most of the day on Build, then Ship" width="90%"></p>
 
 The infrastructure is already running, so you skip straight to the interesting part: turning hours of video into something that searches, reasons, and acts.
 
@@ -18,20 +18,20 @@ when something matters.
 ### The Builders Stack
 Video runs through a pipeline that understands and indexes it:
 
-<p align="center"><img src="docs/images/stack.svg" alt="The Builders Stack: ingest, understand, index, and search or ask are pre-built and running on VAST S3, DataEngine, DataBase and CoreWeave GPUs (Cosmos Reason, Cosmos Embed, YOLO); you build something cool with Cursor that uses Weights & Biases Serverless Inference" width="75%"></p>
+<p align="center"><img src="docs/images/stack.svg" alt="The Builders Stack: ingest, understand, index, and search or ask are pre-built and running on VAST S3, DataEngine, DataBase and CoreWeave GPUs (Cosmos Reason, Cosmos Embed, YOLO); you build something cool with Cursor that uses Weights & Biases Serverless Inference" width="90%"></p>
 
 Everything under "pre-built, already running" is done for you. The pipeline ingests,
 understands, and indexes video, and the models it calls are already deployed and
 serving. You build something cool that searches and acts.
 
-For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
+> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
 
 ## 2. Launch VM
 
 <a href="https://community.vastdata.com/t/about-the-workshop-category/1969?utm_campaign=event26-builders-challenge" target="_blank" rel="noopener">Visit and join Cosmos</a> to access the VM and ask questions! 
 
 To load the VM, click on `Open Desktop`:
-<p align="center"><img src="docs/images/vm-load.png" alt="The VM link on the VAST workshop home page" width="75%"></p>
+<p align="center"><img src="docs/images/vm-load.png" alt="The VM link on the VAST workshop home page" width="90%"></p>
 
 
 > 💡 All commands run on the workshop VM via the terminal in your browser. Nothing runs on your laptop.
@@ -46,21 +46,21 @@ credentials, so anything a teammate ingests shows up in every team members searc
 
 ### Coding Agent
 
-> 💡 No credits? <a href="https://forms.gle/AVta9RRTmfdeUNX26" target="_blank" rel="noopener">request Cursor credits</a>.
+> 💡 Need credits? <a href="https://forms.gle/AVta9RRTmfdeUNX26" target="_blank" rel="noopener">request Cursor credits (and top-ups)</a>.
 
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
 
-<p align="center"><video src="https://github.com/user-attachments/assets/a77e2fb2-7ad1-49a8-b824-2af4ce1a58d5" controls width="75%">
+<p align="center"><video src="https://github.com/user-attachments/assets/a77e2fb2-7ad1-49a8-b824-2af4ce1a58d5" controls width="90%">
   <a href="https://github.com/user-attachments/assets/a77e2fb2-7ad1-49a8-b824-2af4ce1a58d5">Watch how to sign in to Cursor</a>
 </video></p>
 
-> 💡 If Cursor asks you to sign in, use the email you applied to the Builders Challenge. Expect one or two tries; that's normal.
+> 💡 If Cursor asks you to sign in, use the personal email you applied to the Builders Challenge. Expect one or two tries; that's normal.
 
-Drive the day from the **Cursor Agent (CLI)**. Start the agent in the terminal:
+Drive the day from the **Cursor Agent (CLI)**. Start Cursor in the terminal:
 
 ```sh
-cd ~/vast-builders-challenge    # the agent works from the current directory
+cd ~/vast-builders-challenge    # Cursor works from the current directory
 agent                           # start an interactive session
 ```
 
@@ -73,7 +73,7 @@ Once it's running, set the model to Auto to save tokens:
 
 Here is a video overview of the steps from this section:
 
-<p align="center"><video src="https://github.com/user-attachments/assets/73eace1b-c4ca-42f7-a59f-5a6e77e34a93" controls width="75%">
+<p align="center"><video src="https://github.com/user-attachments/assets/73eace1b-c4ca-42f7-a59f-5a6e77e34a93" controls width="90%">
   <a href="https://github.com/user-attachments/assets/73eace1b-c4ca-42f7-a59f-5a6e77e34a93">Watch the Launch VM walkthrough</a>
 </video></p>
 
@@ -91,13 +91,13 @@ Run the health check in the [Reference](#reference) section. If it fails, or you
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
 
 From the same page you loaded the VM, click on Video Search & Summary:
-<p align="center"><img src="docs/images/vss-ui-load.png" alt="The VSS link on the VAST workshop home page" width="75%"></p>
+<p align="center"><img src="docs/images/vss-ui-load.png" alt="The VSS link on the VAST workshop home page" width="90%"></p>
 
 If presented with a login screen, use `USERNAME` and `PASSWORD`, which you can access by typing `echo $USERNAME` and `echo $PASSWORD` in the VM terminal.
 
 Try a few of the search suggestions to see ranked clips with timestamps and the description Cosmos Reason returned for each one:
 
-<p align="center"><img src="docs/images/vss-search.png" alt="The VSS search interface with the search box, filters, and suggested prompts" width="80%"></p>
+<p align="center"><img src="docs/images/vss-search.png" alt="The VSS search interface with the search box, filters, and suggested prompts" width="90%"></p>
 
 <!-- > [TODO] replace w/ giphy / video and search topic -->
 
@@ -105,6 +105,8 @@ Explore the three tabs:
 **Search** to query videos, **Explore** to browse what's indexed, and **Dashboard** to get stats.
 
 ## 3. Skills, Skills, Skills
+
+> 💡 We'll try these out in the next section.
 
 The skills live in `.cursor/skills/`, split into `ingest/` and `retrieval/`. Each
 skill guides the coding agent: the endpoint, the request, the response, and
@@ -134,7 +136,7 @@ again with a different prompt, so the descriptions match what you're building.
 | `reingest-chunk` | Re-run one specific chunk, found by filename, scene, date, or camera |
 
 **Ingesting takes a few minutes.** Every segment is described, embedded, and detected
-again before it becomes searchable. Ask the agent to confirm before you go looking.
+again before it becomes searchable. Ask Cursor to confirm before you go looking.
 
 > 💡 **The prompt decides what gets indexed.** Cosmos Reason describes every segment
 > following an ingestion prompt. Anything it doesn't ask about never gets written down, so
@@ -144,8 +146,8 @@ again before it becomes searchable. Ask the agent to confirm before you go looki
 > might ask to identify people with umbrellas are in frame. Search the existing index for what your idea
 > needs; if it isn't there, that's what ingesting is for.
 >
-> Tell the agent what you want described, in your own words, or one of the built-in preset
-> scenarios. Ask the agent to list the scenarios (`list-metadata` looks these up live) if
+> Tell Cursor what you want described, in your own words, or one of the built-in preset
+> scenarios. Ask Cursor to list the scenarios (`list-metadata` looks these up live) if
 > you want to see what's available. We'll try this out in the next section.
 >
 > Not clear? Flag down someone to clarify.
@@ -210,7 +212,7 @@ asked about it, so nothing was written down.
 ingest <that video> with a prompt that describes <what your app needs>
 ```
 
-The agent loads `reingest-videos`, shows you what it's about to re-run, and asks for the
+Cursor loads `reingest-videos`, shows you what it's about to re-run, and asks for the
 prompt. Give it a few minutes, then run the same search again. This time it matches.
 
 To watch progress, ask `is it done yet?` or open the Dashboard tab:
@@ -235,10 +237,12 @@ If any of them didn't, run the health check in the [Reference](#reference) secti
 - A **VM with Cursor** pre-loaded, including this repo and your credentials and
   endpoints available as environment variables.
 - **Serverless LLM inference** from Weights & Biases by Coreweave for your app's own logic.
-- A set of **skills** that drive the pipeline in plain language. See next section on
+- A set of **skills** that drive the pipeline in plain language. See the section on
   [Skills](#3-skills-skills-skills).
 
 ## 5. Build
+
+> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
 
 ### What "done" looks like
 You have a working index and you know how to query it. The rest of the day is what you
@@ -280,13 +284,14 @@ The skills used by Cursor can be used by agent frameworks too. They follow the s
 
 ### Health check
 
-If something isn't working, pull first. The repo is pre-cloned and may be behind:
+If something isn't working, pull first. The repo is pre-cloned and may be behind. Type
+the following into Cursor:
 
-```sh
-git pull
+```
+run a git pull
 ```
 
-Then ask the agent:
+Then ask Cursor:
 
 ```
 check that everything is working: log in, and show me the dashboard
@@ -301,7 +306,7 @@ lists every variable with a description.
 
 ## 6. Judging
 
-Ask the agent to run the submission skill:
+Ask Cursor to run the submission skill:
 
 ```
 help me submit our project
@@ -322,4 +327,3 @@ When `SUBMISSION.md` is ready with your personal details included, send your sub
 ### Demo
 
 We'll do a first round of judging with each team to walk through what you built and to hear how the day went.
-

@@ -45,3 +45,6 @@ resp.json
 
 # --- organizer verification script (internal) ---
 verify-vm.sh
+
+# --- live screen ---
+screen/
