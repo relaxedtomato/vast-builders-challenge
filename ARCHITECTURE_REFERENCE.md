@@ -219,8 +219,6 @@ Write full prompts in Cursor: name what you want, point at your team config, and
 > Keep `parking-cam-private` out of any public demo.  
 > *(Cursor will use skills: `retrieval/login`, `retrieval/dashboard`, `retrieval/search`, `retrieval/videos`)*
 
-Steps for getting started are in [BUILD_DAY.md](BUILD_DAY.md) §4 (Test Drive) and §5 (Build).
-
 ---
 
 ## Rules of the road

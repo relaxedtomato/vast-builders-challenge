@@ -8,5 +8,5 @@ into an agent or app that takes action:
 
 - **Before the day:** [BEFORE_YOU_BUILD.md](BEFORE_YOU_BUILD.md), what to do in advance.
 - **Start here:** [BUILD_DAY.md](BUILD_DAY.md), the guide for the day.
-- **Deeper dive:** [HACKATHON_GUIDELINES.md](HACKATHON_GUIDELINES.md), the full video
+- **Deeper dive:** [ARCHITECTURE_REFERENCE.md](ARCHITECTURE_REFERENCE.md), the full video
   corpus, metadata reference, example queries, and demo packs.

@@ -24,7 +24,7 @@ Everything under "pre-built, already running" is done for you. The pipeline inge
 understands, and indexes video, and the models it calls are already deployed and
 serving. You build something cool that searches and acts.
 
-> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
+> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/ARCHITECTURE_REFERENCE.md" target="_blank" rel="noopener">Architecture Reference</a>.
 
 ## 2. Launch VM
 
@@ -242,7 +242,7 @@ If any of them didn't, run the health check in the [Reference](#reference) secti
 
 ## 5. Build
 
-> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/HACKATHON_GUIDELINES.md" target="_blank" rel="noopener">Architecture Reference</a>.
+> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/ARCHITECTURE_REFERENCE.md" target="_blank" rel="noopener">Architecture Reference</a>.
 
 ### What "done" looks like
 You have a working index and you know how to query it. The rest of the day is what you
@@ -253,9 +253,9 @@ build on top. A small app, agent, or a dashboard. A clear use case.
 [Expand on this section]
 
 Your index is already full and searchable. Every folder and camera ID is in
-[Video corpus](HACKATHON_GUIDELINES.md#video-corpus-already-indexed), grouped by use case in
-[Use-case groups](HACKATHON_GUIDELINES.md#use-case-groups), with worked
-[Example queries](HACKATHON_GUIDELINES.md#example-queries).
+[Video corpus](ARCHITECTURE_REFERENCE.md#video-corpus-already-indexed), grouped by use case in
+[Use-case groups](ARCHITECTURE_REFERENCE.md#use-case-groups), with worked
+[Example queries](ARCHITECTURE_REFERENCE.md#example-queries).
 
 ### The loop
 
