@@ -46,7 +46,7 @@ credentials, so anything a teammate ingests shows up in every team members searc
 
 ### Coding Agent
 
-> 💡 Need credits? <a href="https://forms.gle/AVta9RRTmfdeUNX26" target="_blank" rel="noopener">request Cursor credits (and top-ups)</a>.
+> 💡 Need credits? Sign up for Cursor first, then <a href="https://forms.gle/AVta9RRTmfdeUNX26" target="_blank" rel="noopener">request Cursor credits (and top-ups)</a>.
 
 Describe what you want in plain language and let the code agent build. That's how the skills are meant to be used.
 To get started, sign in using the Cursor IDE:
@@ -85,7 +85,7 @@ Here is a video overview of the steps from this section:
 Before you kick off the coding agent and start using skills, head to the next section. We'll circle back to Skills very soon.
 
 ### If something looks off
-Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>.
+Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll follow up.
 
 ## Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
@@ -108,9 +108,9 @@ Explore the three tabs:
 
 > 💡 We'll try these out in the next section.
 
-The skills live in `.cursor/skills/`, split into `ingest/` and `retrieval/`. Each
-skill guides the coding agent: the endpoint, the request, the response, and
-what to do when it fails.
+The skills live in `.cursor/skills/`, split into `ingest/` and `retrieval/` (explore the
+folder to see all skills). Each skill guides the coding agent: the endpoint, the request,
+the response, and what to do when it fails.
 
 Describe what you want and the coding agent loads the matching skill.
 
@@ -250,12 +250,21 @@ build on top. A small app, agent, or a dashboard. A clear use case.
 
 ### What video you have
 
-[Expand on this section]
+The videos come from a few kinds of real-world footage:
 
-Your index is already full and searchable. Every folder and camera ID is in
-[Video corpus](ARCHITECTURE_REFERENCE.md#video-corpus-already-indexed), grouped by use case in
-[Use-case groups](ARCHITECTURE_REFERENCE.md#use-case-groups), with worked
-[Example queries](ARCHITECTURE_REFERENCE.md#example-queries).
+- Dashcam driving footage of vehicles and pedestrians interacting at intersections and
+  crossings
+- Overhead, multi-camera highway footage tracking vehicle movement along a stretch of
+  interstate
+- A private neighborhood camera capturing car movement
+
+<!-- TODO: two more source types pending confirmation before adding here. -->
+
+Explore what's actually indexed in the [Video Search & Summary UI](#video-search--summary-ui) (previous section).
+
+Your index is already full and searchable. For the full list of folders, camera IDs, use
+cases, and worked example queries, see the
+[Architecture Reference's Video corpus section](ARCHITECTURE_REFERENCE.md#video-corpus-already-indexed).
 
 ### The loop
 
@@ -295,7 +304,7 @@ run a git pull
 Then ask Cursor:
 
 ```
-check that everything is working: log in, and show me the dashboard
+check that everything is working
 ```
 
 If it fails, or you need more help, run `/ask-cosmos`. The skill shares a snippet with relevant details, that you can add to a post on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll follow up.
@@ -313,17 +322,12 @@ Ask Cursor to run the submission skill:
 help me submit our project
 ```
 
-It asks for your team details, drafts your project description from your code, and collects
-the confirmations you need to be eligible. It writes `SUBMISSION.md` in the repo root.
+It drafts your project description from your code, walks you through each section, and
+writes `SUBMISSION.md` in the repo for you to reference. Wait for instructions on how to
+submit.
 
-> 💡 **Have these ready:** a link to your code or repo, your demo video, and an email
-> address for each team member. An incomplete submission may not be judged.
-
-**Record the demo on your own laptop, not the VM.** You're on the VM in a
-browser window, so your laptop's own recorder captures it: `Cmd+Shift+5` on a Mac, `Win+G` on
-Windows. Upload the file to your google drive (or equivalent) and share a link.
-
-When `SUBMISSION.md` is ready with your personal details included, send your submission over.
+> 💡 **Have this ready:** a link to your code or repo. An incomplete submission may not be
+> judged.
 
 ### Demo
 
