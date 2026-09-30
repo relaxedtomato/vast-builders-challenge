@@ -83,44 +83,6 @@ Open the UI, log in with your team user, and open **this skills repo** in **Curs
 
 ---
 
-## VSS UI
-
-1. Go to your **Ingress URL** (`INGRESS_URL` in your team config).
-2. **Log in** with your team’s username and password (`USERNAME` / `PASSWORD` in `/config/<your-team>.config`).
-
-![VSS login](docs/hackathon/vss-login.png)
-
-*Log in with your team’s username.*
-
-3. Use the **Search** tab to query the archive.
-
-![VSS search tab](docs/hackathon/vss-search-tab.png)
-
-*The Search tab.*
-
-4. Open the **Dashboard** tab to inspect ingest health, object counts, and pipeline alignment.
-
-![VSS dashboard](docs/hackathon/vss-dasboard-tab.png)
-
-*The VSS dashboard.*
-
-Screenshots live in `docs/hackathon/`.
-
----
-
-## The challenge
-
-**Discover. Explore. Invent. Build.**
-
-1. **Discover the skills** — ask Cursor what VSS can do; let it find and use the skills under `.cursor/skills/`.
-2. **Explore the product** — search, filter by metadata (`city`, `camera_id`, `scenario`, `category`), try suggestions, open the dashboard, explore clips, ask the agent. Optionally open the Blueprint source and see how the pipeline and UI are built.
-3. **Pick a use case** from the video corpus below (or combine groups) — traffic, crowds, egocentric / robotics, warehouse safety, driving, NYC street safety.
-4. **Build something** — a workflow, a mini-app, a Cursor-driven demo, a report pipeline, a filtered “ops board”, a Q&A bot for your scenario. Stay on the live APIs and skills, **or** change the Blueprint (pipeline functions, prompts, backend, UI) when your use case needs it.
-
-Judges care about **clarity of the use case**, **clever use of search + metadata + features** (and optional pipeline/UI changes), and **something that actually runs** — not how many slides you write.
-
----
-
 ## Video corpus (already indexed)
 
 Shared lab MP4s land in object storage as:
@@ -228,12 +190,6 @@ Start with **Pack A (Vehicle & Pedestrian)** or **Pack C (Warehouse Safety)** �
 
 ---
 
-## You can do everything from Cursor (skills)
-
-You do **not** need to memorize REST paths. In Cursor, describe what you want; the agent should pick the matching skill. Full skill index: [.cursor/README.md](.cursor/README.md).
-
----
-
 ## Suggested playbook
 
 Write full prompts in Cursor: name what you want, point at your team config, and say what to build. A solid loop is **re-ingest → confirm indexing → ship a thin app on search / videos / dashboard**.
@@ -275,9 +231,3 @@ Steps for getting started are in [BUILD_DAY.md](BUILD_DAY.md) §4 (Test Drive) a
 - If search returns nothing: check login, check dashboard/pipeline alignment, then check that metadata filter values actually exist (`retrieval/list-metadata`).
 - Have fun — the win is a crisp story: *problem → video archive (one of the packs) → search/filters across cameras → insight or action*.
 - Keep `parking-cam-private` / `parking_cam_1` **internal only**.
-
----
-
-## One-line summary
-
-You have a private VSS: indexed video corpus → understand it → search it with language and metadata across cities/cameras → explain it with an agent and a dashboard. **Use Cursor to discover the skills, pick a demo pack, and make a use case real.**
