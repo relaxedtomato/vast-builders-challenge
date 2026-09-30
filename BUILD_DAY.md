@@ -275,7 +275,8 @@ Search and Q&A come from your VSS instance. Anything your app decides on top of 
 classifying results, drafting a summary, choosing an action, runs on <a href="https://docs.wandb.ai/inference" target="_blank" rel="noopener">serverless LLM inference from Weights & Biases</a>.
 
 Your `WANDB_` keys are already in your environment. Point
-your own app's reasoning or agent at the inference endpoint using those.
+your own app's reasoning or agent at the inference endpoint using those. If you need more
+credits, reach out to the Weights & Biases by CoreWeave team :)
 
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
