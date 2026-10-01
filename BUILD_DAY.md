@@ -87,13 +87,11 @@ Before you kick off the coding agent and start using skills, head to the next se
 ### If something looks off
 Run the health check in the [Reference](#reference) section. If it fails, or you need more help, run `/ask-cosmos` and post the result on <a href="https://community.vastdata.com/t/about-the-workshop-category/1969" target="_blank" rel="noopener">Cosmos</a>, and we'll follow up.
 
-## Video Search & Summary UI
+### Video Search & Summary UI
 > 💡 This example app runs on the same API as the skills (`.cursor/skills`) you will be using. It's a built idea of what you can build today, and a quick way to check things out while building.
 
 From the same page you loaded the VM, click on Video Search & Summary:
 <p align="center"><img src="docs/images/vss-ui-load.png" alt="The VSS link on the VAST workshop home page" width="90%"></p>
-
-If presented with a login screen, use `USERNAME` and `PASSWORD`, which you can access by typing `echo $USERNAME` and `echo $PASSWORD` in the VM terminal.
 
 Try a few of the search suggestions to see ranked clips with timestamps and the description Cosmos Reason returned for each one:
 
@@ -108,14 +106,14 @@ Explore the three tabs:
 
 > 💡 We'll try these out in the next section.
 
-The skills live in `.cursor/skills/`, split into `ingest/` and `retrieval/` (explore the
-folder to see all skills). Each skill guides the coding agent: the endpoint, the request,
-the response, and what to do when it fails.
+The core skills for the day are `ingest/` and `retrieval/`, in `.cursor/skills/`. More
+skills cover the rest of the deployed stack, if you want to explore. Each skill guides the
+coding agent: the endpoint, the request, the response, and what to do when it fails.
 
 Describe what you want and the coding agent loads the matching skill.
 
 ```
-"ingest the warehouse video with a prompt about safety gear"
+"re-ingest the warehouse video with a prompt about safety gear"
 "find people near the entrance after 6pm"
 "summarize what happens in the warehouse video"
 ```
@@ -123,11 +121,11 @@ Describe what you want and the coding agent loads the matching skill.
 Skills read what they need from environment variables, so nothing should ask you for a
 password or a URL. If something isn't working, ask for help.
 
-### Ingest: re-running video
+### Re-ingest: running it again
 
-> ⚠️ **IMPORTANT:** Avoid having everyone on the team ingest large chunks of video (i.e. hours of video). Designate 1-2 team members to handle kicking off majority of the ingestion. Its okay for each team member to ingest a few videos to try things out.
+> ⚠️ **IMPORTANT:** Avoid having everyone on the team re-ingest large chunks of video (i.e. hours of video). Designate 1-2 team members to handle kicking off majority of the re-ingestion. It's okay for each team member to re-ingest a few videos to try things out.
 
-Your team's video is already indexed. Ingest here means running it through the pipeline
+Your team's video is already indexed. Re-ingest means running it through the pipeline
 again with a different prompt, so the descriptions match what you're building.
 
 | Skill | Use it to |
@@ -135,7 +133,7 @@ again with a different prompt, so the descriptions match what you're building.
 | `reingest-videos` | Re-run a whole indexed video with a new prompt or metadata |
 | `reingest-chunk` | Re-run one specific chunk, found by filename, scene, date, or camera |
 
-**Ingesting takes a few minutes.** Every segment is described, embedded, and detected
+**Re-ingesting takes a few minutes.** Every segment is described, embedded, and detected
 again before it becomes searchable. Ask Cursor to confirm before you go looking.
 
 > 💡 **The prompt decides what gets indexed.** Cosmos Reason describes every segment
@@ -143,8 +141,8 @@ again before it becomes searchable. Ask Cursor to confirm before you go looking.
 > you can't search for it later.
 >
 > On a construction site you might ask it to describe safety gear. In a public space you
-> might ask to identify people with umbrellas are in frame. Search the existing index for what your idea
-> needs; if it isn't there, that's what ingesting is for.
+> might ask whether anyone with an umbrella is in frame. Search the existing index for what your idea
+> needs; if it isn't there, that's what re-ingesting is for.
 >
 > Tell Cursor what you want described, in your own words, or one of the built-in preset
 > scenarios. Ask Cursor to list the scenarios (`list-metadata` looks these up live) if
@@ -206,10 +204,10 @@ Counts of people. What someone is carrying. Whether a vehicle stopped.
 If it comes back empty, that's not a broken search. It means the ingestion prompt never
 asked about it, so nothing was written down.
 
-### Ingest with your prompt
+### Re-ingest with your prompt
 
 ```
-ingest <that video> with a prompt that describes <what your app needs>
+re-ingest <that video> with a prompt that describes <what your app needs>
 ```
 
 Cursor loads `reingest-videos`, shows you what it's about to re-run, and asks for the
@@ -224,7 +222,7 @@ To watch progress, ask `is it done yet?` or open the Dashboard tab:
 
 ### That's the whole loop
 
-Search, ask, ingest, search again. Everything you build today sits on those steps. If
+Search, ask, re-ingest, search again. Everything you build today sits on those steps. If
 they worked, your stack is healthy and you can start building.
 
 If any of them didn't, run the health check in the [Reference](#reference) section.
@@ -240,9 +238,10 @@ If any of them didn't, run the health check in the [Reference](#reference) secti
 - A set of **skills** that drive the pipeline in plain language. See the section on
   [Skills](#3-skills-skills-skills).
 
-## 5. Build
+> ⚠️ **Don't ingest videos from the internet (e.g. YouTube).** We picked the
+> provided video sources specifically because their licensing allows this use.
 
-> 💡 For a deeper dive, check out the <a href="https://github.com/relaxedtomato/vast-builders-challenge/blob/main/ARCHITECTURE_REFERENCE.md" target="_blank" rel="noopener">Architecture Reference</a>.
+## 5. Build
 
 ### What "done" looks like
 You have a working index and you know how to query it. The rest of the day is what you
@@ -273,9 +272,9 @@ cases, and worked example queries, see the
 3. **Deploy and iterate**
 
 If the existing captions cover what you need, you never have to think about prompts. If they
-don't, ingest the footage again with a different prompt.
+don't, re-ingest the footage with a different prompt.
 
-> 💡 **Start with a few clips.** Read the captions that come back before you ingest anything
+> 💡 **Start with a few clips.** Read the captions that come back before you re-ingest anything
 > at volume.
 
 ### LLM access
@@ -289,6 +288,23 @@ credits, reach out to the Weights & Biases by CoreWeave team :)
 
 The skills used by Cursor can be used by agent frameworks too. They follow the standard
 `SKILL.md` format, so most frameworks load them straight from `.cursor/skills/`.
+
+## 6. Demos
+
+Ask Cursor to run the submission skill:
+
+```
+help me submit our project
+```
+
+It drafts your project description from your code, walks you through each section, and
+writes `SUBMISSION.md` in the repo for you to reference. Wait for instructions on how to
+submit.
+
+> 💡 **Have this ready:** a link to your code or repo. An incomplete submission may not be
+> judged.
+
+We'll do a first round of judging with each team to walk through what you built and to hear how the day went.
 
 ## Reference
 
@@ -314,21 +330,3 @@ If it fails, or you need more help, run `/ask-cosmos`. The skill shares a snippe
 Everything the skills need is already in your environment. `config.example` in this repo
 lists every variable with a description.
 
-## 6. Judging
-
-Ask Cursor to run the submission skill:
-
-```
-help me submit our project
-```
-
-It drafts your project description from your code, walks you through each section, and
-writes `SUBMISSION.md` in the repo for you to reference. Wait for instructions on how to
-submit.
-
-> 💡 **Have this ready:** a link to your code or repo. An incomplete submission may not be
-> judged.
-
-### Demo
-
-We'll do a first round of judging with each team to walk through what you built and to hear how the day went.
